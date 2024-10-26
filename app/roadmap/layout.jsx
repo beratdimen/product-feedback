@@ -1,15 +1,14 @@
-  
-import { Toaster } from "sonner"; 
 import RoadmapHeader from "@/components/roadmap-header";
 
-export default function RootLayout({ children }) {
+export const metadata = {
+  title: "Roadmap | Feedback Product",
+};
+
+export default function RoadMapLayout({ children }) {
   return (
-    <html lang="tr">
-      <body className="bodycontent">
-        <RoadmapHeader />
-        {children} 
-        <Toaster richColors position="top-right" />
-      </body>
-    </html>
+    <div className="bodycontent">
+      <RoadmapHeader />
+      {children}
+    </div>
   );
 }
