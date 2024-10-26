@@ -1,0 +1,11 @@
+.replyBtn {
+  button {
+    border: none;
+    background: transparent;
+    color: #4661e6;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18.79px;
+    text-align: left;
+  }
+}

@@ -15,4 +15,8 @@
     letter-spacing: -0.1805555522441864px;
     text-align: center;
   }
+
+  button:hover {
+    background-color: #cfd7ff;
+  }
 }

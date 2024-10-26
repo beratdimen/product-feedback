@@ -108,3 +108,38 @@ export function UpIcon() {
     </svg>
   );
 }
+
+export function RightIcon() {
+  return (
+    <svg
+      width="6"
+      height="10"
+      viewBox="0 0 6 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.33447 9L0.334473 5L4.33447 1"
+        stroke="#4661E6"
+        stroke-width="2"
+      />
+    </svg>
+  );
+}
+
+export function AvatarIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill="currentColor"
+        d="M10 11c-5.92 0-8 3-8 5v3h16v-3c0-2-2.08-5-8-5"
+      />
+      <circle cx="10" cy="5.5" r="4.5" fill="currentColor" />
+    </svg>
+  );
+}

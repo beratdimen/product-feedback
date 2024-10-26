@@ -1,7 +1,7 @@
 import { BulbIcon } from "@/helpers/icons";
 import "./style.css";
 import SortByFilter from "../sort-by-filter";
-import AddButton from "../addButton";
+import AddButton from "../add-button";
 export default function Header() {
   return (
     <div className="headerContainer">

@@ -10,4 +10,8 @@
     line-height: 20.23px;
     text-align: left;
   }
+
+  button:hover {
+    background-color: var(--button1hover);
+  }
 }

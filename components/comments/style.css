@@ -1,0 +1,64 @@
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+  background-color: var(--cardBg);
+  padding: 24px 32px;
+  border-radius: 16px;
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26.01px;
+    letter-spacing: -0.25px;
+    text-align: left;
+    color: var(--titleText);
+  }
+
+  .commentsCard {
+    display: flex;
+    gap: 32px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      p {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 21.68px;
+        text-align: left;
+        color: var(--contentText);
+      }
+
+      .userInformation {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+
+          h4 {
+            color: var(--titleText);
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 20.23px;
+            letter-spacing: -0.1944444477558136px;
+            text-align: left;
+          }
+
+          p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20.23px;
+            text-align: left;
+            color: var(--contentText);
+          }
+        }
+      }
+    }
+  }
+}

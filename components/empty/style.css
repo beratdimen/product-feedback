@@ -1,0 +1,39 @@
+.emptyContainer {
+  background-color: var(--cardBg);
+  margin: auto;
+  max-width: 825px;
+  border-radius: 16px;
+
+  .emptyGeneral {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 410px;
+    margin: auto;
+    padding-block: 110px;
+    align-items: center;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 34.68px;
+        letter-spacing: -0.3333333432674408px;
+        text-align: center;
+        color: var(--titleText);
+      }
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 23.12px;
+        text-align: center;
+        color: var(--contentText);
+      }
+    }
+  }
+}
