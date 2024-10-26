@@ -11,6 +11,9 @@
   --titleText: #3a4374;
   --contentText: #647196;
   --categoryText: #4661e6;
+  --categoryTextHover: #ffffff;
+  --categoryButtonBg: #f2f4ff;
+  --categoryButtonBgHover: #4661e6;
   --userReplyText: #ad1fea;
   --plannedColor: #f49f85;
   --inProgreessColor: #ad1fea;
@@ -79,4 +82,11 @@ h6 {
 
 button {
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1110px;
 }

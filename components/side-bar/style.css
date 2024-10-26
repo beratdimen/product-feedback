@@ -1,0 +1,105 @@
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 255px;
+
+  .sidebarHeader {
+    padding: 68px 72px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    background: var(--boardBg);
+    border-radius: 16px;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28.9px;
+      letter-spacing: -0.25px;
+      text-align: left;
+      color: white;
+    }
+
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 21.68px;
+      text-align: left;
+      color: #ffffff75;
+    }
+  }
+
+  .categoryContainer {
+    background-color: var(--cardBg);
+    padding: 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    border-radius: 16px;
+
+    button {
+      border: none;
+      border-radius: 8px;
+      background-color: var(--categoryButtonBg);
+      padding: 5px 16px;
+      color: var(--categoryText);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18.79px;
+      text-align: left;
+    }
+
+    button:hover {
+      background-color: var(--categoryButtonBgHover);
+      color: var(--categoryTextHover);
+    }
+  }
+  .roadmapContainer {
+    display: flex;
+    flex-direction: column;
+
+    .roadmapHeader {
+      display: flex;
+      justify-content: space-between;
+      h3 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26.01px;
+        letter-spacing: -0.25px;
+        text-align: left;
+        color: var(--titleText);
+      }
+      a {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 18.79px;
+        text-align: left;
+        color: #4661e6;
+      }
+    }
+    ul {
+      list-style: none;
+      li {
+        display: flex;
+        gap: 8px;
+      }
+
+      .planned {
+        span {
+          color: var(--plannedColor);
+        }
+      }
+
+      .inProgress {
+        span {
+          color: var(--inProgreessColor);
+        }
+      }
+      .live {
+        span {
+          color: var(--liveColor);
+        }
+      }
+    }
+  }
+}
