@@ -1,0 +1,18 @@
+.likeButton {
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4pxpx;
+    border: none;
+    padding: 10px 8px;
+    border-radius: 8px;
+    background-color: var(--likeBtnBg);
+    color: var(--likeBtnText);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 18.79px;
+    letter-spacing: -0.1805555522441864px;
+    text-align: center;
+  }
+}

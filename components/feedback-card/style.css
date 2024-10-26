@@ -1,0 +1,54 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cardBg);
+  padding: 28px 32px;
+  margin: 0 auto;
+
+  .contentGeneral {
+    display: flex;
+    gap: 40px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      h3 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26.01px;
+        letter-spacing: -0.25px;
+        text-align: left;
+        color: var(--titleText);
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 23.12px;
+        text-align: left;
+        color: var(--contentText);
+      }
+
+      span {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 18.79px;
+        text-align: left;
+        background-color: var();
+        color: var(--categoryText);
+        background-color: var(--likeBtnBg);
+        padding: 6px 16px;
+        border-radius: 8px;
+        width: fit-content;
+      }
+    }
+  }
+
+  .comments {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}

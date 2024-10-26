@@ -35,3 +35,76 @@ export function DownIcon() {
     </svg>
   );
 }
+
+export function DarkModeIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26a5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1"
+      />
+    </svg>
+  );
+}
+
+export function LightModeIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <g fill="none">
+        <g fill="currentColor" clip-path="url(#siLightModeFill0)">
+          <path d="M12 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1M4.929 3.515a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 0 0 1.414-1.414zM1 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2zm17 1a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1m-.343 4.243a1 1 0 0 0-1.414 1.414l2.828 2.828a1 1 0 1 0 1.414-1.414zm-9.9 1.414a1 1 0 1 0-1.414-1.414L3.515 19.07a1 1 0 1 0 1.414 1.414zM20.485 4.929a1 1 0 0 0-1.414-1.414l-2.828 2.828a1 1 0 1 0 1.414 1.414zM13 19a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10" />
+        </g>
+        <defs>
+          <clipPath id="siLightModeFill0">
+            <path fill="#fff" d="M0 0h24v24H0z" />
+          </clipPath>
+        </defs>
+      </g>
+    </svg>
+  );
+}
+
+export function CommentsIcon() {
+  return (
+    <svg
+      width="18"
+      height="16"
+      viewBox="0 0 18 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2.62074 16H1.34534L2.24718 15.0895C2.73344 14.5986 3.0371 13.9601 3.11873 13.2674C1.03637 11.8878 0 9.88917 0 7.79388C0 3.92832 3.51913 0 9.0305 0C14.8692 0 18 3.61479 18 7.45522C18 11.321 14.8361 14.9333 9.0305 14.9333C8.0135 14.9333 6.95226 14.7963 6.00478 14.5448C5.10787 15.4735 3.89262 16 2.62074 16Z"
+        fill="#CDD2EE"
+      />
+    </svg>
+  );
+}
+
+export function UpIcon() {
+  return (
+    <svg
+      width="11"
+      height="7"
+      viewBox="0 0 11 7"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.33447 6L5.33447 2L9.33447 6"
+        stroke="#4661E6"
+        stroke-width="2"
+      />
+    </svg>
+  );
+}

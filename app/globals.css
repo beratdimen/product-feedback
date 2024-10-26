@@ -25,6 +25,8 @@
   --button3hover: #656ea3;
   --button4hover: #e98888;
   --buttonText: #f2f4fe;
+  --likeBtnBg: #f2f4fe;
+  --likeBtnText: #3a4374;
 }
 
 *,
@@ -41,6 +43,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-family: system-ui;
+  background-color: var(--bodyBg);
 }
 
 img,
