@@ -1,9 +1,9 @@
 "use client";
 
-import { DarkModeIcon, LightModeIcon } from "@/helpers/icons"; 
+import { DarkModeIcon, LightModeIcon } from "@/helpers/icons";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-
+import "../style.css";
 export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);

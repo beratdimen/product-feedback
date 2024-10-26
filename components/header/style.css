@@ -11,6 +11,11 @@
     display: flex;
     align-items: center;
     gap: 40px;
+
+    button {
+      border: none;
+      background: transparent;
+    }
   }
   .logo {
     display: flex;
