@@ -88,5 +88,11 @@ button {
   display: flex;
   gap: 30px;
   margin: 0 auto;
-  max-width: 1110px;
+  width: 1110px;
+}
+
+.bodycontent {
+  margin: 94px 20%;
+  display: flex;
+  gap: 30px; 
 }

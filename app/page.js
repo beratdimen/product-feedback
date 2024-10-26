@@ -1,11 +1,9 @@
-import "./globals.css";
-import SideBar from "@/components/side-bar";
+import "./globals.css"; 
 import SuggestionsPage from "./suggestions/page";
 
 export default function Home() {
   return (
-    <div className="container">
-      <SideBar />
+    <div className="container"> 
       <SuggestionsPage />
     </div>
   );
