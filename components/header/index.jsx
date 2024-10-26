@@ -2,6 +2,7 @@ import { BulbIcon } from "@/helpers/icons";
 import "./style.css";
 import SortByFilter from "../sort-by-filter";
 import AddButton from "../add-button";
+import ThemeSwitch from "./dark-mode-button";
 export default function Header() {
   return (
     <div className="headerContainer">
@@ -11,6 +12,7 @@ export default function Header() {
           <h4>6 Suggestions</h4>
         </div>
         <SortByFilter />
+        <ThemeSwitch />
       </div>
       <AddButton />
     </div>
