@@ -1,15 +1,14 @@
 import { useRef, useState } from "react";
 import ButtonGroup from "../create-btn-group";
 import { RightIcon } from "@/helpers/icons";
+import GoBack from "../goback";
 
 export default function EditFeedback({ editFeedback, open, closeDialog }) {
   return (
     <dialog ref={editFeedback} open={open}>
       <div className="dialogContainer">
-        <button onClick={closeDialog}>
-          <RightIcon /> Go Back
-        </button>
         <h2>Create New Feedback</h2>
+        <GoBack  closeDialog={closeDialog}/>
         <form>
           <label>Feedback title</label>
           <input type="text" />
