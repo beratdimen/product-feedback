@@ -17,6 +17,6 @@
   }
 
   button:hover {
-    background-color: #cfd7ff;
+    background-color: var(--likeBtnBgHover);
   }
 }

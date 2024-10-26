@@ -29,9 +29,24 @@
   --button4hover: #e98888;
   --buttonText: #f2f4fe;
   --likeBtnBg: #f2f4fe;
+  --likeBtnBgHover: #cfd7ff;
   --likeBtnText: #3a4374;
 }
-
+[data-theme="dark"] {
+  --bodyBg: #141625;
+  --headerBg: #10183d;
+  --cardBg: #0c0e16;
+  --titleText: #f2f4fe;
+  --contentText: #f2f4fea4;
+  --likeBtnBg: #352f2f;
+  --likeBtnText: #f2f4fe;
+  --categoryButtonBg: #352f2f;
+  --categoryButtonBgHover: #cfb6b6;
+  --button1: #540974;
+  --button2: #1c2e85;
+  --button3: #3a4374;
+  --button4: #d73737;
+}
 *,
 *::before,
 *::after {
@@ -94,5 +109,5 @@ button {
 .bodycontent {
   margin: 94px 20%;
   display: flex;
-  gap: 30px; 
+  gap: 30px;
 }

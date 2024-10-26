@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import SideBar from "@/components/side-bar";
 import Header from "@/components/header";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,13 +27,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body className={`${geistSans.variable} ${geistMono.variable} bodycontent` } >
-        <SideBar />
-        <div >
-          <Header />
-          {children}
-        </div>
-        <Toaster richColors position="top-right" />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bodycontent`}
+      >
+        <ThemeProvider attribute="data-theme">
+          <SideBar />
+          <div>
+            <Header />
+            {children}
+          </div>
+          <Toaster richColors position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );
