@@ -1,5 +1,4 @@
-  
-import { Toaster } from "sonner"; 
+import { Toaster } from "sonner";
 import RoadmapHeader from "@/components/roadmap-header";
 
 export default function RootLayout({ children }) {
@@ -7,7 +6,7 @@ export default function RootLayout({ children }) {
     <html lang="tr">
       <body className="bodycontent">
         <RoadmapHeader />
-        {children} 
+        {children}
         <Toaster richColors position="top-right" />
       </body>
     </html>
