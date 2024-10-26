@@ -1,5 +1,5 @@
 .EditBtn {
-  button {
+  >button {
     background-color: var(--button2);
     color: var(--buttonText);
     border: none;
@@ -11,7 +11,7 @@
     text-align: left;
   }
 
-  button:hover {
+  >button:hover {
     background-color: var(--button2hover);
   }
 }

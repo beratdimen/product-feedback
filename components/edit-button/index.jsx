@@ -2,31 +2,28 @@
 import { useRef, useState } from "react";
 import EditFeedback from "../edit-modal";
 import "./style.css";
-export default function EditButton() {
-  const [open, setOpen] = useState(false);
+export default function EditButton() { 
   const editFeedback = useRef();
+ 
+  function handleClick() {
+    if (editFeedback.current) {
+      editFeedback.current.showModal();
+    }
+  }
 
-  const openDialog = () => {
-    setOpen(true);
+  function close() {
     if (editFeedback.current) {
       editFeedback.current.close();
     }
-  };
-
-  const closeDialog = () => {
-    setOpen(false);
-    if (editFeedback.current) {
-      editFeedback.current.close();
-    }
-  };
+  }
 
   return (
     <div className="EditBtn">
-      <button onClick={openDialog}>Edit Feedback</button>
+      <button onClick={handleClick}>Edit Feedback</button>
       <EditFeedback
-        open={open}
+        opendialog={handleClick}
         editFeedback={editFeedback}
-        closeDialog={closeDialog}
+        closeDialog={close}
       />
     </div>
   );
