@@ -1,34 +1,68 @@
-import { useRef, useState } from "react";
+import { CancelBtn } from "@/helpers/icons";
 import ButtonGroup from "../create-btn-group";
-import { RightIcon } from "@/helpers/icons";
 import GoBack from "../goback";
+import "./editmodal.css"
+import Image from "next/image";
 
-export default function EditFeedback({ editFeedback, open, closeDialog }) {
+
+export default function EditFeedback({ editFeedback, closeDialog }) {
   return (
-    <dialog ref={editFeedback} open={open}>
+
+    <dialog ref={(e) => (editFeedback.current = e)} >
+      <Image src={"/img/edit.png"} width={56} height={56} className="addPng" />
       <div className="dialogContainer">
-        <h2>Create New Feedback</h2>
-        <GoBack  closeDialog={closeDialog}/>
+        <div className="dialoghead">
+          <h2>Editing ‘Add a dark theme option’</h2>
+          <button onClick={closeDialog}>
+            <CancelBtn />
+          </button>
+        </div>
         <form>
-          <label>Feedback title</label>
-          <input type="text" />
+          <label>
+            <div className="labeltext">
+              <p>Feedback title</p>
+              <p>Add a short, descriptive headline</p>
+            </div>
+            <input type="text" />
+          </label>
 
-          <label>Category</label>
-          <select>
-            <option value=""></option>
-            <option value="">Feature</option>
-            <option value="">UI</option>
-            <option value="">UX</option>
-            <option value="">Bug</option>
-          </select>
+          <label>
+            <div className="labeltext">
+              <p>Category</p>
+              <p>Choose a category for your feedback</p>
+            </div>
+            <select>
+              <option value=""></option>
+              <option value="">Feature</option>
+              <option value="">UI</option>
+              <option value="">UX</option>
+              <option value="">Bug</option>
+            </select></label>
 
-          <label>Feedback detais</label>
-          <input type="text" />
+          <label>
+            <div className="labeltext">
+              <p>Update Status</p>
+              <p>Change feedback state</p>
+            </div>
+            <select>
+              <option value=""></option>
+              <option value="">Suggestion</option>
+              <option value="">Planned</option>
+              <option value="">In-Progress</option>
+              <option value="">Live</option>
+            </select></label>
 
-          <div>
-            <button>delete</button>
-            <ButtonGroup />
-          </div>
+          <label>
+            <div className="labeltext">
+              <p>Feedback detais</p>
+              <p>Include any specific comments on what should be improved, added, etc.</p>
+            </div>
+            <textarea rows="5"></textarea>
+            <div className="btnGroup"> 
+              <button className="deletebtn">Delete</button>
+              <ButtonGroup closeDialog={closeDialog} />
+            </div>
+          </label>
         </form>
       </div>
     </dialog>
