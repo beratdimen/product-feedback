@@ -1,6 +1,6 @@
 "use client";
 
-import { DarkModeIcon, LightModeIcon } from "@/helpers/icons";
+import { DarkModeIcon, LightModeIcon } from "@/helpers/icons"; 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
