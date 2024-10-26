@@ -1,0 +1,13 @@
+.headerBtn {
+  button {
+    background-color: var(--button1);
+    color: var(--buttonText);
+    border: none;
+    border-radius: 16px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20.23px;
+    text-align: left;
+  }
+}

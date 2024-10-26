@@ -1,3 +1,32 @@
+:root {
+  --bodyBg: #f7f8fd;
+  --boardBg: radial-gradient(
+    128.88% 128.88% at 103.9% -10.39%,
+    #e84d70 0%,
+    #a337f6 53.09%,
+    #28a7ed 100%
+  );
+  --headerBg: #373f68;
+  --cardBg: #ffffff;
+  --titleText: #3a4374;
+  --contentText: #647196;
+  --categoryText: #4661e6;
+  --userReplyText: #ad1fea;
+  --plannedColor: #f49f85;
+  --inProgreessColor: #ad1fea;
+  --liveColor: #62bcfa;
+  --button1: #ad1fea;
+  --button2: #4661e6;
+  --button3: #3a4374;
+  --button4: #d73737;
+  --goBackText: #647196;
+  --button1hover: #c75af6;
+  --button2hover: #7c91f9;
+  --button3hover: #656ea3;
+  --button4hover: #e98888;
+  --buttonText: #f2f4fe;
+}
+
 *,
 *::before,
 *::after {
