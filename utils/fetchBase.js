@@ -3,7 +3,7 @@ import { AdvancedFetch } from "./advanced";
 
 export const getFeedback = async () => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}`
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}`
   );
   return response;
 };

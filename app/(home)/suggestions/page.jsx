@@ -1,9 +1,17 @@
 import FeedbackCard from "@/components/feedback-card";
 import "./style.css";
-export default function SuggestionsPage() {
+import { getFeedback } from "@/utils/fetchBase";
+export default async function SuggestionsPage() {
+  const { response, error } = await getFeedback();
+  console.log({ response });
+  console.log({ error });
+
   return (
     <div className="gg">
       <FeedbackCard />
+      {response.posts.map((x) => (
+        <p>{x.title}</p>
+      ))}
     </div>
   );
 }
