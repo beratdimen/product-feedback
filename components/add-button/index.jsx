@@ -1,11 +1,20 @@
 "use client";
-import { CancelBtn, RightIcon } from "@/helpers/icons";
+import { CancelBtn } from "@/helpers/icons";
 import "./style.css";
 import { useRef, useState } from "react";
 import ButtonGroup from "../create-btn-group";
 import Image from "next/image";
+import { useFormState } from "react-dom";
+import FormVAlidation from "@/action/actions";
 
-export default function AddButton() { 
+export default function AddButton() {
+  const [state, action] = useFormState(
+    (prevState, formData) => FormVAlidation(prevState, formData),
+    {
+      message: null,
+      error: null,
+    }
+  );
   const newFeedback = useRef();
 
   function handleClick() {
@@ -25,7 +34,7 @@ export default function AddButton() {
       <div className="headerBtn">
         <button onClick={() => handleClick()}>+ Add Feedback</button>
       </div>
-      <dialog ref={(e) => (newFeedback.current = e)} >
+      <dialog ref={(e) => (newFeedback.current = e)}>
         <Image src={"/img/add.png"} width={56} height={56} className="addPng" />
         <div className="dialogContainer">
           <div className="dialoghead">
@@ -34,14 +43,15 @@ export default function AddButton() {
               <CancelBtn />
             </button>
           </div>
-          <form>
-            <label>
+          <form action={action}>
+            <label name="title">
               <div className="labeltext">
                 <p>Feedback title</p>
                 <p>Add a short, descriptive headline</p>
               </div>
-              <input type="text" />
+              <input type="text" name="title" />
             </label>
+            {error?.title && <p className="error">{error.title}</p>}
 
             <label>
               <div className="labeltext">
@@ -54,12 +64,16 @@ export default function AddButton() {
                 <option value="">UI</option>
                 <option value="">UX</option>
                 <option value="">Bug</option>
-              </select></label>
+              </select>
+            </label>
 
             <label>
               <div className="labeltext">
                 <p>Feedback detais</p>
-                <p>Include any specific comments on what should be improved, added, etc.</p>
+                <p>
+                  Include any specific comments on what should be improved,
+                  added, etc.
+                </p>
               </div>
               <textarea rows="5"></textarea>
               <ButtonGroup />
