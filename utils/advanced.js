@@ -1,3 +1,4 @@
+"use server";
 export async function AdvancedFetch(url, method = "GET", data = null) {
   try {
     const response = await fetch(url, {
