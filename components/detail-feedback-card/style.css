@@ -1,11 +1,16 @@
+
 .detailContainer {
   max-width: 730px;
-  margin: 0 auto;
+  margin: 0px auto;
 
   .detailHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
+  }
+  .cardContainer{
+    max-width: 730px;
   }
 
   .backBtn {

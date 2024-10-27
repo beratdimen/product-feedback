@@ -27,7 +27,7 @@ export default function AddComment() {
         ></textarea>
         <div className="commentFooter">
           <span>{remainigChar} karakter hakkın kaldı</span>
-          <button disabled={remainigChar < 0}>Post Cooment</button>
+          <button disabled={remainigChar < 0}>Post Comment</button>
         </div>
       </form>
     </div>
