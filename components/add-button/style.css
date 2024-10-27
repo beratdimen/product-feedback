@@ -27,7 +27,6 @@ dialog {
     top: 5px;
     z-index: 99;
   }
-
 }
 
 .dialogContainer {
@@ -41,7 +40,6 @@ dialog {
   border-radius: 16px;
   margin-top: 20px;
 
-
   .dialoghead {
     display: flex;
     justify-content: space-between;
@@ -54,7 +52,7 @@ dialog {
       svg {
         width: 40px;
         height: 40px;
-        transition: all .3s;
+        transition: all 0.3s;
       }
     }
 
@@ -89,7 +87,6 @@ dialog {
     flex-direction: column;
     gap: 12px;
 
-
     .labeltext {
       p:nth-child(1) {
         font-size: 14px;
@@ -97,7 +94,7 @@ dialog {
         line-height: 20.23px;
         letter-spacing: -0.1944444477558136px;
         text-align: left;
-        color: #3A4374;
+        color: #3a4374;
       }
 
       p:nth-child(2) {
@@ -116,13 +113,13 @@ dialog {
 
     input {
       width: 100%;
-      background: #F7F8FD;
+      background: #f7f8fd;
       height: 48px;
       border-radius: 10px;
       border: none;
       padding-inline: 20px;
-      caret-color: #3A4374;
-      color: #3A4374;
+      caret-color: #3a4374;
+      color: #3a4374;
     }
 
     input:focus {
@@ -131,7 +128,7 @@ dialog {
 
     select {
       width: 100%;
-      background: #F7F8FD;
+      background: #f7f8fd;
       height: 48px;
       border-radius: 10px;
       border: none;
@@ -141,23 +138,25 @@ dialog {
       background-image: url("/img/downarrow.png");
       background-repeat: no-repeat;
       background-position: 96% 60%;
-    } 
+    }
 
     textarea {
       width: 100%;
-      background: #F7F8FD;
+      background: #f7f8fd;
       border-radius: 10px;
       border: none;
       padding: 20px;
-      caret-color: #3A4374;
-      color: #3A4374;
+      caret-color: #3a4374;
+      color: #3a4374;
     }
 
     textarea:focus {
       outline: none;
     }
-
   }
+}
 
-
+.error {
+  color: red;
+  margin-top: 4px;
 }
