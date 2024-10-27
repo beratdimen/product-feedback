@@ -31,7 +31,7 @@ export function DownIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M1 1L5 5L9 1" stroke="white" stroke-width="2" />
+      <path d="M1 1L5 5L9 1" stroke="white" strokeWidth="2" />
     </svg>
   );
 }
@@ -103,7 +103,7 @@ export function UpIcon() {
       <path
         d="M1.33447 6L5.33447 2L9.33447 6"
         stroke="#4661E6"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -121,7 +121,7 @@ export function RightIcon() {
       <path
         d="M4.33447 9L0.334473 5L4.33447 1"
         stroke="#4661E6"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );
@@ -145,23 +145,40 @@ export function AvatarIcon() {
 }
 
 export function DownArrowGray() {
-  return (<svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1 6L5 2L9 6" stroke="white" stroke-width="2" />
-  </svg>
-  )
+  return (
+    <svg
+      width="9"
+      height="7"
+      viewBox="0 0 9 7"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M1 6L5 2L9 6" stroke="white" strokeWidth="2" />
+    </svg>
+  );
 }
 export function Tick() {
-  return (<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625" stroke="#AD1FEA" stroke-width="2" />
-  </svg>
-  )
+  return (
+    <svg
+      width="13"
+      height="10"
+      viewBox="0 0 13 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.968262 4.85894L4.49995 8.39062L11.9999 0.890625"
+        stroke="#AD1FEA"
+        strokeWidth="2"
+      />
+    </svg>
+  );
 }
-
 
 export function CancelBtn() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
       <path d="M25,2C12.319,2,2,12.319,2,25s10.319,23,23,23s23-10.319,23-23S37.681,2,25,2z M33.71,32.29c0.39,0.39,0.39,1.03,0,1.42	C33.51,33.9,33.26,34,33,34s-0.51-0.1-0.71-0.29L25,26.42l-7.29,7.29C17.51,33.9,17.26,34,17,34s-0.51-0.1-0.71-0.29	c-0.39-0.39-0.39-1.03,0-1.42L23.58,25l-7.29-7.29c-0.39-0.39-0.39-1.03,0-1.42c0.39-0.39,1.03-0.39,1.42,0L25,23.58l7.29-7.29	c0.39-0.39,1.03-0.39,1.42,0c0.39,0.39,0.39,1.03,0,1.42L26.42,25L33.71,32.29z"></path>
     </svg>
-  )
+  );
 }
