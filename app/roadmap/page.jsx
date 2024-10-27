@@ -1,19 +1,23 @@
-import RoadItem from "./roaditem"
-import "./roadmap.css"
+import RoadmapHeader from "@/components/roadmap-header";
+import RoadItem from "./roaditem";
+import "./roadmap.css";
 
-
-export default function RoadMap(){
-  return(
+export default function RoadMap() {
+  return (
     <div className="roadCont">
-      <div className="planned"> 
-        <RoadItem />
-      </div>
-      <div className="In-Progress">
+      <RoadmapHeader />
 
-      </div>
-      <div className="Live">
-
+      <div className="generalRoadmap">
+        <div className="planned">
+          <RoadItem />
+        </div>
+        <div className="In-Progress">
+          <RoadItem />
+        </div>
+        <div className="Live">
+          <RoadItem />
+        </div>
       </div>
     </div>
-  )
+  );
 }

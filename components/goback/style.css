@@ -1,0 +1,11 @@
+.goback {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    color: var(--goBackText);
+  }
+}

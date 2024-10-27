@@ -1,10 +1,13 @@
-import { RightIcon } from "@/helpers/icons"
-import "./goback.css"
+import { RightIcon } from "@/helpers/icons";
+import "./style.css";
+import Link from "next/link";
 
-export default function GoBack({closeDialog}) {
+export default function GoBack() {
   return (
-    <button onClick={closeDialog}>
-      <RightIcon /> Go Back
-    </button>
-  )
+    <div className="goback">
+      <Link href={"/"}>
+        <RightIcon /> Go Back
+      </Link>
+    </div>
+  );
 }
