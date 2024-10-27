@@ -103,8 +103,7 @@ button {
 .container {
   display: flex;
   gap: 30px;
-  margin: 0 auto;
-  width: 1110px;
+  margin: 0 auto; 
 }
 
 .bodycontent {

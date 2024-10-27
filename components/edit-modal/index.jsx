@@ -44,10 +44,10 @@ export default function EditFeedback({ editFeedback, closeDialog }) {
               <p>Update Status</p>
               <p>Change feedback state</p>
             </div>
-            <select>
+            <select name="roadmap">
               <option value=""></option>
-              <option value="">Suggestion</option>
-              <option value="">Planned</option>
+              <option value="0">Suggestion</option>
+              <option value="1">Planned</option>
               <option value="">In-Progress</option>
               <option value="">Live</option>
             </select></label>
