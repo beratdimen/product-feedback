@@ -78,9 +78,11 @@ export default function AddButton() {
               </div>
               <textarea rows="5" name="content"></textarea>
               <ButtonGroup />
+              <textarea rows="5"></textarea>
             </label>
             {error?.content && <p className="error">{error.content}</p>}
           </form>
+              <ButtonGroup />
         </div>
       </dialog>
     </>

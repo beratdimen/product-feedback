@@ -7,14 +7,40 @@
      background: #D73737 !important;
    }
 
-   .deletebtn:hover{
-    background: #E98888 !important; 
+   .deletebtn:hover {
+     background: #E98888 !important;
    }
  }
 
- .dialoghead{
+ .dialoghead {
 
-  button{
-    background: transparent;
-  }
+   button {
+     background: transparent;
+   }
+ }
+
+ dialog {
+   overflow: hidden;
+ }
+
+ .dialogContainer {
+   height: 600px;
+   overflow: scroll;
+   overflow-x: hidden;
+ }
+
+ .dialogContainer::-webkit-scrollbar {
+   width: 10px;
+ }
+
+ .dialogContainer::-webkit-scrollbar-track {
+   background: #f1f1f1;
+ }
+
+ .dialogContainer::-webkit-scrollbar-thumb {
+   background: #888;
+ }
+
+ .dialogContainer::-webkit-scrollbar-thumb:hover {
+   background: #555;
  }
