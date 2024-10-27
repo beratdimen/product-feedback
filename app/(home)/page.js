@@ -1,5 +1,4 @@
- 
-import "./globals.css"; 
+import "../globals.css"
 import SuggestionsPage from "./suggestions/page"; 
 
 export default function Home() {
@@ -7,5 +6,5 @@ export default function Home() {
     <div className="container"> 
       <SuggestionsPage /> 
     </div>
-  );
+  );  
 }

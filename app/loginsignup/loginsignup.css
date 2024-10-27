@@ -1,0 +1,7 @@
+.loginsignup{ 
+  width: 500px;
+  height: 600px; 
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
