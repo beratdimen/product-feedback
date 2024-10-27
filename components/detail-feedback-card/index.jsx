@@ -4,13 +4,14 @@ import "./style.css";
 import EditButton from "../edit-button";
 import Comments from "../comments";
 import AddComment from "../add-comment";
+import Link from "next/link";
 export default function DetailFeedback({ opendialog }) {
   return (
     <div className="detailContainer">
       <div className="detailHeader">
-        <button className="backBtn">
+       <Link href={"/"}> <button className="backBtn">
           <RightIcon /> Go Back
-        </button>
+        </button></Link>
         <EditButton opendialog={opendialog} />
       </div>
       <FeedbackCard />
