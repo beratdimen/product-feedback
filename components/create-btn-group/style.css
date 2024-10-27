@@ -1,7 +1,13 @@
 .btnGroup {
+  position: sticky;
+  bottom: -20px; 
+  left: 40px;
+  background: white;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   gap: 16px;
+  z-index: 99;
 
   button:nth-child(1) {
     background: #3A4374; 

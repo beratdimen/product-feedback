@@ -161,3 +161,27 @@ dialog {
 
 
 }
+
+.dialogContainer {
+  height: 600px;
+  padding-bottom: 30px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.dialogContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dialogContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dialogContainer::-webkit-scrollbar-thumb {
+  background: rgb(171, 116, 194);
+  border-radius: 20px;
+}
+
+.dialogContainer::-webkit-scrollbar-thumb:hover {
+  background: rgba(173, 31, 234, 1);
+}

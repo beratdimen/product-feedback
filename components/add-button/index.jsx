@@ -48,12 +48,12 @@ export default function AddButton() {
                 <p>Category</p>
                 <p>Choose a category for your feedback</p>
               </div>
-              <select>
-                <option value=""></option>
-                <option value="">Feature</option>
-                <option value="">UI</option>
-                <option value="">UX</option>
-                <option value="">Bug</option>
+              <select name="categoryId">
+                <option value="">Seçiniz</option>
+                <option value="0">Feature</option>
+                <option value="1">UI</option>
+                <option value="2">UX</option>
+                <option value="3">Bug</option>
               </select></label>
 
             <label>
@@ -62,9 +62,9 @@ export default function AddButton() {
                 <p>Include any specific comments on what should be improved, added, etc.</p>
               </div>
               <textarea rows="5"></textarea>
-              <ButtonGroup />
             </label>
           </form>
+              <ButtonGroup />
         </div>
       </dialog>
     </>
