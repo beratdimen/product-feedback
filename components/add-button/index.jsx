@@ -81,12 +81,12 @@ export default function AddButton() {
                 </p>
               </div>
               <textarea rows="5" name="content"></textarea>
-              <ButtonGroup /> 
+              <ButtonGroup close={close} />
             </label>
             {state?.error?.content && (
               <p className="error">{state?.error.content}</p>
             )}
-          </form> 
+          </form>
         </div>
       </dialog>
     </>
