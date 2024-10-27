@@ -1,54 +1,69 @@
 "use client";
-import { RightIcon } from "@/helpers/icons";
+import { CancelBtn, RightIcon } from "@/helpers/icons";
 import "./style.css";
 import { useRef, useState } from "react";
 import ButtonGroup from "../create-btn-group";
+import Image from "next/image";
 
-export default function AddButton() {
-  const [open, setOpen] = useState(false);
+export default function AddButton() { 
   const newFeedback = useRef();
 
-  const openDialog = () => {
-    setOpen(true);
+  function handleClick() {
     if (newFeedback.current) {
-      newFeedback.current.close();
+      newFeedback.current.showModal();
     }
-  };
+  }
 
-  const closeDialog = () => {
-    setOpen(false);
+  function close() {
     if (newFeedback.current) {
       newFeedback.current.close();
     }
-  };
+  }
 
   return (
     <>
       <div className="headerBtn">
-        <button onClick={openDialog}>+ Add Feedback</button>
+        <button onClick={() => handleClick()}>+ Add Feedback</button>
       </div>
-      <dialog ref={newFeedback} open={open}>
+      <dialog ref={(e) => (newFeedback.current = e)} >
+        <Image src={"/img/add.png"} width={56} height={56} className="addPng" />
         <div className="dialogContainer">
-          <button onClick={closeDialog}>
-            <RightIcon /> Go Back
-          </button>
-          <h2>Create New Feedback</h2>
+          <div className="dialoghead">
+            <h2>Create New Feedback</h2>
+            <button onClick={() => close()}>
+              <CancelBtn />
+            </button>
+          </div>
           <form>
-            <label>Feedback title</label>
-            <input type="text" />
+            <label>
+              <div className="labeltext">
+                <p>Feedback title</p>
+                <p>Add a short, descriptive headline</p>
+              </div>
+              <input type="text" />
+            </label>
 
-            <label>Category</label>
-            <select>
-              <option value=""></option>
-              <option value="">Feature</option>
-              <option value="">UI</option>
-              <option value="">UX</option>
-              <option value="">Bug</option>
-            </select>
+            <label>
+              <div className="labeltext">
+                <p>Category</p>
+                <p>Choose a category for your feedback</p>
+              </div>
+              <select>
+                <option value=""></option>
+                <option value="">Feature</option>
+                <option value="">UI</option>
+                <option value="">UX</option>
+                <option value="">Bug</option>
+              </select></label>
 
-            <label>Feedback detais</label>
-            <input type="text" />
-            <ButtonGroup />
+            <label>
+              <div className="labeltext">
+                <p>Feedback detais</p>
+                <p>Include any specific comments on what should be improved, added, etc.</p>
+              </div>
+              <textarea rows="5"></textarea>
+              <ButtonGroup />
+            </label>
           </form>
         </div>
       </dialog>

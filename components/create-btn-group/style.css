@@ -1,0 +1,28 @@
+.btnGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+
+  button:nth-child(1) {
+    background: #3A4374; 
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20.23px;
+    text-align: left;
+    color: #F2F4FE;
+    padding: 12px 24px;
+    border-radius: 15px;
+    border: none;
+  }
+  button:nth-child(2) {
+    background: #AD1FEA; 
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20.23px;
+    text-align: left;
+    color: #F2F4FE;
+    padding: 12px 24px;
+    border-radius: 15px;
+    border: none;
+  }
+}

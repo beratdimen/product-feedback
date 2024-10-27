@@ -1,4 +1,5 @@
-import FeedbackCard from "@/components/feedback-card"; 
+ 
+import FeedbackCard from "@/components/feedback-card";
 import "./style.css";
 export default function SuggestionsPage() {
   return (
