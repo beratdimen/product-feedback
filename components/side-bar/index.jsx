@@ -6,7 +6,7 @@ export default function SideBar() {
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
-        <Link href={"/loginsingup"}>Giriş Yap</Link>
+        <Link href={"/loginsignup"}>Giriş Yap</Link>
         <h2>Frontend Mentor</h2>
         <p>Feedback Board</p>
       </div>
