@@ -53,12 +53,12 @@ export default function AddButton() {
             </label>
             {error?.title && <p className="error">{error.title}</p>}
 
-            <label>
+            <label name="category">
               <div className="labeltext">
                 <p>Category</p>
                 <p>Choose a category for your feedback</p>
               </div>
-              <select>
+              <select name="category">
                 <option value=""></option>
                 <option value="">Feature</option>
                 <option value="">UI</option>
@@ -66,8 +66,9 @@ export default function AddButton() {
                 <option value="">Bug</option>
               </select>
             </label>
+            {error?.title && <p className="error">{error.title}</p>}
 
-            <label>
+            <label name="content">
               <div className="labeltext">
                 <p>Feedback detais</p>
                 <p>
@@ -75,9 +76,10 @@ export default function AddButton() {
                   added, etc.
                 </p>
               </div>
-              <textarea rows="5"></textarea>
+              <textarea rows="5" name="content"></textarea>
               <ButtonGroup />
             </label>
+            {error?.content && <p className="error">{error.content}</p>}
           </form>
         </div>
       </dialog>
