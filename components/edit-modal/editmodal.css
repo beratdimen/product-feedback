@@ -1,28 +1,158 @@
-.btnGroup {
-  display: flex;
-  justify-content: space-between;
-
-  .deletebtn {
-    background: #d73737 !important;
-  }
-
-  .deletebtn:hover {
-    background: #e98888 !important;
-  }
-}
-
-.dialoghead {
-  button {
-    background: transparent;
-  }
-}
 
 dialog {
-  overflow: hidden;
+  margin: auto;
+  border: none;
+  background: transparent;
+
+  .addPng {
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    z-index: 99;
+  }
+}
+
+
+.editDialogContainer {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  margin-top: 20px;
+
+  .dialoghead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      border: none;
+      padding: 10px;
+
+      svg {
+        width: 40px;
+        height: 40px;
+        transition: all 0.3s;
+      }
+    }
+
+    button:hover {
+      svg {
+        fill: darkred;
+        filter: drop-shadow(0 0 5px rgb(192, 189, 189));
+      }
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34.68px;
+    letter-spacing: -0.3333333432674408px;
+    text-align: left;
+    color: var(--titleText);
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: start;
+    background-color: transparent;
+    color: var(--goBackText);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .labeltext {
+      p:nth-child(1) {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20.23px;
+        letter-spacing: -0.1944444477558136px;
+        text-align: left;
+        color: #3a4374;
+      }
+
+      p:nth-child(2) {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20.23px;
+        text-align: left;
+        color: #647196;
+      }
+    }
+
+    label {
+      display: grid;
+      gap: 16px;
+    }
+
+    input {
+      width: 100%;
+      background: #f7f8fd;
+      height: 48px;
+      border-radius: 10px;
+      border: none;
+      padding-inline: 20px;
+      caret-color: #3a4374;
+      color: #3a4374;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    select {
+      width: 100%;
+      background: #f7f8fd;
+      height: 48px;
+      border-radius: 10px;
+      border: none;
+      padding-inline: 20px;
+      appearance: none;
+
+      background-image: url("/img/downarrow.png");
+      background-repeat: no-repeat;
+      background-position: 96% 60%;
+    }
+
+    textarea {
+      width: 100%;
+      background: #f7f8fd;
+      border-radius: 10px;
+      border: none;
+      padding: 20px;
+      caret-color: #3a4374;
+      color: #3a4374;
+    }
+
+    textarea:focus {
+      outline: none;
+    }
+  }
+  
+
+}
+
+.deletebtn {
+  background: #D73737;
+}
+.error {
+  color: red;
+  margin-top: 4px;
 }
 
 .editDialogContainer {
   height: 600px;
+  padding-bottom: 30px;
   overflow: scroll;
   overflow-x: hidden;
 }
