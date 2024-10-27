@@ -1,19 +1,16 @@
 import { CancelBtn } from "@/helpers/icons";
 import ButtonGroup from "../create-btn-group";
-import GoBack from "../goback";
-import "./editmodal.css"
+import "./editmodal.css";
 import Image from "next/image";
 
-
-export default function EditFeedback({ editFeedback, closeDialog }) {
+export default function EditFeedback({ editFeedback, close }) {
   return (
-
-    <dialog ref={(e) => (editFeedback.current = e)} >
+    <dialog ref={(e) => (editFeedback.current = e)}>
       <Image src={"/img/edit.png"} width={56} height={56} className="addPng" />
-      <div className="dialogContainer">
+      <div className="editDialogContainer">
         <div className="dialoghead">
           <h2>Editing ‘Add a dark theme option’</h2>
-          <button onClick={closeDialog}>
+          <button onClick={close}>
             <CancelBtn />
           </button>
         </div>
@@ -37,7 +34,8 @@ export default function EditFeedback({ editFeedback, closeDialog }) {
               <option value="">UI</option>
               <option value="">UX</option>
               <option value="">Bug</option>
-            </select></label>
+            </select>
+          </label>
 
           <label>
             <div className="labeltext">
@@ -50,17 +48,21 @@ export default function EditFeedback({ editFeedback, closeDialog }) {
               <option value="1">Planned</option>
               <option value="">In-Progress</option>
               <option value="">Live</option>
-            </select></label>
+            </select>
+          </label>
 
           <label>
             <div className="labeltext">
               <p>Feedback detais</p>
-              <p>Include any specific comments on what should be improved, added, etc.</p>
+              <p>
+                Include any specific comments on what should be improved, added,
+                etc.
+              </p>
             </div>
             <textarea rows="5"></textarea>
-            <div className="btnGroup"> 
+            <div className="btnGroup">
               <button className="deletebtn">Delete</button>
-              <ButtonGroup closeDialog={closeDialog} />
+              <ButtonGroup close={close} />
             </div>
           </label>
         </form>

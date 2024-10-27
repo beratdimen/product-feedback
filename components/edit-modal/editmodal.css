@@ -1,47 +1,45 @@
- .btnGroup {
-   display: flex;
-   justify-content: space-between;
+.btnGroup {
+  display: flex;
+  justify-content: space-between;
 
+  .deletebtn {
+    background: #d73737 !important;
+  }
 
-   .deletebtn {
-     background: #D73737 !important;
-   }
+  .deletebtn:hover {
+    background: #e98888 !important;
+  }
+}
 
-   .deletebtn:hover {
-     background: #E98888 !important;
-   }
- }
+.dialoghead {
+  button {
+    background: transparent;
+  }
+}
 
- .dialoghead {
+dialog {
+  overflow: hidden;
+}
 
-   button {
-     background: transparent;
-   }
- }
+.editDialogContainer {
+  height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
 
- dialog {
-   overflow: hidden;
- }
-
- .dialogContainer {
-   height: 600px;
-   overflow: scroll;
-   overflow-x: hidden;
- }
-
- .dialogContainer::-webkit-scrollbar {
+.editDialogContainer::-webkit-scrollbar {
   width: 10px;
 }
 
-.dialogContainer::-webkit-scrollbar-track {
+.editDialogContainer::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-.dialogContainer::-webkit-scrollbar-thumb {
+.editDialogContainer::-webkit-scrollbar-thumb {
   background: rgb(171, 116, 194);
   border-radius: 20px;
 }
 
-.dialogContainer::-webkit-scrollbar-thumb:hover {
+.editDialogContainer::-webkit-scrollbar-thumb:hover {
   background: rgba(173, 31, 234, 1);
 }

@@ -2,9 +2,9 @@
 import { useRef, useState } from "react";
 import EditFeedback from "../edit-modal";
 import "./style.css";
-export default function EditButton() { 
+export default function EditButton() {
   const editFeedback = useRef();
- 
+
   function handleClick() {
     if (editFeedback.current) {
       editFeedback.current.showModal();
@@ -23,7 +23,7 @@ export default function EditButton() {
       <EditFeedback
         opendialog={handleClick}
         editFeedback={editFeedback}
-        closeDialog={close}
+        close={close}
       />
     </div>
   );
