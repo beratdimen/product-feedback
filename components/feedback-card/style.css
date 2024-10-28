@@ -9,9 +9,7 @@ a {
   align-items: center;
   background-color: var(--cardBg);
   padding: 28px 32px;
-  margin: 0 auto;
   border-radius: 16px;
-  width: 100%;
 
   .contentGeneral {
     display: flex;
@@ -60,8 +58,14 @@ a {
   }
 }
 
+@media (max-width: 920px) {
+  .cardContainer {
+    padding-inline: 24px;
+  }
+}
+
 @media (max-width: 426px) {
-  a {
-    margin-inline: 24px;
+  .cardContainer {
+    padding-inline: 16px;
   }
 }

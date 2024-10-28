@@ -11,11 +11,6 @@
     display: flex;
     align-items: center;
     gap: 40px;
-
-    button {
-      border: none;
-      background: transparent;
-    }
   }
   .logo {
     display: flex;
@@ -32,9 +27,23 @@
   }
 }
 
+.modeChange {
+  border: none;
+  background: transparent;
+}
+
 @media (max-width: 426px) {
-  .headerContainer { 
+  .headerContainer {
+    padding-inline: 24px;
     border-radius: 0;
+  }
+}
+
+@media (max-width: 426px) {
+  .headerContainer {
+    padding-inline: 16px;
+    border-radius: 0;
+
     .logo {
       display: none;
     }

@@ -1,8 +1,8 @@
 .detailContainer {
+  max-width: 730px;
   display: flex;
   flex-direction: column;
-  margin-block: 40px;
-  margin: 0px auto;
+  margin: 40px auto;
 
   .detailHeader {
     display: flex;
@@ -25,11 +25,14 @@
   }
 }
 
-@media (width <=425px) {
-
+@media (max-width: 920px) {
   .detailContainer {
-    width: 90%;
-    margin: 20px auto;
+    padding-inline: 24px;
   }
+}
 
+@media (max-width: 426px) {
+  .detailContainer {
+    padding-inline: 16px;
+  }
 }
