@@ -2,7 +2,6 @@ import { Toaster } from "sonner";
 import SideBar from "@/components/side-bar";
 import Header from "@/components/header";
 import { ThemeProvider } from "next-themes";
-import "../globals.css";
 
 export default function RootLayout({ children }) {
   return (

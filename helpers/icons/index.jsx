@@ -157,6 +157,7 @@ export function DownArrowGray() {
     </svg>
   );
 }
+
 export function Tick() {
   return (
     <svg
