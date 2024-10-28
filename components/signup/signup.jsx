@@ -6,7 +6,7 @@ export default function SignUp({ setSign, sign }) {
       className="signup"
       style={{
         transform:
-          sign === "signup" ? "translateY(150px)" : "translateY(535px)",
+          sign === "signup" ? "translateY(0px)" : "translateY(535px)",
         transition: "all .6s",
       }}
     >

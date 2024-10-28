@@ -195,12 +195,19 @@ dialog {
       flex-direction: column;
       align-items: center;
 
-      button{
+      button {
         width: 100%;
         display: flex;
         justify-content: center;
       }
     }
   }
+
+  .headerBtn {
+    button { 
+      padding: 10px;
+    } 
+  }
+
 
 }

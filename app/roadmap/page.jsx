@@ -6,7 +6,6 @@ export default function RoadMap() {
   return (
     <div className="roadCont">
       <RoadmapHeader />
-
       <div className="generalRoadmap">
         <div className="planned">
           <RoadItem />

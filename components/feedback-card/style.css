@@ -19,6 +19,7 @@ a {
       display: flex;
       flex-direction: column;
       gap: 6px;
+
       h3 {
         font-size: 18px;
         font-weight: 700;
@@ -67,5 +68,30 @@ a {
 @media (max-width: 426px) {
   .cardContainer {
     padding-inline: 16px;
+    margin-inline: 20px;
+    display: grid;
+    grid-template-areas:
+      "contentss contentss"
+      "like comments";
+    gap: 20px;
+
+    .likeButton {
+      grid-area: like;
+
+      button {
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+
+    .contentGeneral {
+      grid-area: contentss;
+    }
+
+    .comments {
+      grid-area: comments;
+      display: flex;
+      justify-content: end;
+    }
   }
 }
