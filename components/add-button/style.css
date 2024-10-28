@@ -184,3 +184,23 @@ dialog {
 .dialogContainer::-webkit-scrollbar-thumb:hover {
   background: rgba(173, 31, 234, 1);
 }
+
+@media (width <=425px) {
+
+  .dialogContainer {
+    width: 90%;
+
+    .btnGroup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+}

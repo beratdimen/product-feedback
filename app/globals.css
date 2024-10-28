@@ -118,7 +118,7 @@ button {
 
 @media (max-width: 426px) {
   .bodycontent {
-    margin-inline: 16px;
+    margin: 0px;
     gap: 0;
   }
 }

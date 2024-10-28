@@ -3,6 +3,7 @@ import Categories from "./category";
 import Roadmap from "./roadmap";
 import "./style.css";
 import { CancelBtn, CloseIcon, MenuIcon } from "@/helpers/icons";
+import HammburgerDialog from "../hamburgerdia/hamdialog";
 export default function SideBar() {
   return (
     <div className="sideBarContainer">
@@ -15,12 +16,11 @@ export default function SideBar() {
         <button>
           <MenuIcon />
         </button>
-        <button>
-          <CancelBtn />
-        </button>
+        <HammburgerDialog />
       </div>
       <Categories />
       <Roadmap />
+
     </div>
   );
 }

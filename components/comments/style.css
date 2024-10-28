@@ -70,3 +70,12 @@
     }
   }
 }
+
+
+
+@media (width <=425px) {
+ .commentsContainer{ 
+  width: 90%;
+  margin: 20px auto;
+ }
+}

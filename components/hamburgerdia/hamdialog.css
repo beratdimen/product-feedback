@@ -1,0 +1,72 @@
+.hamdialogCont {
+  dialog {
+    position: fixed;
+    margin: 0;
+    margin-left: 40px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.sidebarDiaHeader {
+  width: 100%;
+  padding: 15px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--boardBg);
+
+
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28.9px;
+    letter-spacing: -0.25px;
+    text-align: left;
+    color: white;
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 21.68px;
+    text-align: left;
+    color: #ffffff75;
+  }
+}
+
+.hamburgerdiaCont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .hammenu {
+    padding-top: 20px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: #F7F8FD;
+  }
+
+  .categoryContainer {
+    width: 80%;
+  }
+
+  .roadmapContainer {
+    width: 80%;
+  }
+}
+
+
+@media (width > 425px) {
+  .hamdialogCont{
+    display: none;
+  }
+  
+}

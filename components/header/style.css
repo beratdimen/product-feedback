@@ -33,8 +33,7 @@
 }
 
 @media (max-width: 426px) {
-  .headerContainer {
-    margin-inline: 24px;
+  .headerContainer { 
     border-radius: 0;
     .logo {
       display: none;
