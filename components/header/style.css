@@ -34,8 +34,16 @@
 
 @media (max-width: 426px) {
   .headerContainer {
-    margin-inline: 24px;
+    padding-inline: 24px;
     border-radius: 0;
+  }
+}
+
+@media (max-width: 426px) {
+  .headerContainer {
+    padding-inline: 16px;
+    border-radius: 0;
+
     .logo {
       display: none;
     }

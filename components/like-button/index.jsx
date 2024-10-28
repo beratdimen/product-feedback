@@ -1,4 +1,5 @@
 "use client";
+
 import { UpIcon } from "@/helpers/icons";
 import "./style.css";
 import { useState } from "react";

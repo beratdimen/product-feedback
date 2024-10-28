@@ -9,6 +9,7 @@
     flex-direction: column;
     background: var(--boardBg);
     border-radius: 16px;
+
     button {
       display: none;
     }
@@ -144,8 +145,8 @@
 
 @media (max-width: 426px) {
   .sideBarContainer {
-    margin-inline: 24px;
     grid-template-columns: repeat(1, 1fr) !important;
+
     .sidebarHeader {
       flex-direction: row;
       border-radius: 0;
