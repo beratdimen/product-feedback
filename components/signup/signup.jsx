@@ -45,17 +45,32 @@ export default function SignUp({ setSign, sign }) {
           />
         </label>
         <label className="imageAdd" htmlFor="image">
-          {image && <Image width={100} height={100} src={image} />}
-
-          <button type="button">
-            Profil Fotoğrafı Yükle
-            <input
-              type="file"
-              accept="image/jpeg, image/png, image/jpg, image/webp"
-              style={{ opacity: 0, position: "absolute" }}
-              onChange={(e) => fileChange(e)}
-            />
-          </button>
+          {image ? (
+            <>
+              <Image width={100} height={100} src={image} />
+              <button type="button">
+                Profil Fotoğrafı Değiştir
+                <input
+                  type="file"
+                  accept="image/jpeg, image/png, image/jpg, image/webp"
+                  style={{ opacity: 0, position: "absolute" }}
+                  onChange={(e) => fileChange(e)}
+                  required
+                />
+              </button>
+            </>
+          ) : (
+            <button type="button">
+              Profil Fotoğrafı Yükle
+              <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg, image/webp"
+                style={{ opacity: 0, position: "absolute" }}
+                onChange={(e) => fileChange(e)}
+                required
+              />
+            </button>
+          )}
         </label>
         <button> Kayıt Ol </button>
       </form>
