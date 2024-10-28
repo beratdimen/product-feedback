@@ -136,7 +136,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 920px) {
   .sideBarContainer {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
