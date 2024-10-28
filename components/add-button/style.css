@@ -148,6 +148,7 @@ dialog {
       padding: 20px;
       caret-color: #3a4374;
       color: #3a4374;
+      resize: none;
     }
 
     textarea:focus {
@@ -186,7 +187,6 @@ dialog {
 }
 
 @media (width <=425px) {
-
   .dialogContainer {
     width: 90%;
 
@@ -204,10 +204,8 @@ dialog {
   }
 
   .headerBtn {
-    button { 
+    button {
       padding: 10px;
-    } 
+    }
   }
-
-
 }

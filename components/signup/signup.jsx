@@ -1,12 +1,22 @@
+"use client";
+import { useState } from "react";
 import "./signup.css";
+import Image from "next/image";
 
 export default function SignUp({ setSign, sign }) {
+  const [image, setImage] = useState(null);
+
+  function fileChange(e) {
+    console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    setImage(file ? URL.createObjectURL(file) : null);
+  }
+
   return (
     <div
       className="signup"
       style={{
-        transform:
-          sign === "signup" ? "translateY(0px)" : "translateY(535px)",
+        transform: sign === "signup" ? "translateY(0px)" : "translateY(535px)",
         transition: "all .6s",
       }}
     >
@@ -34,8 +44,18 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
-        <label htmlFor="image">
-          <input type="file" placeholder="Fotoğrafınızı Yükleyiniz" />
+        <label className="imageAdd" htmlFor="image">
+          {image && <Image width={100} height={100} src={image} />}
+
+          <button type="button">
+            Profil Fotoğrafı Yükle
+            <input
+              type="file"
+              accept="image/jpeg, image/png, image/jpg, image/webp"
+              style={{ opacity: 0, position: "absolute" }}
+              onChange={(e) => fileChange(e)}
+            />
+          </button>
         </label>
         <button> Kayıt Ol </button>
       </form>

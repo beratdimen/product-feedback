@@ -5,13 +5,13 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 20px; 
-  background: #373F68;
+  padding: 20px;
+  background: #373f68;
   border-radius: 20% 20% 0 0;
   position: absolute;
   color: white;
 
-  h1{
+  h1 {
     margin-bottom: 20px;
     cursor: pointer;
   }
@@ -52,6 +52,11 @@
     justify-content: center;
     gap: 20px;
 
+    .imageAdd {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
     label {
       display: flex;
       flex-direction: column;
@@ -71,7 +76,7 @@
       text-align: center;
     }
 
-    input[type="file"]{
+    input[type="file"] {
       background: #7988d1d0;
       display: flex;
     }

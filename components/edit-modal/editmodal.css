@@ -1,4 +1,3 @@
-
 dialog {
   margin: auto;
   border: none;
@@ -11,7 +10,6 @@ dialog {
     z-index: 99;
   }
 }
-
 
 .editDialogContainer {
   width: 540px;
@@ -132,18 +130,17 @@ dialog {
       padding: 20px;
       caret-color: #3a4374;
       color: #3a4374;
+      resize: none;
     }
 
     textarea:focus {
       outline: none;
     }
   }
-  
-
 }
 
 .deletebtn {
-  background: #D73737 !important;
+  background: #d73737 !important;
 }
 .error {
   color: red;
@@ -175,7 +172,6 @@ dialog {
 }
 
 @media (width <=425px) {
-
   .editDialogContainer {
     width: 90%;
 
@@ -184,12 +180,11 @@ dialog {
       flex-direction: column;
       align-items: center;
 
-      button{
+      button {
         width: 100%;
         display: flex;
         justify-content: center;
       }
     }
   }
-
 }
