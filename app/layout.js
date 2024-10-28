@@ -1,7 +1,7 @@
 import { Jost } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-const jost = Jost({ subsets: ['latin'] })
+const jost = Jost({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
@@ -14,9 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body
-        className={`${jost.className} bodycontent`}
-      >
+      <body className={`${jost.className} bodycontent`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

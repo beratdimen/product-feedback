@@ -9,6 +9,9 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    background-color: var(--headerBg);
+    padding: 12px;
+    border-radius: 16px;
   }
 
   .backBtn {

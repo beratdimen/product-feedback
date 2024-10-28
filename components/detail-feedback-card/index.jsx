@@ -11,7 +11,6 @@ export default function DetailFeedback({ opendialog }) {
     <div className="detailContainer">
       <div className="detailHeader">
         <Link href={"/"}>
-          {" "}
           <button className="backBtn">
             <RightIcon /> Go Back
           </button>
