@@ -11,11 +11,6 @@
     display: flex;
     align-items: center;
     gap: 40px;
-
-    button {
-      border: none;
-      background: transparent;
-    }
   }
   .logo {
     display: flex;
@@ -30,6 +25,11 @@
       text-align: left;
     }
   }
+}
+
+.modeChange {
+  border: none;
+  background: transparent;
 }
 
 @media (max-width: 426px) {

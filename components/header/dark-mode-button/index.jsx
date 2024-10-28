@@ -1,6 +1,6 @@
 "use client";
 
-import { DarkModeIcon, LightModeIcon } from "@/helpers/icons"; 
+import { DarkModeIcon, LightModeIcon } from "@/helpers/icons";
 import { useEffect, useState } from "react";
 import "../style.css";
 import { useTheme } from "next-themes";
@@ -21,7 +21,7 @@ export default function ThemeSwitch() {
   };
 
   return (
-    <button onClick={changeTheme}>
+    <button className="modeChange" onClick={changeTheme}>
       {theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
     </button>
   );
