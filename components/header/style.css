@@ -1,11 +1,11 @@
 .headerContainer {
-  width: 825px;
   background-color: var(--headerBg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 14px 24px;
   margin-bottom: 24px;
+  border-radius: 16px;
 
   .headerPiece {
     display: flex;
@@ -28,6 +28,16 @@
       line-height: 26.01px;
       letter-spacing: -0.25px;
       text-align: left;
+    }
+  }
+}
+
+@media (max-width: 426px) {
+  .headerContainer {
+    margin-inline: 24px;
+    border-radius: 0;
+    .logo {
+      display: none;
     }
   }
 }

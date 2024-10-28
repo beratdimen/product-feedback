@@ -1,4 +1,3 @@
- 
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -24,10 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body className={`${geistSans.variable} ${geistMono.variable} bodycontent`}>
-
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bodycontent`}
+      >
         {children}
-
       </body>
     </html>
   );

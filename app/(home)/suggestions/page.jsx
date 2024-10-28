@@ -9,9 +9,9 @@ export default async function SuggestionsPage() {
   return (
     <div className="gg">
       <FeedbackCard />
-      {response.posts.map((x) => (
-        <p>{x.title}</p>
-      ))}
+      {/* {response.posts.map((x, index) => (
+        <p key={index}>{x.title}</p>
+      ))} */}
     </div>
   );
 }

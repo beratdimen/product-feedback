@@ -100,14 +100,25 @@ button {
   cursor: pointer;
 }
 
-.container {
-  display: flex;
+.bodycontent {
+  max-width: 1110px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
   gap: 30px;
-  margin: 0 auto; 
 }
 
-.bodycontent {
-  margin: 94px 20%;
-  display: flex;
-  gap: 30px;
+@media (max-width: 1024px) {
+  .bodycontent {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-inline: 24px;
+  }
+}
+
+@media (max-width: 426px) {
+  .bodycontent {
+    margin-inline: 16px;
+    gap: 0;
+  }
 }
