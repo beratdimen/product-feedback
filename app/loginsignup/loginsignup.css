@@ -1,31 +1,25 @@
-.loginCont { 
-  display: flex;
-  flex-wrap: wrap; 
- 
-  .loginText{
-    width: 600px;
-    height: 700px;
-    margin: 80px auto;
-    padding: 40px 50px;
-    background: var(--cardBg);
-    border-radius: 20px;
-    p {  
-      color: var(--textColor);
-      font-size: 24px;
-      font-weight: 900;
-      backdrop-filter: blur(5px);
-    }
+.loginCont {
+  display: grid;
+  grid-template-columns: 50% 50%;
 
+  img {
+    margin: auto;
+    background: transparent;
   }
 }
 
 .loginsignup {
-  width: 600px;
-  height: 700px;
-  margin: 80px auto;
+  height: 100vh;
   border-radius: 20px;
   background: white;
   display: flex;
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width : 920px) {
+  .loginCont {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+} 

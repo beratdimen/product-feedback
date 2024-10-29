@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background: white;
 
 
   button {
@@ -32,7 +31,7 @@
     svg {
       path {
         fill: white;
-        stroke:white;
+        stroke: white;
       }
     }
   }
@@ -62,4 +61,15 @@
       border-bottom: 2px solid black;
     }
   }
+}
+
+@media (max-width: 920px) {
+  .login {
+    form {
+      input {
+        width: 90%;
+      }
+    }
+  }
+
 }

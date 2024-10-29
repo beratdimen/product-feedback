@@ -82,3 +82,15 @@
     }
   }
 }
+
+
+@media (max-width: 920px) {
+  .signup {
+    form {
+      input {
+        width: 90%;
+      }
+    }
+  }
+
+}

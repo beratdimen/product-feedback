@@ -1,14 +1,33 @@
+"use client"
+
+import { useEffect, useState } from "react";
 import "./login.css";
+import { loginUser } from "@/utils/fetchBase";
 
 export default function Login({ setSign, sign }) {
+
+  const [formData, setFormData] = useState([]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formObj = Object.fromEntries(new FormData(e.target)); 
+    console.log(formObj);
+    
+    try { 
+        const clientResponse = await loginUser(formObj);
+        console.log("Müşteri kaydı başarılı:", clientResponse);
+ 
+    } catch (error) {
+      console.error("Kayıt hatası:", error);
+    }
+  }
+
+
   return (
     <div
-      className="login"
-      style={{
-        display: sign === "signup" ? "none" : "flex",
-      }}
+      className="login" 
     >
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h1>Giriş Yap</h1>
         <label htmlFor="email">
           Email:

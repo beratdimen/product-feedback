@@ -124,6 +124,11 @@ button {
   gap: 30px;
 }
 
+.logincontent {
+  background-image: url("/public/img/logbg.jpg");
+  background-size: contain;
+}
+
 
 @media (max-width: 920px) {
   .bodycontent {
@@ -131,19 +136,20 @@ button {
     grid-template-columns: 1fr;
     margin-inline: 24px;
   }
+
   .detailcontent {
     display: grid;
     grid-template-columns: 1fr;
     margin-inline: 24px;
   }
-  
-  
+
+
   .roadcontent {
     display: grid;
     grid-template-columns: 1fr;
     margin-inline: 24px;
   }
-  
+
 }
 
 @media (max-width: 426px) {
