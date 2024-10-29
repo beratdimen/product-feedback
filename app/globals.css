@@ -1,11 +1,9 @@
 :root {
   --bodyBg: #f7f8fd;
-  --boardBg: radial-gradient(
-    128.88% 128.88% at 103.9% -10.39%,
-    #e84d70 0%,
-    #a337f6 53.09%,
-    #28a7ed 100%
-  );
+  --boardBg: radial-gradient(128.88% 128.88% at 103.9% -10.39%,
+      #e84d70 0%,
+      #a337f6 53.09%,
+      #28a7ed 100%);
   --headerBg: #373f68;
   --cardBg: #ffffff;
   --titleText: #3a4374;
@@ -32,6 +30,7 @@
   --likeBtnBgHover: #cfd7ff;
   --likeBtnText: #3a4374;
 }
+
 [data-theme="dark"] {
   --bodyBg: #141625;
   --headerBg: #10183d;
@@ -48,6 +47,7 @@
   --button3: #3a4374;
   --button4: #d73737;
 }
+
 *,
 *::before,
 *::after {
@@ -106,6 +106,24 @@ button {
   grid-template-columns: 3fr 9fr;
   gap: 30px;
 }
+
+.detailcontent {
+  max-width: 1110px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 30px;
+}
+
+
+.roadcontent {
+  max-width: 1110px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 30px;
+}
+
 
 @media (max-width: 920px) {
   .bodycontent {

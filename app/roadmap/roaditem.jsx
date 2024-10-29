@@ -1,8 +1,14 @@
+"use client"
+
 import LikeBtn from "@/components/like-button";
 import "./roaditem.css";
 import { CommentsIcon } from "@/helpers/icons";
 
 export default function RoadItem() {
+  
+  if (document.body.classList === "bodycontent") {
+    document.body.classList.remove("bodycontent");
+  }
   return (
     <div className="roaditem">
       <div className="roadItemHeader">
