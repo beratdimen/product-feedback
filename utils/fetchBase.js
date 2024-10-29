@@ -1,4 +1,5 @@
 "use server";
+
 import { AdvancedFetch } from "./advanced";
 
 export const getFeedback = async () => {
@@ -26,7 +27,7 @@ export const postFeedback = async (formData, likes) => {
       }),
     }
   );
-  return response;
+  return { data: response, errors: error };
 };
 
 export const updateFeedback = async (formData) => {
@@ -57,3 +58,18 @@ export async function getDeneme(params) {
 
   return { success: true, data: response };
 }
+
+
+export const authRegister = async (formData) => {
+  const response = await AdvancedFetch(
+    `https://feedbackapi.senihay.com/auth/register?FirstName=${formData.firstName}&LastName=${formData.lastName}&Avatar=${formData.imageAdd}&Nickname=${formData.nickName}&Email=${formData.email}&Password=${formData.password}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "text/plain",
+      },
+    }
+  );
+  return response;
+};

@@ -12,6 +12,9 @@ export default function SignUp({ setSign, sign }) {
     setImage(file ? URL.createObjectURL(file) : null);
   }
 
+
+
+  
   return (
     <div
       className="signup"
