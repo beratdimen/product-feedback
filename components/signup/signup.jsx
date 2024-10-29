@@ -67,6 +67,7 @@ export default function SignUp({ setSign, sign }) {
                   style={{ opacity: 0, position: "absolute" }}
                   onChange={(e) => fileChange(e)}
                   required
+                  name="imageAdd"
                 />
               </button>
             </>
