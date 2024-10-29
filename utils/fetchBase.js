@@ -61,15 +61,28 @@ export async function getDeneme(params) {
 
 
 export const authRegister = async (formData) => {
-  const response = await AdvancedFetch(
-    `https://feedbackapi.senihay.com/auth/register?FirstName=${formData.firstName}&LastName=${formData.lastName}&Avatar=${formData.imageAdd}&Nickname=${formData.nickName}&Email=${formData.email}&Password=${formData.password}`,
+  console.log({ formData });
+
+  const { response, errors } = await fetch(
+    `https://feedbackapi.senihay.com/auth/register?FirstName=${formData.firstName}&LastName=${formData.lastName}&Nickname=${formData.nickName}&Email=${formData.email}&Password=${formData.password}`,
     {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        accept: "text/plain",
+        "Content-Type": "apllication/json,multipart/form-data",
+        accept: " */*",
       },
+      body: JSON.stringify({
+        AvatarImg: ""
+      }),
     }
+  );
+  return { data: response, errors: errors };
+};
+
+
+export const getUsers = async () => {
+  const response = await fetch(
+    `https://feedbackapi.senihay.com/auth/getcurrentuser/me`
   );
   return response;
 };

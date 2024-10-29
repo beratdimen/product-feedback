@@ -2,19 +2,29 @@
 import { useState } from "react";
 import "./signup.css";
 import Image from "next/image";
+import { authRegister, getUsers } from "@/utils/fetchBase";
 
 export default function SignUp({ setSign, sign }) {
   const [image, setImage] = useState(null);
+  const [formData, setFormData] = useState([]);
+  const [user, setUser] = useState([]);
 
   function fileChange(e) {
-    console.log(e.target.files[0]);
-    const file = e.target.files[0];
-    setImage(file ? URL.createObjectURL(file) : null);
+    console.log(e.target.value); 
   }
 
+  async function HandleSubmit(e) {
+    e.preventDefault();
+    const formObj = Object.fromEntries(new FormData(e.target));
+    console.log(formObj);
+    setFormData(formObj);
 
+    if (formData) {
+      const { data, errors } = await authRegister(formData);
+      console.log(data);
+    }
 
-  
+  }  
   return (
     <div
       className="signup"
@@ -24,7 +34,7 @@ export default function SignUp({ setSign, sign }) {
       }}
     >
       <h1 onClick={() => setSign("signup")}>Kayıt Ol</h1>
-      <form>
+      <form onSubmit={HandleSubmit}>
         <label htmlFor="firstName">
           <input type="text" name="firstName" placeholder="Adınız" required />
         </label>
@@ -39,10 +49,10 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
-        <label htmlFor="nickName ">
+        <label htmlFor="nickName">
           <input
-            type="nickName "
-            name="nickName "
+            type="nickName"
+            name="nickName"
             placeholder="Kullanıcı Adınız"
             required
           />
@@ -66,7 +76,6 @@ export default function SignUp({ setSign, sign }) {
                   accept="image/jpeg, image/png, image/jpg, image/webp"
                   style={{ opacity: 0, position: "absolute" }}
                   onChange={(e) => fileChange(e)}
-                  required
                   name="imageAdd"
                 />
               </button>
@@ -79,7 +88,6 @@ export default function SignUp({ setSign, sign }) {
                 accept="image/jpeg, image/png, image/jpg, image/webp"
                 style={{ opacity: 0, position: "absolute" }}
                 onChange={(e) => fileChange(e)}
-                required
               />
             </button>
           )}
