@@ -36,6 +36,14 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
+        <label htmlFor="nickName ">
+          <input
+            type="nickName "
+            name="nickName "
+            placeholder="Kullanıcı Adınız"
+            required
+          />
+        </label>
         <label htmlFor="password">
           <input
             type="password"
