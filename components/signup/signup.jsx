@@ -1,30 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./signup.css";
 import Image from "next/image";
-import { authRegister, getUsers } from "@/utils/fetchBase";
+import { authLogin, authRegister, getUsers } from "@/utils/fetchBase";
 
-export default function SignUp({ setSign, sign }) {
-  const [image, setImage] = useState(null);
-  const [formData, setFormData] = useState([]);
-  const [user, setUser] = useState([]);
-
-  function fileChange(e) {
-    console.log(e.target.value); 
-  }
-
-  async function HandleSubmit(e) {
+export default function SignUp({ setSign, sign }) {   
+ 
+  async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
-    console.log(formObj);
-    setFormData(formObj);
+    console.log(formObj); 
 
-    if (formData) {
-      const { data, errors } = await authRegister(formData);
-      console.log(data);
+    try {
+      if (formObj) {
+        const response = await authLogin(formObj); 
+        console.log(response, "asdasdasds");
+      }
+
+    } catch (error) {
+      console.error("Kayıt hatası:", error);
     }
+  }
 
-  }  
   return (
     <div
       className="signup"
@@ -34,7 +31,7 @@ export default function SignUp({ setSign, sign }) {
       }}
     >
       <h1 onClick={() => setSign("signup")}>Kayıt Ol</h1>
-      <form onSubmit={HandleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="firstName">
           <input type="text" name="firstName" placeholder="Adınız" required />
         </label>
@@ -65,34 +62,8 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
-        <label className="imageAdd" htmlFor="image">
-          {image ? (
-            <>
-              <Image width={100} height={100} src={image} />
-              <button type="button">
-                Profil Fotoğrafı Değiştir
-                <input
-                  type="file"
-                  accept="image/jpeg, image/png, image/jpg, image/webp"
-                  style={{ opacity: 0, position: "absolute" }}
-                  onChange={(e) => fileChange(e)}
-                  name="imageAdd"
-                />
-              </button>
-            </>
-          ) : (
-            <button type="button">
-              Profil Fotoğrafı Yükle
-              <input
-                type="file"
-                accept="image/jpeg, image/png, image/jpg, image/webp"
-                style={{ opacity: 0, position: "absolute" }}
-                onChange={(e) => fileChange(e)}
-              />
-            </button>
-          )}
-        </label>
-        <button> Kayıt Ol </button>
+         
+        <button > Kayıt Ol </button>
       </form>
       <button onClick={() => setSign("login")}> Giriş Yap</button>
     </div>

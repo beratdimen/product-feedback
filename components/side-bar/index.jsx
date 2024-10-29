@@ -4,7 +4,13 @@ import Roadmap from "./roadmap";
 import "./style.css";
 import { CancelBtn, CloseIcon, MenuIcon } from "@/helpers/icons";
 import HammburgerDialog from "../hamburgerdia/hamdialog";
-export default function SideBar() {
+import { getUsers } from "@/utils/fetchBase";
+export default async function SideBar() {
+
+  const medata = await getUsers(); 
+  console.log(medata);
+  
+
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">

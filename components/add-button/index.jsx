@@ -6,6 +6,7 @@ import ButtonGroup from "../create-btn-group";
 import Image from "next/image";
 import { useFormState } from "react-dom";
 import FormVAlidation from "@/action/actions";
+import { postFeedback } from "@/utils/fetchBase";
 
 export default function AddButton() {
   const [state, action] = useFormState(
@@ -28,7 +29,27 @@ export default function AddButton() {
       newFeedback.current.close();
     }
   }
+  
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formObj = Object.fromEntries(new FormData(e.target));
+    await action(new FormData(e.target));
 
+    if (state?.errors) {
+      console.log("Form hataları:", state.errors);
+      return;
+    }
+  
+    console.log("Form verileri:", formObj);
+
+    try { 
+        const clientResponse = await postFeedback([formObj]);
+        console.log("Müşteri kaydı başarılı:", clientResponse);
+ 
+    } catch (error) {
+      console.error("Kayıt hatası:", error);
+    }
+  }
   return (
     <>
       <div className="headerBtn">
@@ -43,7 +64,7 @@ export default function AddButton() {
               <CancelBtn />
             </button>
           </div>
-          <form action={action}>
+          <form onSubmit={handleSubmit}>
             <label name="title">
               <div className="labeltext">
                 <p>Feedback title</p>

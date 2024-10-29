@@ -1,11 +1,10 @@
 "use client"
- 
-import { useEffect } from "react";
-import "./login.css"; 
-import { getUsers } from "@/utils/fetchBase";
+  
+import "./login.css";  
 
 export default function Login({ setSign, sign }) {
- 
+  
+
   return (
     <div
       className="login" 

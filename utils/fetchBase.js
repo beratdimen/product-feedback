@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { AdvancedFetch } from "./advanced";
 
 export const getFeedback = async () => {
@@ -59,30 +60,39 @@ export async function getDeneme(params) {
   return { success: true, data: response };
 }
 
-
 export const authRegister = async (formData) => {
-  console.log({ formData });
+  console.log(formData, "adasdasadasd");
+  const formDataPost = new FormData();
+  formDataPost.append("FirstName", formData.firstName);
+  formDataPost.append("LastName", formData.lastName); 
+  formDataPost.append("Nickname", formData.nickName);
+  formDataPost.append("Email", formData.email);
+  formDataPost.append("Password", formData.password);
 
-  const { response, errors } = await fetch(
-    `https://feedbackapi.senihay.com/auth/register?FirstName=${formData.firstName}&LastName=${formData.lastName}&Nickname=${formData.nickName}&Email=${formData.email}&Password=${formData.password}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "apllication/json,multipart/form-data",
-        accept: " */*",
-      },
-      body: JSON.stringify({
-        AvatarImg: ""
-      }),
+  console.log(formDataPost);
+
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "accept": "*/*",
+        },
+        body: formDataPost,
+      }
+
+    );
+
+    const data = await response.json();
+    console.log(data);
+
+    if (!response.ok) {
+      throw new Error(data.message || "Bir hata oluştu");
     }
-  );
-  return { data: response, errors: errors };
+    return response;
+  } catch (errors) {
+    return { data: null, errors };
+  }
 };
-
-
-export const getUsers = async () => {
-  const response = await fetch(
-    `https://feedbackapi.senihay.com/auth/getcurrentuser/me`
-  );
-  return response;
-};
+  
