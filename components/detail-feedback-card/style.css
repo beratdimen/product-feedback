@@ -1,5 +1,5 @@
-.detailContainer {
-  max-width: 730px;
+.detailContainer { 
+  width: 730px;
   display: flex;
   flex-direction: column;
   margin: 40px auto;
@@ -30,12 +30,14 @@
 
 @media (max-width: 920px) {
   .detailContainer {
+    width: 90%;
     padding-inline: 24px;
   }
 }
 
 @media (max-width: 426px) {
   .detailContainer {
+    max-width: 327px;
     padding-inline: 16px;
   }
 }

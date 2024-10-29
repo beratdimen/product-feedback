@@ -1,5 +1,4 @@
-.replyCommentContainer {
-  margin-top: 40px;
+.replyCommentContainer { 
   display: flex;
   flex-direction: column;
   gap: 16px;

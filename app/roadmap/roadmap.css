@@ -1,9 +1,62 @@
 .roadCont {
-  max-width: 825px;
+  max-width: 1110px;
 }
 
 .generalRoadmap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+.listRoadmap { 
+  display: none;
+}
+
+
+@media (width <=768px) {
+  .roadCont {
+    max-width: 689px;
+    margin: auto;
+  }
+
+  .generalRoadmap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+}
+
+
+@media (width <=425px) {
+  .roadCont {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .generalRoadmap {
+    display: none;
+  }
+
+  .roadmapHeaderPage {
+    margin: 0;
+  }
+
+  .listRoadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style-type: none;
+    padding: 0;
+    border-bottom: 1px solid rgba(140, 146, 179, .25);
+  
+    li { 
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 18.79px;
+      letter-spacing: -0.1805555522441864px;
+      text-align: center;
+      color: rgba(58, 67, 116, .4);
+    }
+  }
+  
 }

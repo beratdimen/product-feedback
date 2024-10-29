@@ -1,17 +1,14 @@
-.commentsContainer {
+.commentsContainer { 
   margin-block: 40px;
   border-radius: 16px;
   background-color: var(--cardBg);
   padding: 24px 32px;
 }
 
-.commentsGeneral {
-  width: 730px;
-  margin-block: 40px;
+.commentsGeneral {  
   display: flex;
   flex-direction: column;
-  gap: 24px; 
-  padding-bottom: 32px;
+  gap: 24px;  
 
   h3 {
     font-size: 18px;
@@ -22,8 +19,7 @@
     color: var(--titleText);
   }
 
-  .commentsCard {
-    width: 666px;
+  .commentsCard { 
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #8c92b338;

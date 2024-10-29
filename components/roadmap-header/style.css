@@ -22,3 +22,10 @@
     }
   }
 }
+
+@media (max-width : 426px) {
+    .roadmapHeaderPage{
+      border-radius: 0; 
+      margin-bottom: 24px;
+    }
+}

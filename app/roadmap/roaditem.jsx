@@ -4,7 +4,7 @@ import LikeBtn from "@/components/like-button";
 import "./roaditem.css";
 import { CommentsIcon } from "@/helpers/icons";
 
-export default function RoadItem() {
+export default function RoadItem({selected}) {
   
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");

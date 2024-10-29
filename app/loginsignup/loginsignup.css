@@ -1,11 +1,31 @@
-.loginsignup{ 
-  width: 500px;
-  height: 600px; 
+.loginCont { 
+  display: flex;
+  flex-wrap: wrap; 
+ 
+  .loginText{
+    width: 600px;
+    height: 700px;
+    margin: 80px auto;
+    padding: 40px 50px;
+    background: var(--cardBg);
+    border-radius: 20px;
+    p {  
+      color: var(--textColor);
+      font-size: 24px;
+      font-weight: 900;
+      backdrop-filter: blur(5px);
+    }
+
+  }
+}
+
+.loginsignup {
+  width: 600px;
+  height: 700px;
   margin: 80px auto;
   border-radius: 20px;
   background: white;
   display: flex;
   position: relative;
   overflow: hidden;
-
 }

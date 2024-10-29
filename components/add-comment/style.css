@@ -1,5 +1,4 @@
-.addCommentContainer {
-  margin-top: 40px;
+.addCommentContainer { 
   display: flex;
   flex-direction: column;
   gap: 16px;

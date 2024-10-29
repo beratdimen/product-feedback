@@ -4,8 +4,8 @@ a {
 }
 
 .cardContainer {
-  display: flex;
-  justify-content: space-between;
+  display: grid; 
+  grid-template-columns: 10% 80% 10%;
   align-items: center;
   background-color: var(--cardBg);
   padding: 28px 32px;
