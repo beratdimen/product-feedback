@@ -6,11 +6,11 @@
 }
 
 .commentsGeneral {
+  width: 730px;
   margin-block: 40px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  border-bottom: 1px solid #8c92b325;
+  gap: 24px; 
   padding-bottom: 32px;
 
   h3 {
@@ -23,8 +23,12 @@
   }
 
   .commentsCard {
+    width: 666px;
     display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #8c92b338;
     gap: 32px;
+    padding-bottom: 32px;
 
     .content {
       display: flex;
@@ -43,11 +47,14 @@
         display: flex;
         justify-content: space-between;
 
-        div {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
+        >div {
+          display: flex; 
+          gap: 32px;
 
+          .avatarInfo{
+            display: flex;
+            flex-direction: column;
+          }
           h4 {
             color: var(--titleText);
             font-size: 14px;

@@ -3,5 +3,5 @@ export const metadata = {
 };
 
 export default function RoadMapLayout({ children }) {
-  return <div className="bodycontent">{children}</div>;
+  return <body className="roadcontent">{children}</body>;
 }

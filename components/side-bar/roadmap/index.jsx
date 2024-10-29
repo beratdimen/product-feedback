@@ -10,14 +10,17 @@ export default function Roadmap() {
       </div>
       <ul>
         <li className="planned">
-          <span>●</span> Planned
+          <p><span>●</span> Planned</p>
+          <span>1</span>
         </li>
         <li className="inProgress">
-          <span>●</span>In-Progress
-        </li>
+          <p><span>●</span>In-Progress</p>
+          <span>1</span>
+          </li>
         <li className="live">
-          <span>●</span>Live
-        </li>
+          <p><span>●</span>Live</p>
+          <span>1</span>
+          </li>
       </ul>
     </div>
   );

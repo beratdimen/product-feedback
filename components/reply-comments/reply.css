@@ -1,0 +1,59 @@
+.replyCommentContainer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--cardBg);
+  padding: 24px 32px;
+  border-radius: 16px;
+
+  h4 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26.01px;
+    letter-spacing: -0.25px;
+    text-align: left;
+    color: var(--titleText);
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    gap: 16px;
+
+    textarea {
+      border: none;
+      background-color: #f7f8fd;
+      width: 100%;
+      color: #8c92b3;
+      padding: 16px 0 42px 24px;
+      border-radius: 8px;
+    }
+
+
+    button {
+      border: none;
+      background-color: var(--button1);
+      color: var(--buttonText);
+      font-size: 12px;
+      padding: 12px 24px;
+      border-radius: 16px;
+    }
+
+    button:hover {
+      background-color: var(--button1hover);
+    }
+  }
+}
+
+
+@media (width <=425px) {
+
+  .addCommentContainer {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+}
