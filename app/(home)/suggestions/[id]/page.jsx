@@ -1,11 +1,16 @@
-import DetailFeedback from "@/components/detail-feedback-card";
-import { getDetailFeedbacks } from "@/utils/fetchBase";
-import { notFound } from "next/navigation";
+"use client"
+import DetailFeedback from "@/components/detail-feedback-card"; 
+import { useEffect, useState } from "react";
 
 export default function DetailFeedbacks({ params }) {
-  // if(params.id !== "1"){
-  //   return notFound();
-  // }
+  const [data, setData] = useState(null);
 
-  return <DetailFeedback params={params.id} />;
+ 
+
+
+  return (
+    <>
+      <DetailFeedback data={data} />
+    </>
+  );
 }

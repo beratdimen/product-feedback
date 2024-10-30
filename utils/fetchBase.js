@@ -1,11 +1,10 @@
 "use server";
-
-import { redirect } from "next/navigation";
+ 
 import { AdvancedFetch } from "./advanced";
 
-export const getFeedback = async () => {
+export const getFeedback = async (id) => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}`
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}?categoryId=${id}`
   );
   return response;
 };
@@ -90,8 +89,7 @@ export const authRegister = async (formData) => {
       }
     );
 
-    const data = await response.json();
-    console.log(data);
+    const data = await response.json(); 
 
     if (!response.ok) {
       throw new Error(data.message || "Bir hata oluştu");

@@ -11,11 +11,7 @@ export default function Comments() {
 
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
-
-  console.log(Data);
-
-
-
+ 
   console.log(selectedIndex);
 
   return (

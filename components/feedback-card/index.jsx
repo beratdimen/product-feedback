@@ -3,21 +3,21 @@ import "./style.css";
 import LikeBtn from "../like-button";
 import Link from "next/link";
 
-export default function FeedbackCard({ feedback }) {
+export default function FeedbackCard({ id, title, detail, commentCount ,upvoteCount }) {
   return (
     <div className="cardContainer">
-      <LikeBtn feedback={feedback} />
+      <LikeBtn upvoteCount={upvoteCount} />
       <div className="contentGeneral">
-        <Link href={"/suggestions/" + feedback.id}>
+        <Link href={"/suggestions/" + id}>
           <div className="content">
-            <h3>{feedback.title}</h3>
-            <p>{feedback.detail}</p>
+            <h3>{title}</h3>
+            <p>{detail}</p>
             <span>Category</span>
           </div>
         </Link>
       </div>
       <p className="comments">
-        <CommentsIcon /> {feedback.commentCount}
+        <CommentsIcon /> {commentCount}
       </p>
     </div>
   );

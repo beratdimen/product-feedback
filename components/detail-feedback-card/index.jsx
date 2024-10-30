@@ -1,35 +1,28 @@
 "use client";
 
-import { RightIcon } from "@/helpers/icons";
-import FeedbackCard from "../feedback-card";
+import { RightIcon } from "@/helpers/icons"; 
 import "./style.css";
 import EditButton from "../edit-button";
 import Comments from "../comments";
 import AddComment from "../add-comment";
 import Link from "next/link";
-import ThemeSwitch from "../header/dark-mode-button";
-import { useEffect, useState } from "react";
-import { getDetailFeedbacks } from "@/utils/fetchBase";
-export default function DetailFeedback({ opendialog, params }) {
-  const [data, setData] = useState(null);
-
+import ThemeSwitch from "../header/dark-mode-button"; 
+import FeedbackDetailCard from "../feedback-detail-card";
+export default function DetailFeedback({ opendialog, data }) { 
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
-  console.log(params, "sadsadasdasd");
-  useEffect(() => {
-    const fetchData = async () => {
-      const detailData = await getDetailFeedbacks(params);
 
-      setData(detailData);
+  
 
-      if (!detailData) {
-        return notFound();
-      }
-    };
-    fetchData();
-    console.log(detailData);
-  }, [params]);
+  if (!data) {
+    return <div style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%"
+    }}>Yükleniyor</div>
+  }
+  console.log(data, "data aaaaaaa");
 
   return (
     <div className="detailContainer">
@@ -42,7 +35,7 @@ export default function DetailFeedback({ opendialog, params }) {
         <ThemeSwitch />
         <EditButton opendialog={opendialog} />
       </div>
-      <FeedbackCard />
+      <FeedbackDetailCard data={data} />
       <Comments />
       <AddComment />
     </div>
