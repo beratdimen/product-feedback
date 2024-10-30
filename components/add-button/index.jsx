@@ -29,7 +29,7 @@ export default function AddButton() {
       newFeedback.current.close();
     }
   }
-  
+
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
@@ -39,16 +39,19 @@ export default function AddButton() {
       console.log("Form hataları:", state.errors);
       return;
     }
-  
+
     console.log("Form verileri:", formObj);
 
-    try { 
-        const clientResponse = await postFeedback([formObj]);
-        console.log("Müşteri kaydı başarılı:", clientResponse);
- 
+    try {
+      const clientResponse = await postFeedback(formObj);
+      console.log("Müşteri kaydı başarılı:", clientResponse);
     } catch (error) {
       console.error("Kayıt hatası:", error);
     }
+  }
+
+  function optionClick(e) {
+    console.log(e.target.value);
   }
   return (
     <>
@@ -81,12 +84,11 @@ export default function AddButton() {
                 <p>Category</p>
                 <p>Choose a category for your feedback</p>
               </div>
-              <select name="category">
-                <option value=""></option>
-                <option value="">Feature</option>
-                <option value="">UI</option>
-                <option value="">UX</option>
-                <option value="">Bug</option>
+              <select onChange={optionClick} name="category">
+                <option value={1}>Feature</option>
+                <option value={2}>UI</option>
+                <option value={3}>UX</option>
+                <option value={4}>Bug</option>
               </select>
             </label>
             {state?.error?.categoryId && (

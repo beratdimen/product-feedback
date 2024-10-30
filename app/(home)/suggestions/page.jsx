@@ -8,10 +8,9 @@ export default async function SuggestionsPage() {
 
   return (
     <div className="gg">
-      <FeedbackCard />
-      {/* {response.posts.map((x, index) => (
-        <p key={index}>{x.title}</p>
-      ))} */}
+      {response?.map((feedback, index) => (
+        <FeedbackCard key={index} feedback={feedback} />
+      ))}
     </div>
   );
 }

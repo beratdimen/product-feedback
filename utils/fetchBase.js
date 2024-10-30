@@ -5,30 +5,37 @@ import { AdvancedFetch } from "./advanced";
 
 export const getFeedback = async () => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}`
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}`
   );
   return response;
 };
 
 export const postFeedback = async (formData, likes) => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}`,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${API_CREATE_ENDPOINT}`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        accept: "text/plain",
+        accept: " */*",
       },
       body: JSON.stringify({
         title: formData.title,
         content: formData.content,
         categoryId: formData.categoryId,
-        likes: likes ? likes : 0,
-        roadmap: 0,
       }),
     }
   );
   return { data: response, errors: error };
+};
+
+export const getDetailFeedbacks = async (id) => {
+  const response = await AdvancedFetch(
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/` +
+      id
+  );
+  console.log(response);
+  return response;
 };
 
 export const updateFeedback = async (formData) => {
@@ -64,7 +71,7 @@ export const authRegister = async (formData) => {
   console.log(formData, "adasdasadasd");
   const formDataPost = new FormData();
   formDataPost.append("FirstName", formData.firstName);
-  formDataPost.append("LastName", formData.lastName); 
+  formDataPost.append("LastName", formData.lastName);
   formDataPost.append("Nickname", formData.nickName);
   formDataPost.append("Email", formData.email);
   formDataPost.append("Password", formData.password);
@@ -77,11 +84,10 @@ export const authRegister = async (formData) => {
       {
         method: "POST",
         headers: {
-          "accept": "*/*",
+          accept: "*/*",
         },
         body: formDataPost,
       }
-
     );
 
     const data = await response.json();
@@ -95,4 +101,3 @@ export const authRegister = async (formData) => {
     return { data: null, errors };
   }
 };
-  

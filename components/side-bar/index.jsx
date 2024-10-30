@@ -6,11 +6,6 @@ import { CancelBtn, CloseIcon, MenuIcon } from "@/helpers/icons";
 import HammburgerDialog from "../hamburgerdia/hamdialog";
 import { getUsers } from "@/utils/fetchBase";
 export default async function SideBar() {
-
-  const medata = await getUsers(); 
-  console.log(medata);
-  
-
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
@@ -26,7 +21,6 @@ export default async function SideBar() {
       </div>
       <Categories />
       <Roadmap />
-
     </div>
   );
 }
