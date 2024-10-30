@@ -1,22 +1,20 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import "../style.css";
 import { getFeedback } from "@/utils/fetchBase";
 
 export default function Categories() {
-  const [category, setCategory] = useState("")
-
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
-    async function getFeddbacks() { 
+    async function getFeddbacks() {
       const { response, error } = await getFeedback(category);
       console.log({ response });
       console.log({ error });
     }
     getFeddbacks();
-  }, [category])
-
+  }, [category]);
 
   return (
     <div className="categoryContainer">
