@@ -106,8 +106,7 @@ export const authRegister = async (formData) => {
 
 export const authLogin = async (formData) => {
   console.log(formData, "adasdasadasd");
-
-  // JSON formatında veriyi hazırlama
+ 
   const body = JSON.stringify({
     email: formData.email,
     password: formData.password,

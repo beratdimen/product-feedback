@@ -9,8 +9,7 @@
 }
 
 .loginsignup {
-  height: 100vh;
-  border-radius: 20px;
+  height: 100vh; 
   background: white;
   display: flex;
   position: relative;
