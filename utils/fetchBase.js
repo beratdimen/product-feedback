@@ -91,11 +91,80 @@ export const authRegister = async (formData) => {
 
     const data = await response.json(); 
 
+    console.log(response.status, "response status");
+    
+
     if (!response.ok) {
       throw new Error(data.message || "Bir hata oluştu");
     }
     return response;
   } catch (errors) {
     return { data: null, errors };
+  }
+};
+
+
+export const authLogin = async (formData) => {
+  console.log(formData, "adasdasadasd");
+
+  // JSON formatında veriyi hazırlama
+  const body = JSON.stringify({
+    email: formData.email,
+    password: formData.password,
+  });
+
+  console.log(body, "BODY");
+
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/auth/login`,
+      {
+        method: "POST",
+        headers: {
+          accept: "*/*",
+          "Content-Type": "application/json",
+        },
+        body: body,
+        credentials:"include"  
+      }
+    );
+
+    console.log(response.status, "response status");
+    const data = await response.json();
+
+
+    if (!response.ok) {
+      throw new Error(data.message || "Bir hata oluştu");
+    }
+    return data; // Başarılı yanıtı döndür
+  } catch (errors) {
+    return { data: null, errors };
+  }
+};
+
+
+export const getMe = async () => {
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/auth/getcurrentuser/me`,
+      {
+        method: "GET",
+        headers: {
+          accept: "*/*",  
+        },
+      }
+    );
+
+    console.log(response, "response user aaaaaaaaaaaa");
+
+    if (!response.ok) {
+      throw new Error("Bir hata oluştu");  
+    }
+
+    const data = await response.json();  
+    return data;  
+  } catch (error) {
+    console.error(error);  
+    return { data: null, error };  
   }
 };

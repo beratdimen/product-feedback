@@ -1,15 +1,30 @@
 "use client"
-  
-import "./login.css";  
+
+import { authLogin } from "@/utils/fetchBase";
+import "./login.css";
 
 export default function Login({ setSign, sign }) {
-  
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formObj = Object.fromEntries(new FormData(e.target));
+    console.log(formObj);
+
+    try {
+      if (formObj) {
+        const response = await authLogin(formObj);
+        console.log(response, "asdasdasds");
+      }
+
+    } catch (error) {
+      console.error("Kayıt hatası:", error);
+    }
+  }
+
 
   return (
-    <div
-      className="login" 
-    >
-      <form >
+    <div className="login">
+      <form onSubmit={handleSubmit}>
         <h1>Giriş Yap</h1>
         <label htmlFor="email">
           Email:

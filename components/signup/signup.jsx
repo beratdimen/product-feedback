@@ -13,8 +13,9 @@ export default function SignUp({ setSign, sign }) {
 
     try {
       if (formObj) {
-        const response = await authLogin(formObj); 
+        const response = await authRegister(formObj); 
         console.log(response, "asdasdasds");
+
       }
 
     } catch (error) {

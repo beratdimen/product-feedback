@@ -28,7 +28,7 @@
   --buttonText: #f2f4fe;
   --likeBtnBg: #f2f4fe;
   --likeBtnBgHover: #cfd7ff;
-  --likeBtnText: #3a4374;
+  --likeBtnText: #3a4374; 
 }
 
 [data-theme="dark"] {
@@ -62,6 +62,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--bodyBg);
+  font-family: "Jost", sans-serif;
 }
 
 img,
