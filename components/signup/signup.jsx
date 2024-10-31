@@ -1,7 +1,13 @@
+"use client";
+import { useState } from "react";
 import "./signup.css";
-import { authRegister } from "@/utils/fetchBase";
+import { authLogin, authRegister, getUsers } from "@/utils/fetchBase";
+import { CloseEye, OnEye } from "@/helpers/icons";
+import Image from "next/image";
 
 export default function SignUp({ setSign, sign }) {
+  const [eyes, setEyes] = useState(false);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
@@ -23,6 +29,7 @@ export default function SignUp({ setSign, sign }) {
       style={{
         transform: sign === "signup" ? "translateY(20vh)" : "translateY(92vh)",
         transition: "all .6s",
+        opacity: sign === "login" ? "0" : "1",
       }}
     >
       <h1 onClick={() => setSign("signup")}>Kayıt Ol</h1>
@@ -49,13 +56,20 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password" className="passwordlabel">
           <input
-            type="password"
+            type={eyes ? "text" : "password"}
             name="password"
-            placeholder="********"
+            placeholder={eyes ? "Şifre Giriniz..." : "********"}
             required
           />
+          <p onClick={() => setEyes(!eyes)}>
+            {eyes ? (
+              <Image src={"/img/eye-off.png"} width={30} height={30} />
+            ) : (
+              <Image src={"/img/eye-show.png"} width={30} height={30} />
+            )}
+          </p>
         </label>
 
         <button> Kayıt Ol </button>

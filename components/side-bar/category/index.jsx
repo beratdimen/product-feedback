@@ -5,9 +5,15 @@ import "../style.css";
 import { getFeedback } from "@/utils/fetchBase";
 
 export default function Categories() {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(() => {
+    // Sayfa yüklendiğinde localStorage'dan category'yi okuyoruz
+    const savedCategory = localStorage.getItem("category");
+    return savedCategory !== null ? parseInt(savedCategory, 10) : "";
+  });
 
-  useEffect(() => {
+  useEffect(() => { 
+    localStorage.setItem("category", category);
+
     async function getFeddbacks() {
       const { response, error } = await getFeedback(category);
       console.log({ response });
