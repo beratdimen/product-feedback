@@ -1,22 +1,17 @@
-"use client";
-import { useEffect, useState } from "react";
 import "./signup.css";
-import Image from "next/image";
-import { authLogin, authRegister, getUsers } from "@/utils/fetchBase";
+import { authRegister } from "@/utils/fetchBase";
 
-export default function SignUp({ setSign, sign }) {   
- 
+export default function SignUp({ setSign, sign }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
-    console.log(formObj); 
+    console.log(formObj);
 
     try {
       if (formObj) {
-        const response = await authLogin(formObj); 
+        const response = await authRegister(formObj);
         console.log(response, "asdasdasds");
       }
-
     } catch (error) {
       console.error("Kayıt hatası:", error);
     }
@@ -62,8 +57,8 @@ export default function SignUp({ setSign, sign }) {
             required
           />
         </label>
-         
-        <button > Kayıt Ol </button>
+
+        <button> Kayıt Ol </button>
       </form>
       <button onClick={() => setSign("login")}> Giriş Yap</button>
     </div>
