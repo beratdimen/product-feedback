@@ -1,11 +1,8 @@
 import { CommentsIcon } from "@/helpers/icons";
 import "./style.css";
 import LikeBtn from "../like-button";
-import Link from "next/link";
 
 export default function FeedbackDetailCard({ data }) {
-  console.log(data, "data aaaaaaaaa");
-
   return (
     <div className="cardContainer">
       <LikeBtn upvoteCount={data?.feedbacks.upvoteCount} />

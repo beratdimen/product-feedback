@@ -56,7 +56,13 @@ export default function AddButton() {
         <button onClick={() => handleClick()}>+ Add Feedback</button>
       </div>
       <dialog ref={(e) => (newFeedback.current = e)}>
-        <Image src={"/img/add.png"} width={56} height={56} className="addPng" />
+        <Image
+          src={"/img/add.png"}
+          alt=""
+          width={56}
+          height={56}
+          className="addPng"
+        />
         <div className="dialogContainer">
           <div className="dialoghead">
             <h2>Create New Feedback</h2>

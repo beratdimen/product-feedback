@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { AvatarIcon } from "@/helpers/icons";
 import "./style.css";
@@ -8,10 +8,9 @@ import { useState } from "react";
 import Data from "/data.json";
 
 export default function Comments() {
-
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
- 
+
   console.log(selectedIndex);
 
   return (
@@ -19,27 +18,32 @@ export default function Comments() {
       <div className="commentsGeneral">
         <h3>4 Comments</h3>
 
-        {Data.map((x, i) =>
-          <div className="commentsCard">
+        {Data.map((x, i) => (
+          <div className="commentsCard" key={i}>
             <div className="content">
               <div className="userInformation">
                 <div>
                   <AvatarIcon />
                   <div className="avatarInfo">
-                    <h4>{x.firstName} {x.lastName}</h4>
+                    <h4>
+                      {x.firstName} {x.lastName}
+                    </h4>
                     <p>{x.userName}</p>
                   </div>
                 </div>
-                <ReplyButton setReplyShow={setReplyShow} replyShow={replyShow} setSelectedIndex={setSelectedIndex} i={x.id} />
+                <ReplyButton
+                  setReplyShow={setReplyShow}
+                  replyShow={replyShow}
+                  setSelectedIndex={setSelectedIndex}
+                  i={x.id}
+                />
               </div>
 
               <p>{x.comments}</p>
             </div>
             {selectedIndex === x.id && replyShow && <ReplyComments />}
           </div>
-        )}
-
-
+        ))}
       </div>
     </div>
   );

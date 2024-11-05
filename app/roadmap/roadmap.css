@@ -1,3 +1,9 @@
+.roadmapContent {
+  grid-template-columns: 1fr;
+  max-width: 1110px;
+  margin: 40px auto;
+}
+
 .roadCont {
   max-width: 1110px;
 }
@@ -7,10 +13,9 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
-.listRoadmap { 
+.listRoadmap {
   display: none;
 }
-
 
 @media (width <=768px) {
   .roadCont {
@@ -24,9 +29,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
-
 }
-
 
 @media (width <=425px) {
   .roadCont {
@@ -47,16 +50,15 @@
     grid-template-columns: repeat(3, 1fr);
     list-style-type: none;
     padding: 0;
-    border-bottom: 1px solid rgba(140, 146, 179, .25);
-  
-    li { 
+    border-bottom: 1px solid rgba(140, 146, 179, 0.25);
+
+    li {
       font-size: 13px;
       font-weight: 700;
       line-height: 18.79px;
       letter-spacing: -0.1805555522441864px;
       text-align: center;
-      color: rgba(58, 67, 116, .4);
+      color: rgba(58, 67, 116, 0.4);
     }
   }
-  
 }

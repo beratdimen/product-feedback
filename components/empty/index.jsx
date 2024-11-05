@@ -6,7 +6,7 @@ export default function Empty() {
   return (
     <div className="emptyContainer">
       <div className="emptyGeneral">
-        <Image src={"/img/empty.png"} width={130} height={130} />
+        <Image src={"/img/empty.png"} alt="" width={130} height={130} />
         <div className="content">
           <h3>There is no feedback yet.</h3>
           <p>

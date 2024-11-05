@@ -17,7 +17,7 @@ export default function LoginSignUp() {
         <Login setSign={setSign} sign={sign} />
         <SignUp setSign={setSign} sign={sign} />
       </div>
-      <Image src={"/img/login.png"} width={500} height={500} />
+      <Image alt="" src={"/img/login.png"} width={500} height={500} />
     </div>
   );
 }

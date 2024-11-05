@@ -63,9 +63,9 @@ export default function SignUp({ setSign, sign }) {
           />
           <p onClick={() => setEyes(!eyes)}>
             {eyes ? (
-              <Image src={"/img/eye-off.png"} width={30} height={30} />
+              <Image src={"/img/eye-off.png"} alt="" width={30} height={30} />
             ) : (
-              <Image src={"/img/eye-show.png"} width={30} height={30} />
+              <Image src={"/img/eye-show.png"} alt="" width={30} height={30} />
             )}
           </p>
         </label>

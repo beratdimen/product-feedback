@@ -18,7 +18,6 @@ export default function Login({ setSign, sign }) {
     try {
       if (formObj) {
         const response = await loginUser(formObj);
-        console.log(response, "asdasdasds");
       }
     } catch (error) {
       console.error("Kayıt hatası:", error);
@@ -47,9 +46,9 @@ export default function Login({ setSign, sign }) {
           />
           <p onClick={() => setEyes(!eyes)}>
             {eyes ? (
-              <Image src={"/img/eye-off.png"} width={30} height={30} />
+              <Image src={"/img/eye-off.png"} alt="" width={30} height={30} />
             ) : (
-              <Image src={"/img/eye-show.png"} width={30} height={30} />
+              <Image src={"/img/eye-show.png"} alt="" width={30} height={30} />
             )}
           </p>
         </label>

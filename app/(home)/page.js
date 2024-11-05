@@ -1,10 +1,6 @@
-import "../globals.css"
-import SuggestionsPage from "./suggestions/page"; 
+import { redirect } from "next/navigation";
+import "../globals.css";
 
 export default function Home() {
-  return (
-    <div className="container"> 
-      <SuggestionsPage /> 
-    </div>
-  );  
+  redirect("/suggestions");
 }

@@ -1,0 +1,27 @@
+.gg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pageCont {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  button {
+    width: 40px;
+    height: 40px;
+    background: #373f68;
+    color: white;
+    border: none;
+    border-radius: 20px;
+  }
+
+  button:disabled,
+  button[disabled] {
+    border: 1px solid #606479;
+    background-color: #606479;
+    color: #d6d4d4;
+  }
+}

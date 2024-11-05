@@ -1,5 +1,3 @@
-
-
 import RoadmapHeader from "@/components/roadmap-header";
 import RoadItem from "./roaditem";
 import "./roadmap.css";
@@ -7,7 +5,7 @@ import ListRoadMap from "@/components/listroadmap";
 
 export default function RoadMap() {
   return (
-    <div className="roadCont">
+    <div className="roadmapContent">
       <RoadmapHeader />
       <ListRoadMap />
       <div className="generalRoadmap">

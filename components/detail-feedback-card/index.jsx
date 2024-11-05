@@ -1,7 +1,6 @@
 "use client";
 
 import { RightIcon } from "@/helpers/icons";
-import FeedbackCard from "../feedback-card";
 import "./style.css";
 import EditButton from "../edit-button";
 import Comments from "../comments";
@@ -17,7 +16,6 @@ export default function DetailFeedback({ opendialog, params, data }) {
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
-  console.log(datas, "sadsadasdasd "); 
   useEffect(() => {
     const fetchData = async () => {
       const detailData = await getDetailFeedbacks(params);

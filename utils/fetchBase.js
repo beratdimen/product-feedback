@@ -35,6 +35,13 @@ export const getDetailFeedbacks = async (id) => {
     `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/` +
       id
   );
+
+  console.log("response :>> ", response);
+
+  if (!response.ok) {
+    return { error: "No Detail" };
+  }
+
   return response;
 };
 
@@ -204,11 +211,12 @@ export const getMe = async () => {
     );
 
     if (!response.ok) {
-      throw new Error("Bir hata oluştu");
+      return { error: "Unauthorized" };
     }
 
     const data = await response.json();
-    return data;
+
+    return { data };
   } catch (error) {
     console.error(error);
     return { data: null, error };

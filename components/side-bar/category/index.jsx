@@ -2,26 +2,8 @@
 
 import { useEffect, useState } from "react";
 import "../style.css";
-import { getFeedback } from "@/utils/fetchBase";
 
-export default function Categories() {
-  const [category, setCategory] = useState(() => {
-    // Sayfa yüklendiğinde localStorage'dan category'yi okuyoruz
-    const savedCategory = localStorage.getItem("category");
-    return savedCategory !== null ? parseInt(savedCategory, 10) : "";
-  });
-
-  useEffect(() => {
-    localStorage.setItem("category", category);
-
-    async function getFeddbacks() {
-      const { response, error } = await getFeedback(category);
-      console.log({ response });
-      console.log({ error });
-    }
-    getFeddbacks();
-  }, [category]);
-
+export default function Categories({ setCategory }) {
   return (
     <div className="categoryContainer">
       <button onClick={() => setCategory(0)}>All</button>

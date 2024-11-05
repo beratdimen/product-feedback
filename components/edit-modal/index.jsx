@@ -6,7 +6,13 @@ import Image from "next/image";
 export default function EditFeedback({ editFeedback, close }) {
   return (
     <dialog ref={(e) => (editFeedback.current = e)}>
-      <Image src={"/img/edit.png"} width={56} height={56} className="addPng" />
+      <Image
+        src={"/img/edit.png"}
+        alt=""
+        width={56}
+        height={56}
+        className="addPng"
+      />
       <div className="editDialogContainer">
         <div className="dialoghead">
           <h2>Editing ‘Add a dark theme option’</h2>

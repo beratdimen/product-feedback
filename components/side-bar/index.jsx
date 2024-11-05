@@ -9,12 +9,15 @@ import { MenuIcon } from "@/helpers/icons";
 import HammburgerDialog from "../hamburgerdia/hamdialog";
 import { getMe, logOut } from "@/utils/fetchBase";
 
-export default function SideBar() {
-  const [user, setUser] = useState(null);
+export default function SideBar({ setCategory }) {
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const fetchUser = async () => {
       const response = await getMe();
+
+      console.log("response :>> ", response);
+
       setUser(response);
     };
     fetchUser();
@@ -22,19 +25,23 @@ export default function SideBar() {
 
   const handleLogout = async () => {
     await logOut();
-    setUser(null);
+    setUser({});
   };
+
+  useEffect(() => {
+    console.log("user :>> ", user);
+  }, [user]);
 
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
-        {user ? (
+        {user?.data ? (
           <>
-            {user.firstName} <br />
+            {user?.data?.firstName} <br />
             <button onClick={handleLogout}>Çıkış Yap</button>
           </>
         ) : (
-          <Link href="/loginsignup">Giriş Yap</Link>
+          <Link href="/login">Giriş Yap</Link>
         )}
 
         <div className="sidebarHeaderContent">
@@ -46,7 +53,7 @@ export default function SideBar() {
         </button>
         <HammburgerDialog />
       </div>
-      <Categories />
+      <Categories setCategory={setCategory} />
       <Roadmap />
     </div>
   );
