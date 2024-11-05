@@ -36,11 +36,8 @@ export default function AddButton() {
     await action(new FormData(e.target));
 
     if (state?.errors) {
-      console.log("Form hataları:", state.errors);
       return;
     }
-
-    console.log("Form verileri:", formObj);
 
     try {
       const clientResponse = await postFeedback(formObj);

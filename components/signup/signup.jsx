@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import "./signup.css";
-import { authLogin, authRegister, getUsers } from "@/utils/fetchBase";
-import { CloseEye, OnEye } from "@/helpers/icons";
+import { authRegister } from "@/utils/fetchBase";
 import Image from "next/image";
 
 export default function SignUp({ setSign, sign }) {
@@ -11,7 +10,6 @@ export default function SignUp({ setSign, sign }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
-    console.log(formObj);
 
     try {
       if (formObj) {

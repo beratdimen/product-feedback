@@ -22,7 +22,7 @@ export default function SideBar() {
 
   const handleLogout = async () => {
     await logOut();
-    setUser(null); // Kullanıcıyı sıfırla
+    setUser(null);
   };
 
   return (

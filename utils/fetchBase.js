@@ -230,7 +230,6 @@ export const logOut = async () => {
 
     if (response.ok) {
       cookies().set(".AspNetCore.Identity.Application", "", { maxAge: -1 });
-      console.log("Çıkış yapıldı ve çerez silindi.");
     } else {
       console.error("Çıkış işlemi başarısız:", response.statusText);
     }

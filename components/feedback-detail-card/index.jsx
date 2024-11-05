@@ -8,11 +8,11 @@ export default function FeedbackDetailCard({ data }) {
 
   return (
     <div className="cardContainer">
-      <LikeBtn upvoteCount={data?.upvoteCount} />
+      <LikeBtn upvoteCount={data?.feedbacks.upvoteCount} />
       <div className="contentGeneral">
         <div className="content">
-          <h3>{data?.title}</h3>
-          <p>{data?.detail}</p>
+          <h3>{data?.feedbacks.title}</h3>
+          <p>{data?.feedbacks.detail}</p>
           <span>Category</span>
         </div>
       </div>
