@@ -56,9 +56,6 @@ export async function loginUser(prevState, formData) {
     const [key, value] = cookie.trim().split("=");
     cookiesObject[key] = value;
   });
-  console.log(cookiesObject);
-
-  console.log(cookiesObject[".AspNetCore.Identity.Application"]);
 
   cookies().set(
     ".AspNetCore.Identity.Application",
@@ -68,13 +65,11 @@ export async function loginUser(prevState, formData) {
 }
 
 export async function saveFeedback(formData) {
-  console.log(formData);
   const title = formData.get("title");
   const detail = formData.get("content");
   const categoryId = formData.get("category");
 
   console.log("bu pushlama berat için");
-  
 
   const response = await fetch(
     "https://feedbackapi.senihay.com/feedback/create",
@@ -91,8 +86,7 @@ export async function saveFeedback(formData) {
       }),
     }
   );
- 
-  console.log(response);
+
   if (response.ok) console.log("form göönderildi");
   else if (response.status == 404) {
     console.log("skıntı var");
