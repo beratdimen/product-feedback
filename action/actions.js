@@ -73,6 +73,9 @@ export async function saveFeedback(formData) {
   const detail = formData.get("content");
   const categoryId = formData.get("category");
 
+  console.log("bu pushlama berat için");
+  
+
   const response = await fetch(
     "https://feedbackapi.senihay.com/feedback/create",
     {
