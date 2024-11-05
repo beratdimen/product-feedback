@@ -4,19 +4,23 @@ import Roadmap from "./roadmap";
 import "./style.css";
 import { CancelBtn, CloseIcon, MenuIcon } from "@/helpers/icons";
 import HammburgerDialog from "../hamburgerdia/hamdialog";
-import { getMe, getUsers } from "@/utils/fetchBase";
+import { getMe, getUsers, logOut } from "@/utils/fetchBase";
 export default async function SideBar() {
   const response = await getMe();
-  console.log(response, "kullanıcı");
+  console.log(response);
 
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
-        <Link href={"/loginsignup"}>Giriş Yap</Link>
+        {
+          response ? <>
+            {response?.firstName} <br />   
+          </> : <Link href={"/loginsignup"}>Giriş Yap</Link>
+        }
+
         <div className="sidebarHeaderContent">
           <h2>Frontend Mentor</h2>
           <p>Feedback Board</p>
-          {response.firstname}
         </div>
         <button>
           <MenuIcon />

@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { AdvancedFetch } from "./advanced";
+import { cookies } from "next/headers";
 
 export const getFeedback = async (id, page, pageSize) => {
   const response = await AdvancedFetch(
@@ -194,7 +195,6 @@ export async function loginUser(formData) {
 
   if (response.ok) redirect("/");
 }
-
 export const getMe = async () => {
   try {
     const response = await fetch(
@@ -203,10 +203,10 @@ export const getMe = async () => {
         method: "GET",
         headers: {
           accept: "*/*",
+          Cookie: cookies().toString(),
         },
       }
     );
-
 
     if (!response.ok) {
       throw new Error("Bir hata oluştu");
@@ -215,6 +215,31 @@ export const getMe = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
+    return { data: null, error };
+  }
+};
+export const logOut = async () => {
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/auth/logout`,
+      {
+        method: "POST",
+        headers: {
+          accept: "*/*",
+          Cookie: cookies().toString(),
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Bir hata oluştu");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
     return { data: null, error };
   }
 };
