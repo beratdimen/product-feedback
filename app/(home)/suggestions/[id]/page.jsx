@@ -22,10 +22,9 @@ export default function DetailFeedbacks({ params }) {
   }, [params]);
 
 
-  console.log(data);
+  console.log(data, "asdasdasdasdasdasdsadasdasdasdasdasdassssssssssssssssaaaaaaaaaaaaaaasssssssssssssssdddddddddddd");
 
-
-
+ 
   return (
     <>
       <DetailFeedback data={data} />

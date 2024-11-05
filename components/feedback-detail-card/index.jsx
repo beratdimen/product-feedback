@@ -17,7 +17,7 @@ export default function FeedbackDetailCard({ data }) {
         </div>
       </div>
       <p className="comments">
-        <CommentsIcon /> {data.commentCount}
+        <CommentsIcon /> {data?.commentCount}
       </p>
     </div>
   );

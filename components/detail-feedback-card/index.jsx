@@ -10,13 +10,14 @@ import Link from "next/link";
 import ThemeSwitch from "../header/dark-mode-button";
 import { useEffect, useState } from "react";
 import { getDetailFeedbacks } from "@/utils/fetchBase";
-export default function DetailFeedback({ opendialog, params }) {
-  const [data, setData] = useState(null);
+import FeedbackDetailCard from "../feedback-detail-card";
+export default function DetailFeedback({ opendialog, params, data }) {
+  const [datas, setData] = useState(data);
 
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
-  console.log(params, "sadsadasdasd ");
+  console.log(datas, "sadsadasdasd "); 
   useEffect(() => {
     const fetchData = async () => {
       const detailData = await getDetailFeedbacks(params);
@@ -42,7 +43,7 @@ export default function DetailFeedback({ opendialog, params }) {
         <ThemeSwitch />
         <EditButton opendialog={opendialog} />
       </div>
-      <FeedbackCard />
+      <FeedbackDetailCard />
       <Comments />
       <AddComment />
     </div>

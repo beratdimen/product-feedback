@@ -70,7 +70,7 @@ export async function loginUser(prevState, formData) {
 export async function saveFeedback(formData) {
   console.log(formData);
   const title = formData.get("title");
-  const content = formData.get("content");
+  const detail = formData.get("content");
   const categoryId = formData.get("category");
 
   const response = await fetch(
@@ -83,12 +83,12 @@ export async function saveFeedback(formData) {
       },
       body: JSON.stringify({
         title,
-        content,
+        detail,
         categoryId: parseInt(categoryId),
       }),
     }
   );
-
+ 
   console.log(response);
   if (response.ok) console.log("form göönderildi");
   else if (response.status == 404) {

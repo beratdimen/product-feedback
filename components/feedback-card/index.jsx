@@ -3,7 +3,7 @@ import "./style.css";
 import LikeBtn from "../like-button";
 import Link from "next/link";
 
-export default function FeedbackCard({ id, title, detail, commentCount ,upvoteCount }) {
+export default function FeedbackCard({ id, title, detail, commentCount, upvoteCount, name }) {
   return (
     <div className="cardContainer">
       <LikeBtn upvoteCount={upvoteCount} />
@@ -12,7 +12,7 @@ export default function FeedbackCard({ id, title, detail, commentCount ,upvoteCo
           <div className="content">
             <h3>{title}</h3>
             <p>{detail}</p>
-            <span>Category</span>
+            <span>{name}</span>
           </div>
         </Link>
       </div>

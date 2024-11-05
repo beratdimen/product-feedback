@@ -2,9 +2,9 @@
 import { redirect } from "next/navigation";
 import { AdvancedFetch } from "./advanced";
 
-export const getFeedback = async (id) => {
+export const getFeedback = async (id, page, pageSize) => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}?categoryId=${id}`
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}?categoryId=${id}&page=${page}&pageSize=${pageSize}`
   );
   return response;
 };
@@ -32,9 +32,8 @@ export const postFeedback = async (formData, likes) => {
 export const getDetailFeedbacks = async (id) => {
   const response = await AdvancedFetch(
     `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/` +
-      id
+    id
   );
-  console.log(response);
   return response;
 };
 
@@ -68,7 +67,6 @@ export const deleteFeddback = async (id) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -82,7 +80,6 @@ export const changeStatus = async (id, status) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -96,7 +93,6 @@ export async function getDeneme(params) {
 }
 
 export const authRegister = async (formData) => {
-  console.log(formData, "adasdasadasd");
   const formDataPost = new FormData();
   formDataPost.append("FirstName", formData.firstName);
   formDataPost.append("LastName", formData.lastName);
@@ -104,7 +100,6 @@ export const authRegister = async (formData) => {
   formDataPost.append("Email", formData.email);
   formDataPost.append("Password", formData.password);
 
-  console.log(formDataPost);
 
   try {
     const response = await fetch(
@@ -120,7 +115,6 @@ export const authRegister = async (formData) => {
 
     const data = await response.json();
 
-    console.log(response.status, "response status");
 
     if (!response.ok) {
       throw new Error(data.message || "Bir hata oluştu");
@@ -137,7 +131,6 @@ export const authLogin = async (formData) => {
     password: formData.password,
   });
 
-  console.log(body, "BODY");
 
   try {
     const response = await fetch(`https://feedbackapi.senihay.com/auth/login`, {
@@ -150,7 +143,6 @@ export const authLogin = async (formData) => {
       credentials: "include",
     });
 
-    console.log(response.status, "response status");
     const data = await response.json();
 
     if (!response.ok) {
@@ -179,7 +171,6 @@ export async function loginUser(formData) {
   });
   const data = await response.text();
   if (!response.ok) {
-    console.log(data);
 
     return {
       error: "Giriş Yapılamadı",
@@ -194,9 +185,7 @@ export async function loginUser(formData) {
     const [key, value] = cookie.trim().split("=");
     cookiesObject[key] = value;
   });
-  console.log(cookiesObject);
 
-  console.log(cookiesObject[".AspNetCore.Identity.Application"]);
 
   cookies().set(
     ".AspNetCore.Identity.Application",
@@ -218,7 +207,6 @@ export const getMe = async () => {
       }
     );
 
-    console.log(response, "response user aaaaaaaaaaaa");
 
     if (!response.ok) {
       throw new Error("Bir hata oluştu");
@@ -227,7 +215,6 @@ export const getMe = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error);
     return { data: null, error };
   }
 };
@@ -236,7 +223,6 @@ export const getComments = async (id) => {
   const response = await fetch(
     `https://feedbackapi.senihay.com/comment/getcomments?feedbackId=${id}`
   );
-  console.log(response);
   return response;
 };
 
@@ -250,7 +236,6 @@ export const createComment = async (formData) => {
       feedbackId: formData.feedbackId,
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -264,7 +249,6 @@ export const deleteComment = async (id) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -278,7 +262,6 @@ export const changeCommentStatus = async (id, status) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -286,7 +269,6 @@ export const getCategory = async () => {
   const response = await fetch(
     `https://feedbackapi.senihay.com/category/getcategories`
   );
-  console.log(response);
   return response;
 };
 
@@ -298,7 +280,6 @@ export const createCategory = async (formData) => {
       name: formData.name,
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -316,7 +297,6 @@ export const updateCategory = async (formData) => {
       }),
     }
   );
-  console.log(response);
   return response;
 };
 
@@ -330,6 +310,5 @@ export const deleteCategory = async (id) => {
       },
     }
   );
-  console.log(response);
   return response;
 };
