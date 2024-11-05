@@ -10,7 +10,7 @@
     background: var(--boardBg);
     border-radius: 16px;
 
-    button {
+    .menu {
       display: none;
     }
 
@@ -124,13 +124,12 @@
         p {
           display: flex;
           align-items: center;
-          gap: 8px; 
+          gap: 8px;
           font-size: 16px;
           font-weight: 400;
           line-height: 23.12px;
           text-align: left;
           color: #647196;
-
         }
       }
 
@@ -174,7 +173,7 @@
       align-items: center;
       width: 100%;
 
-      >a {
+      > a {
         display: none;
       }
 
@@ -205,8 +204,6 @@
 
   .hamdialogCont {
     display: block;
-
-
 
     .roadmapContainer {
       display: block;

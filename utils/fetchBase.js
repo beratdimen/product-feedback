@@ -33,7 +33,7 @@ export const postFeedback = async (formData, likes) => {
 export const getDetailFeedbacks = async (id) => {
   const response = await AdvancedFetch(
     `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/` +
-    id
+      id
   );
   return response;
 };
@@ -101,7 +101,6 @@ export const authRegister = async (formData) => {
   formDataPost.append("Email", formData.email);
   formDataPost.append("Password", formData.password);
 
-
   try {
     const response = await fetch(
       `https://feedbackapi.senihay.com/auth/register`,
@@ -115,7 +114,6 @@ export const authRegister = async (formData) => {
     );
 
     const data = await response.json();
-
 
     if (!response.ok) {
       throw new Error(data.message || "Bir hata oluştu");
@@ -131,7 +129,6 @@ export const authLogin = async (formData) => {
     email: formData.email,
     password: formData.password,
   });
-
 
   try {
     const response = await fetch(`https://feedbackapi.senihay.com/auth/login`, {
@@ -172,7 +169,6 @@ export async function loginUser(formData) {
   });
   const data = await response.text();
   if (!response.ok) {
-
     return {
       error: "Giriş Yapılamadı",
     };
@@ -186,7 +182,6 @@ export async function loginUser(formData) {
     const [key, value] = cookie.trim().split("=");
     cookiesObject[key] = value;
   });
-
 
   cookies().set(
     ".AspNetCore.Identity.Application",
@@ -219,6 +214,7 @@ export const getMe = async () => {
     return { data: null, error };
   }
 };
+
 export const logOut = async () => {
   try {
     const response = await fetch(
@@ -228,16 +224,16 @@ export const logOut = async () => {
         headers: {
           accept: "*/*",
           Cookie: cookies().toString(),
-        }
+        },
       }
     );
 
-    if (!response.ok) {
-      throw new Error("Bir hata oluştu");
+    if (response.ok) {
+      cookies().set(".AspNetCore.Identity.Application", "", { maxAge: -1 });
+      console.log("Çıkış yapıldı ve çerez silindi.");
+    } else {
+      console.error("Çıkış işlemi başarısız:", response.statusText);
     }
-
-    const data = await response.json();
-    return data;
   } catch (error) {
     console.error(error);
     return { data: null, error };

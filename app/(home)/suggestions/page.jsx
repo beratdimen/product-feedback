@@ -58,7 +58,11 @@ export default function SuggestionsPage() {
   return (
     <div className="gg">
       {feedbackData?.feedbacks?.map((feedback, index) => (
-        <FeedbackCard key={index} {...feedback} feedbackDatalength={feedbackData.length} />
+        <FeedbackCard
+          key={index}
+          {...feedback}
+          feedbackDatalength={feedbackData.length}
+        />
       ))}
 
       <div className="pageCont">
@@ -72,7 +76,6 @@ export default function SuggestionsPage() {
             {i + 1}
           </button>
         ))}
-
       </div>
     </div>
   );
