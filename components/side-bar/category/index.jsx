@@ -11,7 +11,7 @@ export default function Categories() {
     return savedCategory !== null ? parseInt(savedCategory, 10) : "";
   });
 
-  useEffect(() => { 
+  useEffect(() => {
     localStorage.setItem("category", category);
 
     async function getFeddbacks() {

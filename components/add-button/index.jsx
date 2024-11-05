@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import ButtonGroup from "../create-btn-group";
 import Image from "next/image";
 import { useFormState } from "react-dom";
-import FormVAlidation from "@/action/actions";
+import FormVAlidation, { saveFeedback } from "@/action/actions";
 import { postFeedback } from "@/utils/fetchBase";
 
 export default function AddButton() {
@@ -67,7 +67,7 @@ export default function AddButton() {
               <CancelBtn />
             </button>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form action={saveFeedback}>
             <label name="title">
               <div className="labeltext">
                 <p>Feedback title</p>

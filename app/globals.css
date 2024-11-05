@@ -1,9 +1,11 @@
 :root {
   --bodyBg: #f7f8fd;
-  --boardBg: radial-gradient(128.88% 128.88% at 103.9% -10.39%,
-      #e84d70 0%,
-      #a337f6 53.09%,
-      #28a7ed 100%);
+  --boardBg: radial-gradient(
+    128.88% 128.88% at 103.9% -10.39%,
+    #e84d70 0%,
+    #a337f6 53.09%,
+    #28a7ed 100%
+  );
   --headerBg: #373f68;
   --cardBg: #ffffff;
   --titleText: #3a4374;
@@ -28,7 +30,7 @@
   --buttonText: #f2f4fe;
   --likeBtnBg: #f2f4fe;
   --likeBtnBgHover: #cfd7ff;
-  --likeBtnText: #3a4374; 
+  --likeBtnText: #3a4374;
 }
 
 [data-theme="dark"] {
@@ -116,7 +118,6 @@ button {
   gap: 30px;
 }
 
-
 .roadcontent {
   max-width: 1110px;
   margin: 40px auto;
@@ -129,7 +130,6 @@ button {
   background-image: url("/public/img/logbg.jpg");
   background-size: contain;
 }
-
 
 @media (max-width: 920px) {
   .bodycontent {
@@ -144,13 +144,11 @@ button {
     margin-inline: 24px;
   }
 
-
   .roadcontent {
     display: grid;
     grid-template-columns: 1fr;
     margin-inline: 24px;
   }
-
 }
 
 @media (max-width: 426px) {
@@ -164,10 +162,8 @@ button {
     gap: 0;
   }
 
-
   .roadcontent {
     margin: 0px;
     gap: 0;
   }
-
 }

@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
 import { authLogin } from "@/utils/fetchBase";
 import "./login.css";
 import { useState } from "react";
 import Image from "next/image";
+import { useFormState } from "react-dom";
+import { loginUser } from "@/action/actions";
 
 export default function Login({ setSign, sign }) {
-
   const [eyes, setEyes] = useState(false);
+  const [state, action] = useFormState(loginUser, null);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
-    console.log(formObj);
 
     try {
       if (formObj) {
-        const response = await authLogin(formObj);
+        const response = await loginUser(formObj);
         console.log(response, "asdasdasds");
       }
-
     } catch (error) {
       console.error("Kayıt hatası:", error);
     }
   }
 
-
   return (
     <div className="login">
-      <form onSubmit={handleSubmit}>
+      <form action={action}>
         <h1>Giriş Yap</h1>
         <label htmlFor="email">
           <input
@@ -45,8 +45,13 @@ export default function Login({ setSign, sign }) {
             placeholder={eyes ? "Şifre Giriniz..." : "********"}
             required
           />
-          <p onClick={() => setEyes(!eyes)}>{eyes ? <Image src={"/img/eye-off.png"} width={30} height={30} /> : <Image src={"/img/eye-show.png"} width={30} height={30} />}</p>
-
+          <p onClick={() => setEyes(!eyes)}>
+            {eyes ? (
+              <Image src={"/img/eye-off.png"} width={30} height={30} />
+            ) : (
+              <Image src={"/img/eye-show.png"} width={30} height={30} />
+            )}
+          </p>
         </label>
         <button>Giriş Yap </button>
       </form>

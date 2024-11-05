@@ -28,7 +28,7 @@ export default function DetailFeedback({ opendialog, params }) {
       }
     };
     fetchData();
-    console.log(detailData);
+    // console.log(detailData);
   }, [params]);
 
   return (
