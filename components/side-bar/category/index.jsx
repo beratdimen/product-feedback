@@ -3,15 +3,23 @@
 import { useEffect, useState } from "react";
 import "../style.css";
 
-export default function Categories({ setCategory }) {
+export default function Categories({ setCategory, CategoryData }) {
+  const [categoryList, setCategoryList] = useState([])
+
+  console.log(categoryList);
+  useEffect(() => {
+
+    if (CategoryData) {
+      setCategoryList(CategoryData)
+    }
+
+  }, []);
   return (
     <div className="categoryContainer">
-      <button onClick={() => setCategory(0)}>All</button>
-      <button onClick={() => setCategory(1)}>UI</button>
-      <button onClick={() => setCategory(2)}>UX</button>
-      <button onClick={() => setCategory(3)}>Enhancement</button>
-      <button onClick={() => setCategory(4)}>Bug</button>
-      <button onClick={() => setCategory(5)}>Feature</button>
+      <button onClick={() => setCategory(0)}>ALL</button>
+      {categoryList?.map((x, i) =>
+        <button key={i} onClick={() => setCategory(x.id)}>{x.name}</button>
+      )} 
     </div>
   );
 }

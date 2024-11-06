@@ -7,7 +7,7 @@ import Suggestions from "../suggestions";
 import { getFeedback } from "@/utils/fetchBase";
 import Empty from "../empty";
 
-export default function SuggesstionLayout() {
+export default function SuggesstionLayout({CategoryData}) {
   const [category, setCategory] = useState(0);
   const [page, setPage] = useState(1);
   const [feedbackData, setFeedbackData] = useState({});
@@ -29,12 +29,13 @@ export default function SuggesstionLayout() {
   useEffect(() => {
     setPage(1);
   }, [category]);
+ 
 
   return (
     <>
-      <SideBar setCategory={setCategory} />
+      <SideBar  feedbackData={feedbackData} setCategory={setCategory}  CategoryData={CategoryData} />
       <div>
-        <Header count={feedbackData?.totalItems} />
+        <Header count={feedbackData?.totalItems} CategoryData={CategoryData} setFeedbackData={setFeedbackData}  feedbackData={feedbackData} />
 
         {feedbackData?.totalItems === 0 ? (
           <Empty />

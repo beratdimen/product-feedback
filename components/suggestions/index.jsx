@@ -5,6 +5,8 @@ import FeedbackCard from "@/components/feedback-card";
 import "./style.css";
 
 export default function Suggestions({ feedbackData, setPage, page }) {
+  console.log(feedbackData, "213123123123213213213123213123");
+  
   const [getUser, setGetUser] = useState([]);
 
   const result = Math.ceil(feedbackData.totalItems / feedbackData.pageSize);
