@@ -9,7 +9,7 @@ import Link from "next/link";
 import ThemeSwitch from "../header/dark-mode-button";
 
 import FeedbackDetailCard from "../feedback-detail-card";
-export default function DetailFeedback({ opendialog, params, data }) {
+export default function DetailFeedback({ opendialog, params, data, categoryList }) {
   return (
     <div className="detailContainer">
       <div className="detailHeader">
@@ -19,7 +19,7 @@ export default function DetailFeedback({ opendialog, params, data }) {
           </button>
         </Link>
         <ThemeSwitch />
-        <EditButton opendialog={opendialog} data={data} params={params} />
+        <EditButton opendialog={opendialog} data={data} params={params} categoryList={categoryList}  />
       </div>
       <FeedbackDetailCard data={data} />
       <Comments feedbackId={params?.id} />

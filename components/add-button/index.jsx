@@ -1,14 +1,14 @@
 "use client";
 import { CancelBtn } from "@/helpers/icons";
 import "./style.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ButtonGroup from "../create-btn-group";
 import Image from "next/image";
 import { useFormState } from "react-dom";
 import FormVAlidation, { saveFeedback } from "@/action/actions";
-import { postFeedback } from "@/utils/fetchBase";
+import { getCategory, postFeedback } from "@/utils/fetchBase";
 
-export default function AddButton() {
+export default function AddButton({ CategoryData }) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
     {
@@ -88,10 +88,8 @@ export default function AddButton() {
                 <p>Choose a category for your feedback</p>
               </div>
               <select onChange={optionClick} name="category">
-                <option value={1}>Feature</option>
-                <option value={2}>UI</option>
-                <option value={3}>UX</option>
-                <option value={4}>Bug</option>
+                {CategoryData?.map((x, i) =>
+                  <option key={i} value={x.id}>{x.name}</option>)}
               </select>
             </label>
             {state?.error?.categoryId && (
