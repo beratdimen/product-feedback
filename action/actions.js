@@ -92,3 +92,137 @@ export async function saveFeedback(formData) {
     console.log("skıntı var");
   }
 }
+
+export async function postComments(formData) {
+  const feedbackId = formData.get("feedbackid");
+  const content = formData.get("content");
+
+  console.log("bu pushlama berat için");
+
+  const response = await fetch("https://feedbackapi.senihay.com/comment/createcomment", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Cookie: cookies().toString(),
+    },
+    body: JSON.stringify({
+      content,
+      feedbackId
+    }),
+  }
+  );
+
+  if (response.ok) console.log("form göönderildi");
+  else if (response.status == 404) {
+    console.log("skıntı var");
+  }
+}
+
+export async function postReplyComments(formData) {
+  const feedbackId = formData.get("feedbackid");
+  const content = formData.get("content");
+  const parentId = formData.get("parentid");
+
+  console.log(feedbackId, "feedbackId");
+  console.log(content, "content");
+  console.log(parentId, "parentId");
+
+
+  const response = await fetch("https://feedbackapi.senihay.com/comment/createcomment", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Cookie: cookies().toString(),
+    },
+    body: JSON.stringify({
+      parentId,
+      content,
+      feedbackId
+    }),
+  }
+  );
+  console.log(response, "parent");
+
+  if (response.ok) console.log("form göönderildi");
+  else if (response.status == 404) {
+    console.log("skıntı var");
+  }
+}
+
+
+//status 200 dönmesine rağmen çalışmayan lanet fetch 
+export async function deleteFeedbacks(formData) {
+  const id = parseInt(formData.get("dataid"));
+
+
+
+  const response = await fetch("https://feedbackapi.senihay.com/feedback/delete/" + id, {
+    method: "DELETE",
+    headers: {
+      accept: "*/*",
+      "Content-type": "application/json",
+      Cookie: cookies().toString(),
+    }
+  });
+
+  console.log(response);
+
+  if (response.ok) console.log("form göönderildi");
+  else if (response.status == 404) {
+    console.log("skıntı var");
+  }
+}
+
+
+export async function updateFeedbacks(formData) {
+  const title = formData.get("title");
+  const categoryId = parseInt(formData.get("categoryId"));
+  const status = parseInt(formData.get("status"));
+  const detail = formData.get("detail");
+  const id = formData.get("dataid");
+
+  console.log(formData);
+
+
+  const response = await fetch(`https://feedbackapi.senihay.com/feedback/update/${id}`, {
+    method: "PUT",
+    headers: {
+      accept: "*/*",
+      "Content-type": "application/json",
+      Cookie: cookies().toString(),
+    },
+    body: JSON.stringify({
+      id,
+      title,
+      detail,
+      categoryId,
+      status,
+    }),
+  }
+  );
+
+  console.log(response, "update");
+
+  if (response.ok) console.log("form gönderildi");
+  else if (response.status == 404) {
+    console.log("skıntı var");
+  }
+}
+export const upvoteFeedback = async (id) => {
+  id = parseInt(id);
+  const response = await fetch(`https://feedbackapi.senihay.com/upvote/upvote?feedbackId=` + id,
+    {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        Cookie: cookies().toString(),
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error('Upvote failed');
+  }
+
+  return response.json();  // API'den gelen veri burada döndürülür
+};
