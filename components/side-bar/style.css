@@ -14,6 +14,44 @@
       display: none;
     }
 
+    .userInfo{
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: capitalize;
+      position: relative;
+    }
+
+    .userInfo::before{
+      content: "";
+      width: 40%;
+      height: 3px;
+      border-radius: 2px;
+      background: white;
+      position: absolute;
+      bottom: 0;
+    }
+
+    button {
+      width: 100px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 900;
+      background: white;
+      padding: 5px 10px;
+      text-align: center;
+      color: #4661e6;
+      margin-bottom: 10px;
+      transition: all 0.8s;
+      border: none;
+    }
+
+    button:hover {
+      background: #4661e6;
+      color: white;
+      box-shadow: 0 0 5px #4661e6;
+    }
+
     a {
       width: 100px;
       border-radius: 10px;
