@@ -16,8 +16,6 @@ export default function SideBar({ setCategory }) {
     const fetchUser = async () => {
       const response = await getMe();
 
-      console.log("response :>> ", response);
-
       setUser(response);
     };
     fetchUser();

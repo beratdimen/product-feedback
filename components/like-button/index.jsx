@@ -8,8 +8,6 @@ export default function LikeBtn({ upvoteCount }) {
   const [like, setLike] = useState(upvoteCount);
   const [liked, setLiked] = useState(false);
 
-  console.log(upvoteCount);
-
   function handleLike() {
     if (liked) {
       setLike(like - 1);

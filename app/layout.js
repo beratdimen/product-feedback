@@ -2,6 +2,7 @@ import { Jost } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { getMe } from "@/utils/fetchBase";
+import { Toaster } from "sonner";
 const jost = Jost({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,7 +19,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="tr">
       <body className={`${jost.className}`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <Toaster richColors position="top-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

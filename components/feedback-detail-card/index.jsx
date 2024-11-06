@@ -3,7 +3,6 @@ import "./style.css";
 import LikeBtn from "../like-button";
 
 export default function FeedbackDetailCard({ data }) {
-  console.log(data, "dataaa");
   return (
     <div className="cardContainer">
       <LikeBtn upvoteCount={data?.upvoteCount} />

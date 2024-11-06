@@ -5,7 +5,6 @@ import "./style.css";
 import ReplyButton from "../reply-button";
 import ReplyComments from "../reply-comments";
 import { useEffect, useState } from "react";
-import Data from "/data.json";
 import { getComments } from "@/utils/fetchBase";
 
 export default function Comments({ feedbackId }) {
@@ -16,16 +15,36 @@ export default function Comments({ feedbackId }) {
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
-      const data = await response.json();
-      setComments(data);
+      console.log(response);
+      if (!response.error) {
+        setComments(response?.data);
+      }
     }
 
-    if (feedbackId) {
-      fetchComments();
-    }
+    fetchComments();
   }, [feedbackId]);
-  console.log(selectedIndex);
-  console.log(comments, "commetsss");
+
+  console.log(comments, "comments");
+  console.log(feedbackId, "feedbackId");
+
+  function formatTime(createdTime) {
+    const commentDate = new Date(createdTime); // kanka burada createdTime a göre  yeni tarih oluşturuyor tarih yapıyor yani Date fonksiyonu ile
+    const now = new Date(); // buradada şu an ki zamanı alıyor date güncel bulunduğumuz tarih
+    const difference = now - commentDate; // burdada şimki zaman ile yorum zamanı arasındaki zaman hesaplanıyor
+    const diffInDays = Math.floor(difference / (1000 * 60 * 60 * 24)); // burada da ms yi güne dönüştürme işlemi yapııtık math florda yuvarlama iin kullanıldı
+
+    if (diffInDays < 1) {
+      const diffInHours = Math.floor(difference / (1000 * 60 * 60)); // 1 günden azsa yapılan yorum
+      return diffInHours < 1 ? "Az önce" : `${diffInHours} saat önce`; // çıktısı da burda 1 saatden azsa az önce değilse kaç saat se onda önce gibi
+    } else if (diffInDays < 7) {
+      return `${diffInDays} gün önce`;
+      // 7 günden azsa şu kadar gün önce yazsın
+    } else {
+      return commentDate.toLocaleDateString("tr-TR");
+      // değilse eğer normal 10.12.2024 gibi yazsın
+    }
+  }
+
   return (
     <div className="commentsContainer">
       <div className="commentsGeneral">
@@ -38,10 +57,8 @@ export default function Comments({ feedbackId }) {
                 <div>
                   <AvatarIcon />
                   <div className="avatarInfo">
-                    <h4>
-                      {x.userName} {x.lastName}
-                    </h4>
-                    <p>{x.userName}</p>
+                    <h4>{x.userName}</h4>
+                    <p>{formatTime(x.createdTime)}</p>
                   </div>
                 </div>
                 <ReplyButton

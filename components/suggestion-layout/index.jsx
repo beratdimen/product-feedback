@@ -16,7 +16,6 @@ export default function SuggesstionLayout() {
     async function fetchData() {
       const { response, error } = await getFeedback(category, page, 4);
 
-      console.log("response :>> ", response);
       if (!error) {
         setFeedbackData(response);
       } else {

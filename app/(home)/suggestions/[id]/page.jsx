@@ -8,11 +8,9 @@ import "./style.css";
 
 export default function DetailFeedbacks({ params }) {
   const [data, setData] = useState({});
-  console.log(params, "digerparams");
   useEffect(() => {
     const fetchData = async () => {
       const { response, error } = await getDetailFeedbacks(params?.id);
-      console.log(response, "fasddasdsa");
 
       if (!error) {
         setData(response);
@@ -22,5 +20,5 @@ export default function DetailFeedbacks({ params }) {
     fetchData();
   }, [params?.id]);
 
-  return data ? <DetailFeedback data={data} /> : <Empty />;
+  return data ? <DetailFeedback data={data} params={params} /> : <Empty />;
 }

@@ -248,10 +248,21 @@ export const logOut = async () => {
 };
 
 export const getComments = async (id) => {
-  const response = await fetch(
-    `https://feedbackapi.senihay.com/comment/getcomments?feedbackId=${id}`
-  );
-  return response;
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/comment/getcomments?feedbackId=${id}`
+    );
+    console.log(response, "resComments");
+    if (!response.ok) {
+      return { error: "NO Comment" };
+    }
+    const data = await response.json();
+
+    return { data };
+  } catch (error) {
+    console.error(error);
+    return { data: null, error };
+  }
 };
 
 export const createComment = async (formData) => {
