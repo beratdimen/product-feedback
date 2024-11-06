@@ -3,7 +3,7 @@ import ButtonGroup from "../create-btn-group";
 import "./editmodal.css";
 import Image from "next/image";
 
-export default function EditFeedback({ editFeedback, close }) {
+export default function EditFeedback({ editFeedback, close, data }) {
   return (
     <dialog ref={(e) => (editFeedback.current = e)}>
       <Image
@@ -15,7 +15,7 @@ export default function EditFeedback({ editFeedback, close }) {
       />
       <div className="editDialogContainer">
         <div className="dialoghead">
-          <h2>Editing ‘Add a dark theme option’</h2>
+          <h2>Editing ‘{data.title}’</h2>
           <button onClick={close}>
             <CancelBtn />
           </button>
@@ -26,7 +26,7 @@ export default function EditFeedback({ editFeedback, close }) {
               <p>Feedback title</p>
               <p>Add a short, descriptive headline</p>
             </div>
-            <input type="text" />
+            <input type="text" defaultValue={data?.title || ""} />
           </label>
 
           <label>
@@ -34,7 +34,7 @@ export default function EditFeedback({ editFeedback, close }) {
               <p>Category</p>
               <p>Choose a category for your feedback</p>
             </div>
-            <select>
+            <select defaultValue={data?.category || ""}>
               <option value=""></option>
               <option value="">Feature</option>
               <option value="">UI</option>
@@ -48,12 +48,12 @@ export default function EditFeedback({ editFeedback, close }) {
               <p>Update Status</p>
               <p>Change feedback state</p>
             </div>
-            <select name="roadmap">
+            <select name="roadmap" defaultValue={data?.status || ""}>
               <option value=""></option>
               <option value="0">Suggestion</option>
               <option value="1">Planned</option>
-              <option value="">In-Progress</option>
-              <option value="">Live</option>
+              <option value="2">In-Progress</option>
+              <option value="3">Live</option>
             </select>
           </label>
 
@@ -65,7 +65,7 @@ export default function EditFeedback({ editFeedback, close }) {
                 etc.
               </p>
             </div>
-            <textarea rows="5"></textarea>
+            <textarea rows="5" defaultValue={data?.detail || ""}></textarea>
             <div className="btnGroup">
               <button className="deletebtn">Delete</button>
               <ButtonGroup close={close} />

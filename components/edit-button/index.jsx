@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import EditFeedback from "../edit-modal";
 import "./style.css";
-export default function EditButton() {
+export default function EditButton({ data, params }) {
   const editFeedback = useRef();
 
   function handleClick() {
@@ -24,6 +24,8 @@ export default function EditButton() {
         opendialog={handleClick}
         editFeedback={editFeedback}
         close={close}
+        data={data}
+        params={params}
       />
     </div>
   );

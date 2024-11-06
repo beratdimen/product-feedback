@@ -7,28 +7,15 @@ import Comments from "../comments";
 import AddComment from "../add-comment";
 import Link from "next/link";
 import ThemeSwitch from "../header/dark-mode-button";
-import { useEffect, useState } from "react";
-import { getDetailFeedbacks } from "@/utils/fetchBase";
+
 import FeedbackDetailCard from "../feedback-detail-card";
 export default function DetailFeedback({ opendialog, params, data }) {
-  const [datas, setData] = useState(data);
+  console.log(params, "params");
+  console.log(data, "data");
 
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
-  useEffect(() => {
-    const fetchData = async () => {
-      const detailData = await getDetailFeedbacks(params);
-
-      setData(detailData);
-
-      if (!detailData) {
-        return notFound();
-      }
-    };
-    fetchData();
-    // console.log(detailData);
-  }, [params]);
 
   return (
     <div className="detailContainer">
@@ -39,10 +26,10 @@ export default function DetailFeedback({ opendialog, params, data }) {
           </button>
         </Link>
         <ThemeSwitch />
-        <EditButton opendialog={opendialog} />
+        <EditButton opendialog={opendialog} data={data} params={params} />
       </div>
-      <FeedbackDetailCard />
-      <Comments />
+      <FeedbackDetailCard data={data} />
+      <Comments feedbackId={params} />
       <AddComment />
     </div>
   );
