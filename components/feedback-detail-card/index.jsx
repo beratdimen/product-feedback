@@ -10,7 +10,7 @@ export default function FeedbackDetailCard({ data }) {
         <div className="content">
           <h3>{data?.title}</h3>
           <p>{data?.detail}</p>
-          <span>Category</span>
+          <span>{data?.name}</span>
         </div>
       </div>
       <p className="comments">

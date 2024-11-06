@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function FeedbackCard({ id, title, detail, commentCount, upvoteCount, name }) {
   return (
     <div className="cardContainer">
-      <LikeBtn upvoteCount={upvoteCount} />
+      <LikeBtn upvoteCount={upvoteCount} id={id} />
       <div className="contentGeneral">
         <Link href={"/suggestions/" + id}>
           <div className="content">
