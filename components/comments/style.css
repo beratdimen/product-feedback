@@ -1,14 +1,17 @@
-.commentsContainer { 
+.commentsContainer {
   margin-block: 40px;
   border-radius: 16px;
   background-color: var(--cardBg);
   padding: 24px 32px;
 }
 
-.commentsGeneral {  
+.commentsGeneral {
+  height: 40vh;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  gap: 24px;  
+  gap: 24px;
+
 
   h3 {
     font-size: 18px;
@@ -19,7 +22,7 @@
     color: var(--titleText);
   }
 
-  .commentsCard { 
+  .commentsCard {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #8c92b338;
@@ -44,13 +47,14 @@
         justify-content: space-between;
 
         >div {
-          display: flex; 
+          display: flex;
           gap: 32px;
 
-          .avatarInfo{
+          .avatarInfo {
             display: flex;
             flex-direction: column;
           }
+
           h4 {
             color: var(--titleText);
             font-size: 14px;
@@ -73,11 +77,78 @@
   }
 }
 
+.commentsGeneral::-webkit-scrollbar {
+  display: none;
+}
+
+.replyCommentCard {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #8c92b338;
+  gap: 32px;
+  padding-bottom: 32px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    p {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 21.68px;
+      text-align: left;
+      color: var(--contentText);
+    }
+
+    span {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 21.68px;
+      text-align: left;
+      color: rgba(173, 31, 234, 1);
+       margin-right: 10px;
+    }
+
+    .userInformation {
+      display: flex;
+      justify-content: space-between;
+
+      >div {
+        display: flex;
+        gap: 32px;
+
+        .avatarInfo {
+          display: flex;
+          flex-direction: column;
+        }
+
+        h4 {
+          color: var(--titleText);
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 20.23px;
+          letter-spacing: -0.1944444477558136px;
+          text-align: left;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20.23px;
+          text-align: left;
+          color: var(--contentText);
+        }
+      }
+    }
+  }
+}
 
 
 @media (width <=425px) {
- .commentsContainer{ 
-  width: 90%;
-  margin: 20px auto;
- }
+  .commentsContainer {
+    width: 90%;
+    margin: 20px auto;
+  }
 }

@@ -9,6 +9,7 @@ import { getComments } from "@/utils/fetchBase";
 
 export default function Comments({ feedbackId }) {
   const [comments, setComments] = useState([]);
+  const [filtercomments, setFilterComments] = useState([]);
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -23,6 +24,13 @@ export default function Comments({ feedbackId }) {
 
     fetchComments();
   }, [feedbackId]);
+
+
+  useEffect(() => {
+    setFilterComments(comments.filter(x => x.parentId === null))
+
+  }, [comments]);
+
 
   console.log(comments, "comments");
   console.log(feedbackId, "feedbackId");
@@ -44,36 +52,71 @@ export default function Comments({ feedbackId }) {
       // değilse eğer normal 10.12.2024 gibi yazsın
     }
   }
+  // `filtercomments` öğelerinin `id` değerlerinin `comments` içinde `parentId` olarak eşleşip eşleşmediğini kontrol eder
+  console.log(filtercomments.filter((fc) => comments.some(c => c.parentId === fc.id)));
+
+  // `filtercomments` içindeki tüm id değerlerini yazdırır
+  console.log(filtercomments.map((x) => x.id));
+
+  // `comments` içindeki tüm parentId değerlerini yazdırır
+  console.log(comments.map((x) => x.parentId));
 
   return (
     <div className="commentsContainer">
       <div className="commentsGeneral">
-        <h3>{comments.length}</h3>
-
-        {comments.map((x, i) => (
-          <div className="commentsCard" key={i}>
-            <div className="content">
-              <div className="userInformation">
-                <div>
-                  <AvatarIcon />
-                  <div className="avatarInfo">
-                    <h4>{x.userName}</h4>
-                    <p>{formatTime(x.createdTime)}</p>
+        <h3>{comments.length} Comments</h3>
+        {filtercomments.map((x, i) => (
+          <>
+            <div className="commentsCard" key={i}>
+              <div className="content">
+                <div className="userInformation">
+                  <div>
+                    <AvatarIcon />
+                    <div className="avatarInfo">
+                      <h4>{x.userName}</h4>
+                      <p>{formatTime(x.createdTime)}</p>
+                    </div>
                   </div>
+                  <ReplyButton
+                    setReplyShow={setReplyShow}
+                    replyShow={replyShow}
+                    setSelectedIndex={setSelectedIndex}
+                    i={x.id}
+                  />
                 </div>
-                <ReplyButton
-                  setReplyShow={setReplyShow}
-                  replyShow={replyShow}
-                  setSelectedIndex={setSelectedIndex}
-                  i={x.id}
-                />
+                <p>{x.content}</p>
               </div>
-
-              <p>{x.content}</p>
+              {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
             </div>
-            {selectedIndex === x.id && replyShow && <ReplyComments />}
-          </div>
+ 
+            {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
+              .map((reply) => ( // `map` ile her alt yorumu render ediyoruz
+                <div className="replyCommentCard" key={reply.id}>
+                  <div className="content">
+                    <div className="userInformation">
+                      <div>
+                        <AvatarIcon />
+                        <div className="avatarInfo">
+                          <h4>{reply.userName}</h4>
+                          <p>{formatTime(reply.createdTime)}</p>
+                        </div>
+                      </div>
+                      <ReplyButton
+                        setReplyShow={setReplyShow}
+                        replyShow={replyShow}
+                        setSelectedIndex={setSelectedIndex}
+                        i={reply.id}
+                      />
+                    </div>
+                    <p><span>@{x.userName}</span>{reply.content}</p>
+                  </div>
+                  {selectedIndex === reply.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
+                </div>
+              ))}
+          </>
         ))}
+
+
       </div>
     </div>
   );
