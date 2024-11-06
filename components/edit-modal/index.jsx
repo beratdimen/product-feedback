@@ -1,9 +1,12 @@
+"use client"
+
 import { CancelBtn } from "@/helpers/icons";
 import ButtonGroup from "../create-btn-group";
 import "./editmodal.css";
 import Image from "next/image";
+import { deleteFeedbacks, updateFeedbacks } from "@/action/actions";
+export default function EditFeedback({ editFeedback, close, data, categoryList }) {
 
-export default function EditFeedback({ editFeedback, close, data }) {
   return (
     <dialog ref={(e) => (editFeedback.current = e)}>
       <Image
@@ -20,13 +23,13 @@ export default function EditFeedback({ editFeedback, close, data }) {
             <CancelBtn />
           </button>
         </div>
-        <form>
+        <form action={updateFeedbacks}>
           <label>
             <div className="labeltext">
               <p>Feedback title</p>
               <p>Add a short, descriptive headline</p>
             </div>
-            <input type="text" defaultValue={data?.title || ""} />
+            <input type="text" defaultValue={data?.title || ""} name="title" />
           </label>
 
           <label>
@@ -34,12 +37,9 @@ export default function EditFeedback({ editFeedback, close, data }) {
               <p>Category</p>
               <p>Choose a category for your feedback</p>
             </div>
-            <select defaultValue={data?.category || ""}>
-              <option value=""></option>
-              <option value="">Feature</option>
-              <option value="">UI</option>
-              <option value="">UX</option>
-              <option value="">Bug</option>
+            <select defaultValue={data?.category || ""} name="categoryId">
+              {categoryList.map((x, i) =>
+                <option key={i} value={x.id}>{x.name}</option>)}
             </select>
           </label>
 
@@ -48,8 +48,7 @@ export default function EditFeedback({ editFeedback, close, data }) {
               <p>Update Status</p>
               <p>Change feedback state</p>
             </div>
-            <select name="roadmap" defaultValue={data?.status || ""}>
-              <option value=""></option>
+            <select name="status" defaultValue={data?.status || ""}>
               <option value="0">Suggestion</option>
               <option value="1">Planned</option>
               <option value="2">In-Progress</option>
@@ -59,15 +58,18 @@ export default function EditFeedback({ editFeedback, close, data }) {
 
           <label>
             <div className="labeltext">
-              <p>Feedback detais</p>
+              <p>Feedback details</p>
               <p>
                 Include any specific comments on what should be improved, added,
                 etc.
               </p>
             </div>
-            <textarea rows="5" defaultValue={data?.detail || ""}></textarea>
+            <textarea rows="5" defaultValue={data?.detail || ""} name="detail"></textarea>
+            <input type="hidden" name="dataid" value={data?.id} />
             <div className="btnGroup">
-              <button className="deletebtn">Delete</button>
+              <button className="deletebtn" >
+                Delete
+              </button>
               <ButtonGroup close={close} />
             </div>
           </label>
