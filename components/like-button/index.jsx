@@ -2,26 +2,31 @@
 
 import { UpIcon } from "@/helpers/icons";
 import "./style.css";
-import { useState } from "react";
+import { upvoteFeedback } from "@/action/actions";
 
-export default function LikeBtn({ upvoteCount }) {
-  const [like, setLike] = useState(upvoteCount);
-  const [liked, setLiked] = useState(false);
+export default function LikeBtn({ upvoteCount, id }) {
 
-  function handleLike() {
-    if (liked) {
-      setLike(like - 1);
-    } else {
-      setLike(like + 1);
+  console.log(id);
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+  
+    try {
+      const result = await upvoteFeedback(id);   
+      console.log(result);   
+    } catch (error) {
+      console.error("Error while upvoting:", error); 
     }
-    setLiked(!liked);
   }
 
   return (
     <div className="likeButton">
-      <button onClick={handleLike}>
-        <UpIcon /> {like}
-      </button>
+      <form onSubmit={handleSubmit}>
+        <button type="submit">
+          <UpIcon /> {upvoteCount}
+        </button>
+      </form>
     </div>
   );
 }

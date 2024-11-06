@@ -35,8 +35,6 @@ export const getDetailFeedbacks = async (id) => {
     `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/${id}`
   );
 
-  console.log("response :>> ", response);
-
   if (response.status != 200) {
     return { error: "No Detail" };
   }
@@ -64,16 +62,26 @@ export const updateFeedback = async (formData) => {
   return response;
 };
 
-export const deleteFeddback = async (id) => {
-  const response = await fetch(
-    `https://feedbackapi.senihay.com/feedback/delete/` + id,
+export const deleteFeedback = async (id) => {
+  console.log(id, "id adasdsad");
+  console.log(typeof id, "id adasdsad");
+
+  const response = await fetch(`https://feedbackapi.senihay.com/feedback/delete/${id}`,
     {
       method: "DELETE",
       headers: {
         accept: "*/*",
+        Cookie: cookies().toString(),
       },
     }
   );
+  console.log(response, "response delete");
+
+  if (response.ok) {
+    console.log("Form gönderildi");
+  } else if (response.status == 404) {
+    console.log("404 Hatası: ID bulunamadı veya geçersiz URL.");
+  }
   return response;
 };
 
@@ -252,7 +260,6 @@ export const getComments = async (id) => {
     const response = await fetch(
       `https://feedbackapi.senihay.com/comment/getcomments?feedbackId=${id}`
     );
-    console.log(response, "resComments");
     if (!response.ok) {
       return { error: "NO Comment" };
     }
@@ -265,16 +272,17 @@ export const getComments = async (id) => {
   }
 };
 
-export const createComment = async (formData, id) => {
+export const createComment = async (formData) => {
+
+
   const response = await AdvancedFetch(
     `https://feedbackapi.senihay.com/comment/createcomment`,
     "POST",
     {
-      content: formData,
-      feedbackId: id,
+      content: content,
+      feedbackId: feedbackId,
     }
   );
-  console.log(id);
   return response;
 };
 
@@ -308,7 +316,9 @@ export const getCategory = async () => {
   const response = await fetch(
     `https://feedbackapi.senihay.com/category/getcategories`
   );
-  return response;
+  const data = await response.json();
+
+  return data ;
 };
 
 export const createCategory = async (formData) => {
@@ -351,3 +361,4 @@ export const deleteCategory = async (id) => {
   );
   return response;
 };
+
