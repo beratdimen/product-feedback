@@ -23,7 +23,7 @@ export default function DetailFeedback({ opendialog, params, data }) {
       </div>
       <FeedbackDetailCard data={data} />
       <Comments feedbackId={params?.id} />
-      <AddComment />
+      <AddComment feedbackId={params?.id} />
     </div>
   );
 }

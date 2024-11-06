@@ -265,15 +265,16 @@ export const getComments = async (id) => {
   }
 };
 
-export const createComment = async (formData) => {
+export const createComment = async (formData, id) => {
   const response = await AdvancedFetch(
     `https://feedbackapi.senihay.com/comment/createcomment`,
     "POST",
     {
-      content: formData.content,
-      feedbackId: formData.feedbackId,
+      content: formData,
+      feedbackId: id,
     }
   );
+  console.log(id);
   return response;
 };
 

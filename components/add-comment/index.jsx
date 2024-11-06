@@ -1,9 +1,10 @@
 "use client";
+import { createComment } from "@/utils/fetchBase";
 import "./style.css";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function AddComment() {
+export default function AddComment({ feedbackId }) {
   const [text, setText] = useState("");
   const MAX_CHAR = 250;
   const [remainigChar, setRemaningChar] = useState(250);
@@ -19,8 +20,9 @@ export default function AddComment() {
   return (
     <div className="addCommentContainer">
       <h4>Add Comment</h4>
-      <form>
+      <form action={() => createComment(text, feedbackId)}>
         <textarea
+          name="content"
           onChange={(e) => setText(e.target.value)}
           value={text}
           placeholder="type your comment here"
