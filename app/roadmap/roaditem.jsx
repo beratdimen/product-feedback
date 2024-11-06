@@ -4,31 +4,27 @@ import LikeBtn from "@/components/like-button";
 import "./roaditem.css";
 import { CommentsIcon } from "@/helpers/icons";
 
-export default function RoadItem({ selected }) {
+export default function RoadItem({ commentCount, detail, name, status, title, upvoteCount }) {
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
   return (
     <div className="roaditem">
-      <div className="roadItemHeader">
-        <h6>Planned(2)</h6>
-        <span>Ideas prioritized for research</span>
-      </div>
       <div className="roadItemContent">
         <p>
-          <span>●</span>Planned
+          <span>●</span>{status === 1 ? "Planned" : status === 2 ? "InProgress" : status === 3 ? "Live" : ""}
         </p>
         <div className="roadItemText">
-          <h2>More comprehensive reports</h2>
+          <h2>{title}</h2>
           <p>
-            It would be great to see a more detailed breakdown of solutions.
+            {detail}
           </p>
         </div>
-        <p className="tags">Feature</p>
+        <p className="tags">{name}</p>
         <div className="likesComments">
-          <LikeBtn />
+          <LikeBtn /> {upvoteCount}
           <p>
-            <CommentsIcon /> 8
+            <CommentsIcon /> {commentCount}
           </p>
         </div>
       </div>

@@ -12,6 +12,155 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+
+  .roadItemHeader {
+    margin-bottom: 20px;
+
+    h6 {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 26.01px;
+      letter-spacing: -0.25px;
+      text-align: left;
+      color: var(--titleText);
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 23.12px;
+      text-align: left;
+      color: var(--contentText);
+    }
+  }
+}
+
+.notfoundfeedback{
+  text-align: center;
+  text-transform: capitalize;
+  color: gray;
+}
+
+.planned {
+
+  .roadItemContent{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 4px solid var(--plannedColor);
+    background-color: var(--cardBg);
+    border-radius: 8px;
+    padding: 32px;
+  
+    p {
+      display: flex;
+      gap: 6px;
+      color: var(--contentText);
+  
+      span {
+        color: var(--plannedColor);
+      }
+    }
+  
+    h2 {
+      color: var(--titleText);
+    }
+  
+    .tags {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18.79px;
+      text-align: left;
+      background-color: var();
+      color: var(--categoryText);
+      background-color: var(--likeBtnBg);
+      padding: 6px 16px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+  }
+}
+.inprogress {
+
+  .roadItemContent{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 4px solid rgba(173, 31, 234, 1);
+    background-color: var(--cardBg);
+    border-radius: 8px;
+    padding: 32px;
+  
+    p {
+      display: flex;
+      gap: 6px;
+      color: var(--contentText);
+  
+      span {
+        color:rgba(173, 31, 234, 1);
+      }
+    }
+  
+    h2 {
+      color: var(--titleText);
+    }
+  
+    .tags {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18.79px;
+      text-align: left;
+      background-color: var();
+      color: var(--categoryText);
+      background-color: var(--likeBtnBg);
+      padding: 6px 16px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+  }
+}
+
+.live {
+
+  .roadItemContent{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 4px solid rgba(98, 188, 250, 1);
+    background-color: var(--cardBg);
+    border-radius: 8px;
+    padding: 32px;
+  
+    p {
+      display: flex;
+      gap: 6px;
+      color: var(--contentText);
+  
+      span {
+        color:rgba(98, 188, 250, 1);
+      }
+    }
+  
+    h2 {
+      color: var(--titleText);
+    }
+  
+    .tags {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 18.79px;
+      text-align: left;
+      background-color: var();
+      color: var(--categoryText);
+      background-color: var(--likeBtnBg);
+      padding: 6px 16px;
+      border-radius: 8px;
+      width: fit-content;
+    }
+
+  }
 }
 .listRoadmap {
   display: none;
