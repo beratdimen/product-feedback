@@ -17,7 +17,7 @@
   display: none;
 }
 
-@media (width <=768px) {
+@media (max-width: 920px) {
   .roadCont {
     max-width: 689px;
     margin: auto;
@@ -31,7 +31,7 @@
   }
 }
 
-@media (width <=425px) {
+@media (max-width: 426px) {
   .roadCont {
     width: 100%;
     margin: 0 auto;

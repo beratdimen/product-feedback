@@ -32,13 +32,12 @@ export const postFeedback = async (formData, likes) => {
 
 export const getDetailFeedbacks = async (id) => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/` +
-      id
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DETAIL_ENDPOINT}/${id}`
   );
 
   console.log("response :>> ", response);
 
-  if (!response.ok) {
+  if (response.status != 200) {
     return { error: "No Detail" };
   }
 
@@ -197,6 +196,7 @@ export async function loginUser(formData) {
 
   if (response.ok) redirect("/");
 }
+
 export const getMe = async () => {
   try {
     const response = await fetch(
@@ -259,7 +259,6 @@ export const createComment = async (formData) => {
     `https://feedbackapi.senihay.com/comment/createcomment`,
     "POST",
     {
-      parentId: formData.parentId,
       content: formData.content,
       feedbackId: formData.feedbackId,
     }

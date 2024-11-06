@@ -4,9 +4,11 @@ import { UpIcon } from "@/helpers/icons";
 import "./style.css";
 import { useState } from "react";
 
-export default function LikeBtn({upvoteCount}) {
+export default function LikeBtn({ upvoteCount }) {
   const [like, setLike] = useState(upvoteCount);
   const [liked, setLiked] = useState(false);
+
+  console.log(upvoteCount);
 
   function handleLike() {
     if (liked) {

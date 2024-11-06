@@ -8,12 +8,13 @@ import "./style.css";
 
 export default function DetailFeedbacks({ params }) {
   const [data, setData] = useState({});
-
+  console.log(params, "digerparams");
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getDetailFeedbacks(params?.id);
+      const { response, error } = await getDetailFeedbacks(params?.id);
+      console.log(response, "fasddasdsa");
 
-      if (!response?.error) {
+      if (!error) {
         setData(response);
       }
     };
