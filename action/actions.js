@@ -171,18 +171,15 @@ export async function deleteFeedbacks(id) {
     if (response.ok) {
       const data = await response.json();
       console.log("Feedback deleted successfully:", data);
-      return data;
     } else if (response.status === 404) {
       console.log("Error: Feedback not found");
-      return null;
     } else {
       console.log("An error occurred during deletion:", response.status);
-      return null;
     }
   } catch (error) {
     console.error("Network or server error:", error);
-    return null;
   }
+  redirect("/");
 }
 
 export async function updateFeedbacks(formData) {
