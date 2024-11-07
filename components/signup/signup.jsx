@@ -10,10 +10,6 @@ export default function SignUp({ setSign, sign }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
-
-
-    console.log(formObj, "signupformobj");
-
     try {
       if (formObj) {
         const response = await authRegister(formObj);

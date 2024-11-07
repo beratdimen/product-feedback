@@ -50,6 +50,7 @@ export default function EditFeedback({
     const deleteResponse = await deleteFeedbacks(params);
     if (deleteResponse) {
       console.log("Feedback has been deleted successfully.");
+      close();
     } else {
       console.error("Feedback could not be deleted.");
     }

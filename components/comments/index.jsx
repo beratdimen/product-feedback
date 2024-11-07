@@ -14,7 +14,6 @@ export default function Comments({ feedbackId }) {
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
@@ -27,12 +26,9 @@ export default function Comments({ feedbackId }) {
     fetchComments();
   }, [feedbackId]);
 
-
   useEffect(() => {
-    setFilterComments(comments.filter(x => x.parentId === null));
-
+    setFilterComments(comments.filter((x) => x.parentId === null));
   }, [comments]);
-
 
   console.log(comments, "comments");
   console.log(feedbackId, "feedbackId");
@@ -55,7 +51,9 @@ export default function Comments({ feedbackId }) {
     }
   }
   // `filtercomments` öğelerinin `id` değerlerinin `comments` içinde `parentId` olarak eşleşip eşleşmediğini kontrol eder
-  console.log(filtercomments.filter((fc) => comments.some(c => c.parentId === fc.id)));
+  console.log(
+    filtercomments.filter((fc) => comments.some((c) => c.parentId === fc.id))
+  );
 
   // `filtercomments` içindeki tüm id değerlerini yazdırır
   console.log(filtercomments.map((x) => x.id));

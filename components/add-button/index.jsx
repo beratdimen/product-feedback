@@ -47,7 +47,6 @@ export default function AddButton({ CategoryData, fetchData }) {
         console.log("Müşteri kaydı başarılı:", clientResponse);
 
         close();
-        debugger;
 
         // Yeni feedback eklendikten sonra veriyi tekrar çek
         fetchData(); // Ana bileşende feedback verilerini tekrar çek

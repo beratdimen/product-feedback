@@ -117,28 +117,51 @@ export const authRegister = async (formData) => {
   formDataPost.append("Password", formData.password);
   formDataPost.append("AvatarImg", "");
 
-  try {
-    const response = await fetch(
-      `https://feedbackapi.senihay.com/auth/register`,
-      {
-        method: "POST",
-        headers: {
-          accept: "*/*", 
-          Cookie: cookies().toString(),
-        },
-        body: formDataPost,
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || "Bir hata oluştu");
+  // try {
+  const response = await fetch(
+    `https://feedbackapi.senihay.com/auth/register`,
+    {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+      },
+      body: formDataPost,
+      credentials: "include",
     }
-    return data;
-  } catch (errors) {
-    return { data: null, errors };
+  );
+
+  // const data = await response.json();
+
+  //   if (!response.ok) {
+  //     throw new Error(data.message || "Bir hata oluştu");
+  //   }
+  //   return response;
+  // } catch (errors) {
+  //   return { data: null, errors };
+  // }
+
+  const data = await response.text();
+  console.log(data, "kayıt data");
+  if (!response.ok) {
+    return {
+      error: "Giriş Yapılamadı",
+    };
   }
+  const responseCookie = response.headers.get("set-cookie");
+  const cookiesArray = responseCookie.split(",");
+  const a = cookiesArray.flatMap((x) => x.split(";"));
+  const cookiesObject = {};
+  a.forEach((cookie) => {
+    const [key, value] = cookie.trim().split("=");
+    cookiesObject[key] = value;
+  });
+
+  cookies().set(
+    ".AspNetCore.Identity.Application",
+    cookiesObject[".AspNetCore.Identity.Application"]
+  );
+
+  redirect("/");
 };
 
 export const authLogin = async (formData) => {
