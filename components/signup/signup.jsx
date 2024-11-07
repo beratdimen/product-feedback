@@ -11,10 +11,13 @@ export default function SignUp({ setSign, sign }) {
     e.preventDefault();
     const formObj = Object.fromEntries(new FormData(e.target));
 
+
+    console.log(formObj, "signupformobj");
+
     try {
       if (formObj) {
         const response = await authRegister(formObj);
-        console.log(response, "asdasdasds");
+        console.log(response, "asdasdasdsasdasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
       }
     } catch (error) {
       console.error("Kayıt hatası:", error);

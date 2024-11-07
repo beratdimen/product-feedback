@@ -24,14 +24,13 @@
 
   .commentsCard {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     border-bottom: 1px solid #8c92b338;
     gap: 32px;
     padding-bottom: 32px;
 
     .content {
       display: flex;
-      flex-direction: column;
       gap: 16px;
 
       p {
@@ -44,16 +43,14 @@
 
       .userInformation {
         display: flex;
+        flex-direction: column;
+        gap: 16px;
         justify-content: space-between;
 
-        >div {
+        .avatarInfo {
           display: flex;
-          gap: 32px;
+          flex-direction: column;
 
-          .avatarInfo {
-            display: flex;
-            flex-direction: column;
-          }
 
           h4 {
             color: var(--titleText);
@@ -62,6 +59,7 @@
             line-height: 20.23px;
             letter-spacing: -0.1944444477558136px;
             text-align: left;
+            text-transform: capitalize;
           }
 
           p {
@@ -71,7 +69,16 @@
             text-align: left;
             color: var(--contentText);
           }
+
+          h5 {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20.23px;
+            text-align: left;
+            color: rgba(100, 113, 150, 1);
+          }
         }
+
       }
     }
   }
@@ -92,7 +99,6 @@
 
   .content {
     display: flex;
-    flex-direction: column;
     gap: 16px;
 
     p {
@@ -109,21 +115,19 @@
       line-height: 21.68px;
       text-align: left;
       color: rgba(173, 31, 234, 1);
-       margin-right: 10px;
+      margin-right: 10px;
     }
 
     .userInformation {
       display: flex;
+      flex-direction: column;
+      gap: 16px;
       justify-content: space-between;
 
-      >div {
+      .avatarInfo {
         display: flex;
-        gap: 32px;
+        flex-direction: column;
 
-        .avatarInfo {
-          display: flex;
-          flex-direction: column;
-        }
 
         h4 {
           color: var(--titleText);
@@ -132,6 +136,7 @@
           line-height: 20.23px;
           letter-spacing: -0.1944444477558136px;
           text-align: left;
+          text-transform: capitalize;
         }
 
         p {
@@ -140,6 +145,14 @@
           line-height: 20.23px;
           text-align: left;
           color: var(--contentText);
+        }
+
+        h5 {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20.23px;
+          text-align: left;
+          color: rgba(100, 113, 150, 1);
         }
       }
     }

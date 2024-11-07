@@ -115,6 +115,7 @@ export const authRegister = async (formData) => {
   formDataPost.append("Nickname", formData.nickName);
   formDataPost.append("Email", formData.email);
   formDataPost.append("Password", formData.password);
+  formDataPost.append("AvatarImg", "");
 
   try {
     const response = await fetch(
@@ -122,7 +123,8 @@ export const authRegister = async (formData) => {
       {
         method: "POST",
         headers: {
-          accept: "*/*",
+          accept: "*/*", 
+          Cookie: cookies().toString(),
         },
         body: formDataPost,
       }
@@ -133,7 +135,7 @@ export const authRegister = async (formData) => {
     if (!response.ok) {
       throw new Error(data.message || "Bir hata oluştu");
     }
-    return response;
+    return data;
   } catch (errors) {
     return { data: null, errors };
   }

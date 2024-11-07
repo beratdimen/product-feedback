@@ -6,6 +6,7 @@ import ReplyButton from "../reply-button";
 import ReplyComments from "../reply-comments";
 import { useEffect, useState } from "react";
 import { getComments } from "@/utils/fetchBase";
+import Image from "next/image";
 
 export default function Comments({ feedbackId }) {
   const [comments, setComments] = useState([]);
@@ -62,6 +63,9 @@ export default function Comments({ feedbackId }) {
   // `comments` içindeki tüm parentId değerlerini yazdırır
   console.log(comments.map((x) => x.parentId));
 
+  console.log(filtercomments, "fltercomments asdasd");
+
+
   return (
     <div className="commentsContainer">
       <div className="commentsGeneral">
@@ -70,54 +74,43 @@ export default function Comments({ feedbackId }) {
           <div key={i}>
             <div className="commentsCard" >
               <div className="content">
+                <img src={x.avatar} height={40} width={40} alt="asdasd" />
                 <div className="userInformation">
-                  <div>
-                    <AvatarIcon />
-                    <div className="avatarInfo">
-                      <h4>{x.userName}</h4>
-                      <p>{formatTime(x.createdTime)}</p>
-                    </div>
+                  <div className="avatarInfo">
+                    <h4>{x.firstName} {x.lastName}</h4>
+                    <h5>@{x.nickname}</h5>
+                    <p>{formatTime(x.createdTime)}</p>
                   </div>
-                  <ReplyButton
-                    setReplyShow={setReplyShow}
-                    replyShow={replyShow}
-                    setSelectedIndex={setSelectedIndex}
-                    i={x.id}
-                  />
+
+                  <p>{x.content}</p>
                 </div>
-                <p>{x.content}</p>
-              </div>
-              {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
+              </div><ReplyButton
+                setReplyShow={setReplyShow}
+                replyShow={replyShow}
+                setSelectedIndex={setSelectedIndex}
+                i={x.id}
+              />
             </div>
+            {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
 
             {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
               .map((reply) => ( // `map` ile her alt yorumu render ediyoruz
-                <div className="replyCommentCard" key={reply.id}>
+                <div className="replyCommentCard" key={reply.id} >
                   <div className="content">
+                    <img src={reply.avatar} height={40} width={40} alt="asdasd" />
                     <div className="userInformation">
-                      <div>
-                        <AvatarIcon />
-                        <div className="avatarInfo">
-                          <h4>{reply.userName}</h4>
-                          <p>{formatTime(reply.createdTime)}</p>
-                        </div>
+                      <div className="avatarInfo">
+                        <h4>{reply.firstName} {reply.lastName}</h4>
+                        <h5>@{reply.nickname}</h5>
+                        <p>{formatTime(reply.createdTime)}</p>
                       </div>
-                      <ReplyButton
-                        setReplyShow={setReplyShow}
-                        replyShow={replyShow}
-                        setSelectedIndex={setSelectedIndex}
-                        i={reply.id}
-                      />
+                      <p><span>@{x.nickname}</span> {reply.content}</p>
                     </div>
-                    <p><span>@{x.userName}</span>{reply.content}</p>
                   </div>
-                  {selectedIndex === reply.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
                 </div>
               ))}
           </div>
         ))}
-
-
       </div>
     </div>
   );
