@@ -61,7 +61,7 @@ export default function AddComment({ feedbackId }) {
       <h4>Add Comment</h4>
       <form onSubmit={handleSubmit}>
         <textarea
-          name="detail"
+          name="content"
           onChange={(e) => setText(e.target.value)}
           value={text}
           placeholder="type your comment here"

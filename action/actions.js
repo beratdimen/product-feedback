@@ -94,8 +94,8 @@ export async function saveFeedback(formData) {
 }
 
 export async function postComments(formData) {
-  const feedbackId = formData.get("feedbackid");
-  const content = formData.get("content");
+  const feedbackId = formData.feedbackid;
+  const content = formData.content;
 
   console.log("bu pushlama berat için");
 
@@ -113,6 +113,9 @@ export async function postComments(formData) {
       }),
     }
   );
+
+  console.log(response);
+  
 
   if (response.ok) console.log("form göönderildi");
   else if (response.status == 404) {
