@@ -1,14 +1,21 @@
-"use client"
+"use client";
 
 import { CancelBtn } from "@/helpers/icons";
 import ButtonGroup from "../create-btn-group";
 import "./editmodal.css";
 import Image from "next/image";
 import { useFormState } from "react-dom";
-import FormVAlidation, { deleteFeedbacks, updateFeedbacks } from "@/action/actions";
+import FormVAlidation, {
+  deleteFeedbacks,
+  updateFeedbacks,
+} from "@/action/actions";
 
-
-export default function EditFeedback({ editFeedback, close, data, categoryList }) {
+export default function EditFeedback({
+  editFeedback,
+  close,
+  data,
+  categoryList,
+}) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
     {
@@ -29,14 +36,24 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
     try {
       const clientResponse = await updateFeedbacks(formObj);
       console.log("Müşteri kaydı başarılı:", clientResponse);
-
     } catch (error) {
       console.error("Kayıt hatası:", error);
     }
-    
+
     close();
   }
 
+  async function handleDeleteFeedback(params) {
+    const confirmDelete = window.confirm("Silmek istediğinize emin misiniz?");
+
+    if (!confirmDelete) return;
+    const deleteResponse = await deleteFeedbacks(params);
+    if (deleteResponse) {
+      console.log("Feedback has been deleted successfully.");
+    } else {
+      console.error("Feedback could not be deleted.");
+    }
+  }
 
   return (
     <dialog ref={(e) => (editFeedback.current = e)}>
@@ -62,9 +79,7 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
             </div>
             <input type="text" defaultValue={data?.title || ""} name="title" />
           </label>
-          {state?.error?.title && (
-            <p className="error">{state?.error.title}</p>
-          )}
+          {state?.error?.title && <p className="error">{state?.error.title}</p>}
 
           <label>
             <div className="labeltext">
@@ -72,8 +87,11 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
               <p>Choose a category for your feedback</p>
             </div>
             <select defaultValue={data?.category || ""} name="categoryId">
-              {categoryList.map((x, i) =>
-                <option key={i} value={x.id}>{x.name}</option>)}
+              {categoryList.map((x, i) => (
+                <option key={i} value={x.id}>
+                  {x.name}
+                </option>
+              ))}
             </select>
           </label>
           {state?.error?.categoryId && (
@@ -101,14 +119,22 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
                 etc.
               </p>
             </div>
-            <textarea rows="5" defaultValue={data?.detail || ""} name="detail"></textarea>
+            <textarea
+              rows="5"
+              defaultValue={data?.detail || ""}
+              name="detail"
+            ></textarea>
 
             {state?.error?.content && (
               <p className="error">{state?.error.detail}</p>
             )}
             <input type="hidden" name="dataid" value={data?.id} />
             <div className="btnGroup">
-              <button className="deletebtn" >
+              <button
+                type="button"
+                onClick={() => handleDeleteFeedback(data.id)}
+                className="deletebtn"
+              >
                 Delete
               </button>
               <ButtonGroup close={close} />

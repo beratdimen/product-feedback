@@ -66,7 +66,8 @@ export const deleteFeedback = async (id) => {
   console.log(id, "id adasdsad");
   console.log(typeof id, "id adasdsad");
 
-  const response = await fetch(`https://feedbackapi.senihay.com/feedback/delete/${id}`,
+  const response = await fetch(
+    `https://feedbackapi.senihay.com/feedback/delete/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -273,8 +274,6 @@ export const getComments = async (id) => {
 };
 
 export const createComment = async (formData) => {
-
-
   const response = await AdvancedFetch(
     `https://feedbackapi.senihay.com/comment/createcomment`,
     "POST",
@@ -318,7 +317,7 @@ export const getCategory = async () => {
   );
   const data = await response.json();
 
-  return data ;
+  return data;
 };
 
 export const createCategory = async (formData) => {
@@ -361,4 +360,3 @@ export const deleteCategory = async (id) => {
   );
   return response;
 };
-

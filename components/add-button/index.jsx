@@ -6,7 +6,8 @@ import ButtonGroup from "../create-btn-group";
 import Image from "next/image";
 import { useFormState } from "react-dom";
 import FormVAlidation, { saveFeedback } from "@/action/actions";
-import { getCategory, postFeedback } from "@/utils/fetchBase";
+import { getCategory, getMe, postFeedback } from "@/utils/fetchBase";
+import { toast } from "sonner";
 export default function AddButton({ CategoryData, fetchData }) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
@@ -31,26 +32,31 @@ export default function AddButton({ CategoryData, fetchData }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const user = await getMe();
+
     const formObj = Object.fromEntries(new FormData(e.target));
     await action(new FormData(e.target));
 
     if (state?.error) {
-      return; 
+      return;
     }
 
-    try {
-      const clientResponse = await saveFeedback(formObj);
-      console.log("Müşteri kaydı başarılı:", clientResponse);
-      
-      close(); 
-      debugger
+    if (user.data) {
+      try {
+        const clientResponse = await saveFeedback(formObj);
+        console.log("Müşteri kaydı başarılı:", clientResponse);
 
-      // Yeni feedback eklendikten sonra veriyi tekrar çek
-      fetchData(); // Ana bileşende feedback verilerini tekrar çek
-    } catch (error) {
-      console.error("Kayıt hatası:", error);
+        close();
+        debugger;
+
+        // Yeni feedback eklendikten sonra veriyi tekrar çek
+        fetchData(); // Ana bileşende feedback verilerini tekrar çek
+      } catch (error) {
+        console.error("Kayıt hatası:", error);
+      }
+    } else {
+      toast.error("Giriş Yapmalısınız");
     }
- 
   }
 
   function optionClick(e) {
@@ -96,7 +102,9 @@ export default function AddButton({ CategoryData, fetchData }) {
               </div>
               <select onChange={optionClick} name="category">
                 {CategoryData?.map((x, i) => (
-                  <option key={i} value={x.id}>{x.name}</option>
+                  <option key={i} value={x.id}>
+                    {x.name}
+                  </option>
                 ))}
               </select>
             </label>
@@ -113,11 +121,11 @@ export default function AddButton({ CategoryData, fetchData }) {
                 </p>
               </div>
               <textarea rows="5" name="detail"></textarea>
+              {state?.error?.detail && (
+                <p className="error">{state?.error.detail}</p>
+              )}
               <ButtonGroup close={close} />
             </label>
-            {state?.error?.detail && (
-              <p className="error">{state?.error.detail}</p>
-            )}
           </form>
         </div>
       </dialog>

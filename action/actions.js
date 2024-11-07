@@ -8,7 +8,7 @@ export default async function FormVAlidation(prevState, formData) {
 
   const errors = {
     title: !formObj.title && "Başlık alanı boş olamaz.",
-    content: !formObj.content && "İçerik alanı boş olamaz.",
+    detail: !formObj.detail && "İçerik alanı boş olamaz.",
     categoryId: !formObj.categoryId && "Kategori  alanı boş olamaz.",
     roadmap: !formObj.roadmap && "roadmap alanı boş olamaz.",
   };
@@ -99,17 +99,19 @@ export async function postComments(formData) {
 
   console.log("bu pushlama berat için");
 
-  const response = await fetch("https://feedbackapi.senihay.com/comment/createcomment", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-      Cookie: cookies().toString(),
-    },
-    body: JSON.stringify({
-      content,
-      feedbackId
-    }),
-  }
+  const response = await fetch(
+    "https://feedbackapi.senihay.com/comment/createcomment",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Cookie: cookies().toString(),
+      },
+      body: JSON.stringify({
+        content,
+        feedbackId,
+      }),
+    }
   );
 
   if (response.ok) console.log("form göönderildi");
@@ -127,19 +129,20 @@ export async function postReplyComments(formData) {
   console.log(content, "content");
   console.log(parentId, "parentId");
 
-
-  const response = await fetch("https://feedbackapi.senihay.com/comment/createcomment", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-      Cookie: cookies().toString(),
-    },
-    body: JSON.stringify({
-      parentId,
-      content,
-      feedbackId
-    }),
-  }
+  const response = await fetch(
+    "https://feedbackapi.senihay.com/comment/createcomment",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Cookie: cookies().toString(),
+      },
+      body: JSON.stringify({
+        parentId,
+        content,
+        feedbackId,
+      }),
+    }
   );
   console.log(response, "parent");
 
@@ -149,30 +152,38 @@ export async function postReplyComments(formData) {
   }
 }
 
+//status 200 dönmesine rağmen çalışmayan lanet fetch
+export async function deleteFeedbacks(id) {
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/feedback/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+          Cookie: cookies().toString(),
+        },
+      }
+    );
 
-//status 200 dönmesine rağmen çalışmayan lanet fetch 
-export async function deleteFeedbacks(formData) {
-  const id = parseInt(formData.get("dataid"));
-
-
-
-  const response = await fetch("https://feedbackapi.senihay.com/feedback/delete/" + id, {
-    method: "DELETE",
-    headers: {
-      accept: "*/*",
-      "Content-type": "application/json",
-      Cookie: cookies().toString(),
+    // Check if the response is OK
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Feedback deleted successfully:", data);
+      return data;
+    } else if (response.status === 404) {
+      console.log("Error: Feedback not found");
+      return null;
+    } else {
+      console.log("An error occurred during deletion:", response.status);
+      return null;
     }
-  });
-
-  console.log(response);
-
-  if (response.ok) console.log("form göönderildi");
-  else if (response.status == 404) {
-    console.log("skıntı var");
+  } catch (error) {
+    console.error("Network or server error:", error);
+    return null;
   }
 }
-
 
 export async function updateFeedbacks(formData) {
   const title = formData.title;
@@ -183,22 +194,23 @@ export async function updateFeedbacks(formData) {
 
   console.log(formData);
 
-
-  const response = await fetch(`https://feedbackapi.senihay.com/feedback/update/${id}`, {
-    method: "PUT",
-    headers: {
-      accept: "*/*",
-      "Content-type": "application/json",
-      Cookie: cookies().toString(),
-    },
-    body: JSON.stringify({
-      id,
-      title,
-      detail,
-      categoryId,
-      status,
-    }),
-  }
+  const response = await fetch(
+    `https://feedbackapi.senihay.com/feedback/update/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        accept: "*/*",
+        "Content-type": "application/json",
+        Cookie: cookies().toString(),
+      },
+      body: JSON.stringify({
+        id,
+        title,
+        detail,
+        categoryId,
+        status,
+      }),
+    }
   );
 
   console.log(response, "update");
@@ -210,7 +222,8 @@ export async function updateFeedbacks(formData) {
 }
 export const upvoteFeedback = async (id) => {
   id = parseInt(id);
-  const response = await fetch(`https://feedbackapi.senihay.com/upvote/upvote?feedbackId=` + id,
+  const response = await fetch(
+    `https://feedbackapi.senihay.com/upvote/upvote?feedbackId=` + id,
     {
       method: "POST",
       headers: {
@@ -221,8 +234,8 @@ export const upvoteFeedback = async (id) => {
   );
 
   if (!response.ok) {
-    throw new Error('Upvote failed');
+    throw new Error("Upvote failed");
   }
 
-  return response.json();  // API'den gelen veri burada döndürülür
+  return response.json(); // API'den gelen veri burada döndürülür
 };
