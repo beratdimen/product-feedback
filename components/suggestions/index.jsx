@@ -6,14 +6,13 @@ import "./style.css";
 
 export default function Suggestions({ feedbackData, setPage, page }) {
   console.log(feedbackData, "213123123123213213213123213123");
-  
-  const [getUser, setGetUser] = useState([]);
+   
 
   const result = Math.ceil(feedbackData.totalItems / feedbackData.pageSize);
 
   return (
     <div className="gg">
-      {feedbackData?.feedbacks?.map((feedback, index) => (
+      {feedbackData?.feedbacks?.filter(x => x.status === 0).map((feedback, index) => (
         <FeedbackCard
           key={index}
           {...feedback}

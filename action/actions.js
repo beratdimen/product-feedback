@@ -65,9 +65,9 @@ export async function loginUser(prevState, formData) {
 }
 
 export async function saveFeedback(formData) {
-  const title = formData.get("title");
-  const detail = formData.get("content");
-  const categoryId = formData.get("category");
+  const title = formData.title;
+  const detail = formData.detail;
+  const categoryId = formData.category;
 
   console.log("bu pushlama berat için");
 
@@ -175,11 +175,11 @@ export async function deleteFeedbacks(formData) {
 
 
 export async function updateFeedbacks(formData) {
-  const title = formData.get("title");
-  const categoryId = parseInt(formData.get("categoryId"));
-  const status = parseInt(formData.get("status"));
-  const detail = formData.get("detail");
-  const id = formData.get("dataid");
+  const title = formData.title;
+  const categoryId = parseInt(formData.categoryId);
+  const status = parseInt(formData.status);
+  const detail = formData.detail;
+  const id = formData.dataid;
 
   console.log(formData);
 

@@ -13,6 +13,7 @@ export default function Comments({ feedbackId }) {
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
+
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
@@ -27,7 +28,7 @@ export default function Comments({ feedbackId }) {
 
 
   useEffect(() => {
-    setFilterComments(comments.filter(x => x.parentId === null))
+    setFilterComments(comments.filter(x => x.parentId === null));
 
   }, [comments]);
 
@@ -66,8 +67,8 @@ export default function Comments({ feedbackId }) {
       <div className="commentsGeneral">
         <h3>{comments.length} Comments</h3>
         {filtercomments.map((x, i) => (
-          <>
-            <div className="commentsCard" key={i}>
+          <div key={i}>
+            <div className="commentsCard" >
               <div className="content">
                 <div className="userInformation">
                   <div>
@@ -88,7 +89,7 @@ export default function Comments({ feedbackId }) {
               </div>
               {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
             </div>
- 
+
             {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
               .map((reply) => ( // `map` ile her alt yorumu render ediyoruz
                 <div className="replyCommentCard" key={reply.id}>
@@ -113,7 +114,7 @@ export default function Comments({ feedbackId }) {
                   {selectedIndex === reply.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
                 </div>
               ))}
-          </>
+          </div>
         ))}
 
 

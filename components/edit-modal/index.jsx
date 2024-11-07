@@ -4,8 +4,39 @@ import { CancelBtn } from "@/helpers/icons";
 import ButtonGroup from "../create-btn-group";
 import "./editmodal.css";
 import Image from "next/image";
-import { deleteFeedbacks, updateFeedbacks } from "@/action/actions";
+import { useFormState } from "react-dom";
+import FormVAlidation, { deleteFeedbacks, updateFeedbacks } from "@/action/actions";
+
+
 export default function EditFeedback({ editFeedback, close, data, categoryList }) {
+  const [state, action] = useFormState(
+    (prevState, formData) => FormVAlidation(prevState, formData),
+    {
+      message: null,
+      error: null,
+    }
+  );
+
+  async function handleSubmitedit(e) {
+    e.preventDefault();
+    const formObj = Object.fromEntries(new FormData(e.target));
+    await action(new FormData(e.target));
+
+    if (state?.errors) {
+      return;
+    }
+
+    try {
+      const clientResponse = await updateFeedbacks(formObj);
+      console.log("Müşteri kaydı başarılı:", clientResponse);
+
+    } catch (error) {
+      console.error("Kayıt hatası:", error);
+    }
+    
+    close();
+  }
+
 
   return (
     <dialog ref={(e) => (editFeedback.current = e)}>
@@ -23,7 +54,7 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
             <CancelBtn />
           </button>
         </div>
-        <form action={updateFeedbacks}>
+        <form onSubmit={handleSubmitedit}>
           <label>
             <div className="labeltext">
               <p>Feedback title</p>
@@ -31,6 +62,9 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
             </div>
             <input type="text" defaultValue={data?.title || ""} name="title" />
           </label>
+          {state?.error?.title && (
+            <p className="error">{state?.error.title}</p>
+          )}
 
           <label>
             <div className="labeltext">
@@ -42,6 +76,9 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
                 <option key={i} value={x.id}>{x.name}</option>)}
             </select>
           </label>
+          {state?.error?.categoryId && (
+            <p className="error">{state?.error.categoryId}</p>
+          )}
 
           <label>
             <div className="labeltext">
@@ -65,6 +102,10 @@ export default function EditFeedback({ editFeedback, close, data, categoryList }
               </p>
             </div>
             <textarea rows="5" defaultValue={data?.detail || ""} name="detail"></textarea>
+
+            {state?.error?.content && (
+              <p className="error">{state?.error.detail}</p>
+            )}
             <input type="hidden" name="dataid" value={data?.id} />
             <div className="btnGroup">
               <button className="deletebtn" >

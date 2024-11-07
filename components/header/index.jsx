@@ -6,7 +6,7 @@ import SortByFilter from "../sort-by-filter";
 import AddButton from "../add-button";
 import ThemeSwitch from "./dark-mode-button";
 
-export default function Header({ count, CategoryData, setFeedbackData, feedbackData }) {
+export default function Header({ count, CategoryData, setFeedbackData, feedbackData, fetchData }) {
   return (
     <div className="headerContainer">
       <div className="headerPiece">
@@ -17,7 +17,7 @@ export default function Header({ count, CategoryData, setFeedbackData, feedbackD
         <SortByFilter setFeedbackData={setFeedbackData} feedbackData={feedbackData} />
         <ThemeSwitch />
       </div>
-      <AddButton CategoryData={CategoryData} />
+      <AddButton CategoryData={CategoryData} fetchData={fetchData} />
     </div>
   );
 }

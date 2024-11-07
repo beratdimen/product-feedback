@@ -7,8 +7,7 @@ import Image from "next/image";
 import { useFormState } from "react-dom";
 import FormVAlidation, { saveFeedback } from "@/action/actions";
 import { getCategory, postFeedback } from "@/utils/fetchBase";
-
-export default function AddButton({ CategoryData }) {
+export default function AddButton({ CategoryData, fetchData }) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
     {
@@ -35,21 +34,29 @@ export default function AddButton({ CategoryData }) {
     const formObj = Object.fromEntries(new FormData(e.target));
     await action(new FormData(e.target));
 
-    if (state?.errors) {
-      return;
+    if (state?.error) {
+      return; 
     }
 
     try {
-      const clientResponse = await postFeedback(formObj);
+      const clientResponse = await saveFeedback(formObj);
       console.log("Müşteri kaydı başarılı:", clientResponse);
+      
+      close(); 
+      debugger
+
+      // Yeni feedback eklendikten sonra veriyi tekrar çek
+      fetchData(); // Ana bileşende feedback verilerini tekrar çek
     } catch (error) {
       console.error("Kayıt hatası:", error);
     }
+ 
   }
 
   function optionClick(e) {
     console.log(e.target.value);
   }
+
   return (
     <>
       <div className="headerBtn">
@@ -70,7 +77,7 @@ export default function AddButton({ CategoryData }) {
               <CancelBtn />
             </button>
           </div>
-          <form action={saveFeedback}>
+          <form onSubmit={handleSubmit}>
             <label name="title">
               <div className="labeltext">
                 <p>Feedback title</p>
@@ -88,8 +95,9 @@ export default function AddButton({ CategoryData }) {
                 <p>Choose a category for your feedback</p>
               </div>
               <select onChange={optionClick} name="category">
-                {CategoryData?.map((x, i) =>
-                  <option key={i} value={x.id}>{x.name}</option>)}
+                {CategoryData?.map((x, i) => (
+                  <option key={i} value={x.id}>{x.name}</option>
+                ))}
               </select>
             </label>
             {state?.error?.categoryId && (
@@ -98,17 +106,17 @@ export default function AddButton({ CategoryData }) {
 
             <label name="content">
               <div className="labeltext">
-                <p>Feedback detais</p>
+                <p>Feedback details</p>
                 <p>
                   Include any specific comments on what should be improved,
                   added, etc.
                 </p>
               </div>
-              <textarea rows="5" name="content"></textarea>
+              <textarea rows="5" name="detail"></textarea>
               <ButtonGroup close={close} />
             </label>
-            {state?.error?.content && (
-              <p className="error">{state?.error.content}</p>
+            {state?.error?.detail && (
+              <p className="error">{state?.error.detail}</p>
             )}
           </form>
         </div>

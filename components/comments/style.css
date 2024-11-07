@@ -82,7 +82,8 @@
 }
 
 .replyCommentCard {
-  margin-left: 50px;
+  padding-left: 50px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #8c92b338;
