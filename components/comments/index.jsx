@@ -13,7 +13,6 @@ export default function Comments({ feedbackId }) {
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
@@ -26,12 +25,9 @@ export default function Comments({ feedbackId }) {
     fetchComments();
   }, [feedbackId]);
 
-
   useEffect(() => {
-    setFilterComments(comments.filter(x => x.parentId === null));
-
+    setFilterComments(comments.filter((x) => x.parentId === null));
   }, [comments]);
-
 
   console.log(comments, "comments");
   console.log(feedbackId, "feedbackId");
@@ -54,7 +50,9 @@ export default function Comments({ feedbackId }) {
     }
   }
   // `filtercomments` öğelerinin `id` değerlerinin `comments` içinde `parentId` olarak eşleşip eşleşmediğini kontrol eder
-  console.log(filtercomments.filter((fc) => comments.some(c => c.parentId === fc.id)));
+  console.log(
+    filtercomments.filter((fc) => comments.some((c) => c.parentId === fc.id))
+  );
 
   // `filtercomments` içindeki tüm id değerlerini yazdırır
   console.log(filtercomments.map((x) => x.id));
@@ -64,61 +62,78 @@ export default function Comments({ feedbackId }) {
 
   return (
     <div className="commentsContainer">
-      <div className="commentsGeneral">
-        <h3>{comments.length} Comments</h3>
-        {filtercomments.map((x, i) => (
-          <div key={i}>
-            <div className="commentsCard" >
-              <div className="content">
-                <div className="userInformation">
-                  <div>
-                    <AvatarIcon />
-                    <div className="avatarInfo">
-                      <h4>{x.userName}</h4>
-                      <p>{formatTime(x.createdTime)}</p>
-                    </div>
-                  </div>
-                  <ReplyButton
-                    setReplyShow={setReplyShow}
-                    replyShow={replyShow}
-                    setSelectedIndex={setSelectedIndex}
-                    i={x.id}
-                  />
-                </div>
-                <p>{x.content}</p>
-              </div>
-              {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
-            </div>
-
-            {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
-              .map((reply) => ( // `map` ile her alt yorumu render ediyoruz
-                <div className="replyCommentCard" key={reply.id}>
-                  <div className="content">
-                    <div className="userInformation">
-                      <div>
-                        <AvatarIcon />
-                        <div className="avatarInfo">
-                          <h4>{reply.userName}</h4>
-                          <p>{formatTime(reply.createdTime)}</p>
-                        </div>
+      {filtercomments.content ? (
+        <div className="commentsGeneral">
+          <h3>{comments.length} Comments</h3>
+          {filtercomments.map((x, i) => (
+            <div key={i}>
+              <div className="commentsCard">
+                <div className="content">
+                  <div className="userInformation">
+                    <div>
+                      <AvatarIcon />
+                      <div className="avatarInfo">
+                        <h4>{x.userName}</h4>
+                        <p>{formatTime(x.createdTime)}</p>
                       </div>
-                      <ReplyButton
-                        setReplyShow={setReplyShow}
-                        replyShow={replyShow}
-                        setSelectedIndex={setSelectedIndex}
-                        i={reply.id}
-                      />
                     </div>
-                    <p><span>@{x.userName}</span>{reply.content}</p>
+                    <ReplyButton
+                      setReplyShow={setReplyShow}
+                      replyShow={replyShow}
+                      setSelectedIndex={setSelectedIndex}
+                      i={x.id}
+                    />
                   </div>
-                  {selectedIndex === reply.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
+                  <p>{x.content}</p>
                 </div>
-              ))}
-          </div>
-        ))}
+                {selectedIndex === x.id && replyShow && (
+                  <ReplyComments id={selectedIndex} feedbackId={feedbackId} />
+                )}
+              </div>
 
-
-      </div>
+              {comments
+                .filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
+                .map(
+                  (
+                    reply // `map` ile her alt yorumu render ediyoruz
+                  ) => (
+                    <div className="replyCommentCard" key={reply.id}>
+                      <div className="content">
+                        <div className="userInformation">
+                          <div>
+                            <AvatarIcon />
+                            <div className="avatarInfo">
+                              <h4>{reply.userName}</h4>
+                              <p>{formatTime(reply.createdTime)}</p>
+                            </div>
+                          </div>
+                          <ReplyButton
+                            setReplyShow={setReplyShow}
+                            replyShow={replyShow}
+                            setSelectedIndex={setSelectedIndex}
+                            i={reply.id}
+                          />
+                        </div>
+                        <p>
+                          <span>@{x.userName}</span>
+                          {reply.content}
+                        </p>
+                      </div>
+                      {selectedIndex === reply.id && replyShow && (
+                        <ReplyComments
+                          id={selectedIndex}
+                          feedbackId={feedbackId}
+                        />
+                      )}
+                    </div>
+                  )
+                )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Yorum Yoktur</p>
+      )}
     </div>
   );
 }
