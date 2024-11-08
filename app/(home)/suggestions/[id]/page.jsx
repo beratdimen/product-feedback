@@ -9,6 +9,7 @@ import "./style.css";
 export default function DetailFeedbacks({ params  }) {
   const [data, setData] = useState({});
   const [categoryList, setcategoryList] = useState([]);
+  const [active, setActive] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const { response, error } = await getDetailFeedbacks(params?.id);
@@ -23,7 +24,7 @@ export default function DetailFeedbacks({ params  }) {
 
     fetchData();
 
-  }, [params?.id]);
+  }, [params?.id, active]);
 
-  return data ? <DetailFeedback categoryList={categoryList} data={data} params={params} /> : <Empty />;
+  return data ? <DetailFeedback categoryList={categoryList} data={data} params={params} active={active} setActive={setActive} /> : <Empty />;
 }

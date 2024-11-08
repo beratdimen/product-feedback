@@ -4,60 +4,27 @@ import LikeBtn from "@/components/like-button";
 import "./roaditem.css";
 import { CommentsIcon } from "@/helpers/icons";
 
-export default function ListRoadItem({ selected }) {
+export default function ListRoadItem({ commentCount, detail, name, status, title, upvoteCount, selected }) {
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
-
   return (
-    <div className="listroaditem">
-      <div className="listroadItemHeader">
-        <h6>
-          {selected === 1
-            ? "Planned (1)"
-            : selected === 2
-            ? "In-Progress (1)"
-            : "Live (1)"}
-        </h6>
-        <span>Ideas prioritized for research</span>
-      </div>
-      <div
-        className="listroadItemContent"
-        style={{
-          borderTop:
-            selected === 1
-              ? "6px solid var(--plannedColor)"
-              : selected === 2
-              ? "6px solid var(--inProgreessColor)"
-              : "6px solid var(--liveColor)",
-        }}
-      >
+    <div className={selected === 1 ? "Planned" : selected === 2 ? "InProgress" : selected === 3 ? "Live" : ""}>
+      <div className="listroadItemContent">
         <p>
-          <span
-            style={{
-              color:
-                selected === 1
-                  ? "var(--plannedColor)"
-                  : selected === 2
-                  ? "var(--inProgreessColor)"
-                  : "var(--liveColor)",
-            }}
-          >
-            ●
-          </span>
-          {selected === 1 ? "Planned" : selected === 2 ? "In-Progress" : "Live"}
+          <span>●</span>{status === 1 ? "Planned" : status === 2 ? "InProgress" : status === 3 ? "Live" : ""}
         </p>
         <div className="listroadItemText">
-          <h2>More comprehensive reports</h2>
+          <h2>{title}</h2>
           <p>
-            It would be great to see a more detailed breakdown of solutions.
+            {detail}
           </p>
         </div>
-        <p className="tags">Feature</p>
-        <div className="likesComments">
+        <p className="tags">{name}</p>
+        <div className="listlikesComments">
           <LikeBtn />
           <p>
-            <CommentsIcon /> 8
+            <CommentsIcon /> {commentCount}
           </p>
         </div>
       </div>

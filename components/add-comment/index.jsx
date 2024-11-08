@@ -6,7 +6,7 @@ import FormVAlidation, { postComments } from "@/action/actions";
 import { getMe } from "@/utils/fetchBase";
 import { useFormState } from "react-dom";
 
-export default function AddComment({ feedbackId }) {
+export default function AddComment({ feedbackId, setActive, active }) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
     {
@@ -42,9 +42,8 @@ export default function AddComment({ feedbackId }) {
       try {
         const clientResponse = await postComments(formObj);
         console.log("Müşteri kaydı başarılı:", clientResponse);
-
-        close();
-        debugger;
+ 
+        setActive(!active)
 
         // Yeni feedback eklendikten sonra veriyi tekrar çek
         fetchData(); // Ana bileşende feedback verilerini tekrar çek
@@ -54,6 +53,7 @@ export default function AddComment({ feedbackId }) {
     } else {
       toast.error("Giriş Yapmalısınız");
     }
+
   }
 
   return (
@@ -70,7 +70,7 @@ export default function AddComment({ feedbackId }) {
         <input type="hidden" name="feedbackid" value={feedbackId} />
         <div className="commentFooter">
           <span>{remainigChar} karakter hakkın kaldı</span>
-          <button disabled={remainigChar < 0}>Post Comment</button>
+          <button disabled={remainigChar < 0} >Post Comment</button>
         </div>
       </form>
     </div>

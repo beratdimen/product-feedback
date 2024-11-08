@@ -385,3 +385,30 @@ export const deleteCategory = async (id) => {
   );
   return response;
 };
+
+
+export const getroadmapCount = async () => {
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/roadmap/getroadmapcount`,
+      {
+        method: "GET",
+        headers: {
+          accept: "*/*",
+          Cookie: cookies().toString(),
+        },
+      }
+    );
+
+    if (!response.ok) {
+      return { error: "Unauthorized" };
+    }
+
+    const data = await response.json();
+
+    return { data };
+  } catch (error) {
+    console.error(error);
+    return { data: null, error };
+  }
+};

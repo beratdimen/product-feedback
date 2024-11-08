@@ -4,7 +4,7 @@ import "./reply.css";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function ReplyComments({ feedbackId, id }) {
+export default function ReplyComments({ feedbackId, id, setActive, active }) {
   const [text, setText] = useState("");
   const MAX_CHAR = 250;
   const [remainigChar, setRemaningChar] = useState(250);
@@ -30,7 +30,7 @@ export default function ReplyComments({ feedbackId, id }) {
         ></textarea>
         <input type="hidden" name="feedbackid" value={feedbackId} />
         <input type="hidden" name="parentid" value={id} />
-        <button disabled={remainigChar < 0}>Post Reply</button>
+        <button disabled={remainigChar < 0} onClick={() => setActive(!active)}>Post Reply</button>
       </form>
     </div>
   );

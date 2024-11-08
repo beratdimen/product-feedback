@@ -1,4 +1,4 @@
-.hamdialogCont {
+.hamdialogCont { 
   dialog {
     position: fixed;
     margin: 0;
@@ -8,6 +8,18 @@
     height: 100%;
   }
 }
+
+.userContHamburger {
+
+  .userInfo {
+    color: black !important;
+  }
+
+  .userInfo::before {
+    background: black !important;
+  }
+}
+
 .sidebarDiaHeader {
   width: 100%;
   padding: 15px 24px;
@@ -65,8 +77,8 @@
 
 
 @media (width > 425px) {
-  .hamdialogCont{
+  .hamdialogCont {
     display: none;
   }
-  
+
 }
