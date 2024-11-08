@@ -10,17 +10,17 @@ import Live from "@/components/live";
 export default async function RoadMap() {
 
   const { response } = await getFeedback(0, 1, 100);
-  console.log(response.feedbacks);
+  console.log(response, "roadmap asdadasdasdasdasdasdasdasdasdasdadasdasdasdasdasd");
 
 
   return (
     <div className="roadmapContent">
       <RoadmapHeader />
-      <ListRoadMap  data={response.feedbacks}  />
+      <ListRoadMap data={response.feedbacks} />
       <div className="generalRoadmap">
         <Planned data={response.feedbacks} />
         <InProgress data={response.feedbacks} />
-        <Live  data={response.feedbacks} />
+        <Live data={response.feedbacks} />
       </div>
     </div>
   );

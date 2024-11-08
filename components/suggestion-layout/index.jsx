@@ -11,6 +11,8 @@ export default function SuggesstionLayout({ CategoryData }) {
   const [category, setCategory] = useState(0);
   const [page, setPage] = useState(1);
   const [feedbackData, setFeedbackData] = useState({});
+  const [active, setActive] = useState(false);
+
  
 
   //burda feedbackleri useEffect gibi değişkenler değiştiğinde çalışmasını istediğimiz zaman getirip bir tipi fonksiyon olan bir değişkene atıyoruz.
@@ -22,7 +24,7 @@ export default function SuggesstionLayout({ CategoryData }) {
     } else {
       console.error(error);
     }
-  }, [category, page]);
+  }, [category, page,active]);
 
   //Burda ise her fetchdata dan gelen veri değiştikçe çalışmasını istediğimiz işlemleri useEffect içine yazıyoruz mesela burda ben her feedback değiştiğinde çalışmasını istediğim için yukarıda useCallback ile veriyi çektiğim fonksiyonu useEffect içine çağırdım yani kısaca şöyle getFeedback den gelen veri her değiştiğinde burası çalışıcak ve anlık olarak veri ekrana basılıcak 
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function SuggesstionLayout({ CategoryData }) {
         {feedbackData?.totalItems === 0 ? (
           <Empty />
         ) : (
-          <Suggestions feedbackData={feedbackData} setPage={setPage} page={page} />
+          <Suggestions feedbackData={feedbackData} setPage={setPage} page={page} setActive={setActive} active={active} />
         )}
       </div>
     </>

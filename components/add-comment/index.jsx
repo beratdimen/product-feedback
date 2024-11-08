@@ -44,9 +44,7 @@ export default function AddComment({ feedbackId, setActive, active }) {
         console.log("Müşteri kaydı başarılı:", clientResponse);
  
         setActive(!active)
-
-        // Yeni feedback eklendikten sonra veriyi tekrar çek
-        fetchData(); // Ana bileşende feedback verilerini tekrar çek
+ 
       } catch (error) {
         console.error("Kayıt hatası:", error);
       }

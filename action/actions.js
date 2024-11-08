@@ -115,7 +115,7 @@ export async function postComments(formData) {
   );
 
   console.log(response);
-  
+
 
   if (response.ok) console.log("form göönderildi");
   else if (response.status == 404) {
@@ -185,7 +185,7 @@ export async function deleteFeedbacks(id) {
   redirect("/");
 }
 
- 
+
 export async function deleteCommnets(id) {
   try {
     const response = await fetch(
@@ -199,7 +199,7 @@ export async function deleteCommnets(id) {
         },
       }
     );
- 
+
     if (response.ok) {
       const data = await response.json();
       console.log("Feedback deleted successfully:", data);
@@ -210,7 +210,7 @@ export async function deleteCommnets(id) {
     }
   } catch (error) {
     console.error("Network or server error:", error);
-  } 
+  }
 }
 
 
@@ -250,6 +250,8 @@ export async function updateFeedbacks(formData) {
     console.log("skıntı var");
   }
 }
+
+ 
 export const upvoteFeedback = async (id) => {
   id = parseInt(id);
   const response = await fetch(

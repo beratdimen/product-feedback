@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 export const getFeedback = async (id, page, pageSize) => {
   const response = await AdvancedFetch(
-    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CATEGORIES_ENDPOINT}?categoryId=${id}&page=${page}&pageSize=${pageSize}`
+    `https://feedbackapi.senihay.com/feedback/getfeedbacks?page=${page}&pageSize=${pageSize}`
   );
   return response;
 };

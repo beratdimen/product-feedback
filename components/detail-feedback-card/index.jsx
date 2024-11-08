@@ -8,8 +8,8 @@ import AddComment from "../add-comment";
 import Link from "next/link";
 import ThemeSwitch from "../header/dark-mode-button";
 
-import FeedbackDetailCard from "../feedback-detail-card";
-import { useState } from "react";
+import FeedbackDetailCard from "../feedback-detail-card"; 
+
 export default function DetailFeedback({ opendialog, params, data, categoryList ,active,setActive}) {
 
   return (
