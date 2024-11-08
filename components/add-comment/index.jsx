@@ -20,8 +20,8 @@ export default function AddComment({ feedbackId, setActive, active }) {
   const [remainigChar, setRemaningChar] = useState(250);
 
   useEffect(() => {
-    setRemaningChar(MAX_CHAR - text.length);
-
+    const remaining = MAX_CHAR - text.length;
+    setRemaningChar(remaining);
     if (remainigChar <= 0) {
       toast.error("250 karaktaerden fazla");
     }
@@ -42,16 +42,19 @@ export default function AddComment({ feedbackId, setActive, active }) {
       try {
         const clientResponse = await postComments(formObj);
         console.log("Müşteri kaydı başarılı:", clientResponse);
- 
-        setActive(!active)
- 
+
+        setActive(!active);
+
+        // Yeni feedback eklendikten sonra veriyi tekrar çek
+        fetchData(); // Ana bileşende feedback verilerini tekrar çek
+        setText("");
+        setRemaningChar(MAX_CHAR);
       } catch (error) {
         console.error("Kayıt hatası:", error);
       }
     } else {
       toast.error("Giriş Yapmalısınız");
     }
-
   }
 
   return (
@@ -64,11 +67,11 @@ export default function AddComment({ feedbackId, setActive, active }) {
           value={text}
           placeholder="type your comment here"
         ></textarea>
-        {state?.error?.detail && <p>Kankaaa yanlış kkanna</p>}
+        {state?.error && <p>Kankaaa yanlış kkanna</p>}
         <input type="hidden" name="feedbackid" value={feedbackId} />
         <div className="commentFooter">
           <span>{remainigChar} karakter hakkın kaldı</span>
-          <button disabled={remainigChar < 0} >Post Comment</button>
+          <button disabled={remainigChar < 0}>Post Comment</button>
         </div>
       </form>
     </div>
