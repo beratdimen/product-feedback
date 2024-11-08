@@ -219,17 +219,9 @@ export async function loginUser(formData) {
 
   const responseCookie = response.headers.get("set-cookie");
   const cookiesArray = responseCookie.split(",");
-  const a = cookiesArray.flatMap((x) => x.split(";"));
-  const cookiesObject = {};
-  a.forEach((cookie) => {
-    const [key, value] = cookie.trim().split("=");
-    cookiesObject[key] = value;
+  cookiesArray.forEach((cookie) => {
+    document.cookie = cookie; // İstemci tarafında çerezleri ayarlama
   });
-
-  cookies().set(
-    ".AspNetCore.Identity.Application",
-    cookiesObject[".AspNetCore.Identity.Application"]
-  );
 
   if (response.ok) redirect("/");
 }
@@ -389,7 +381,6 @@ export const deleteCategory = async (id) => {
   );
   return response;
 };
-
 
 export const getroadmapCount = async () => {
   try {
