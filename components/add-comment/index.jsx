@@ -44,7 +44,6 @@ export default function AddComment({ feedbackId }) {
         console.log("Müşteri kaydı başarılı:", clientResponse);
 
         close();
-        debugger;
 
         // Yeni feedback eklendikten sonra veriyi tekrar çek
         fetchData(); // Ana bileşende feedback verilerini tekrar çek
@@ -66,7 +65,7 @@ export default function AddComment({ feedbackId }) {
           value={text}
           placeholder="type your comment here"
         ></textarea>
-        {state?.error?.detail && <p>Kankaaa yanlış kkanna</p>}
+        {state?.error && <p>Kankaaa yanlış kkanna</p>}
         <input type="hidden" name="feedbackid" value={feedbackId} />
         <div className="commentFooter">
           <span>{remainigChar} karakter hakkın kaldı</span>

@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -115,10 +116,10 @@ export async function postComments(formData) {
   );
 
   console.log(response);
-  
 
-  if (response.ok) console.log("form göönderildi");
-  else if (response.status == 404) {
+  if (response.ok) {
+    console.log("form göönderildi");
+  } else if (response.status == 404) {
     console.log("skıntı var");
   }
 }

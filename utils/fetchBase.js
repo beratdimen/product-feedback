@@ -67,7 +67,7 @@ export const deleteFeedback = async (id) => {
   console.log(typeof id, "id adasdsad");
 
   const response = await fetch(
-    `https://feedbackapi.senihay.com/feedback/delete/${id}`,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_DELETE_ENDPOINT}/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -88,7 +88,7 @@ export const deleteFeedback = async (id) => {
 
 export const changeStatus = async (id, status) => {
   const response = await fetch(
-    `https://feedbackapi.senihay.com/feedback/changestatus?id=${id}&status=${status}`,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_FEEDBACKS_ENDPOINT}${process.env.API_CHANGESTATUS_ENDPOINT}?id=${id}&status=${status}`,
     {
       method: "PUT",
       headers: {
@@ -119,7 +119,7 @@ export const authRegister = async (formData) => {
 
   // try {
   const response = await fetch(
-    `https://feedbackapi.senihay.com/auth/register`,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_AUTH_ENDPOINT}${process.env.API_REGISTER_ENDPOINT}`,
     {
       method: "POST",
       headers: {
@@ -196,17 +196,20 @@ export async function loginUser(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const response = await fetch("https://feedbackapi.senihay.com/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-    credentials: "include",
-  });
+  const response = await fetch(
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_AUTH_ENDPOINT}${process.env.API_LOGIN_ENDPOINT}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      credentials: "include",
+    }
+  );
   const data = await response.text();
   if (!response.ok) {
     return {
@@ -234,7 +237,7 @@ export async function loginUser(formData) {
 export const getMe = async () => {
   try {
     const response = await fetch(
-      `https://feedbackapi.senihay.com/auth/getcurrentuser/me`,
+      `${process.env.API_ROOT_ENDPOINT}${process.env.API_AUTH_ENDPOINT}${process.env.API_USER_ME_ENDPOINT}`,
       {
         method: "GET",
         headers: {
@@ -260,7 +263,7 @@ export const getMe = async () => {
 export const logOut = async () => {
   try {
     const response = await fetch(
-      `https://feedbackapi.senihay.com/auth/logout`,
+      `${process.env.API_ROOT_ENDPOINT}${process.env.API_AUTH_ENDPOINT}${process.env.API_LOGOUT_ENDPOINT}`,
       {
         method: "POST",
         headers: {
@@ -284,13 +287,13 @@ export const logOut = async () => {
 export const getComments = async (id) => {
   try {
     const response = await fetch(
-      `https://feedbackapi.senihay.com/comment/getcomments?feedbackId=${id}`
+      `${process.env.API_ROOT_ENDPOINT}${process.env.API_COMMENTS_ENDPOINT}${process.env.API_GET_COMMENTS_ENDPOINT}?feedbackId=${id}`
     );
     if (!response.ok) {
       return { error: "NO Comment" };
     }
     const data = await response.json();
-
+    console.log(data, "datasdasdsafsafasdsadas");
     return { data };
   } catch (error) {
     console.error(error);
@@ -300,7 +303,7 @@ export const getComments = async (id) => {
 
 export const createComment = async (formData) => {
   const response = await AdvancedFetch(
-    `https://feedbackapi.senihay.com/comment/createcomment`,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_COMMENTS_ENDPOINT}${process.env.API_CREATE_COMMENTS_ENDPOINT}`,
     "POST",
     {
       content: content,
@@ -312,7 +315,8 @@ export const createComment = async (formData) => {
 
 export const deleteComment = async (id) => {
   const response = await fetch(
-    `https://feedbackapi.senihay.com/comment/deletecomment?commentId=` + id,
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_COMMENTS_ENDPOINT}${process.env.API_DELETE_COMMENTS_ENDPOINT}?commentId=` +
+      id,
     {
       method: "DELETE",
       headers: {
@@ -338,7 +342,7 @@ export const changeCommentStatus = async (id, status) => {
 
 export const getCategory = async () => {
   const response = await fetch(
-    `https://feedbackapi.senihay.com/category/getcategories`
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_CATEGORY_ENDPOINT}${process.env.API_GET_CATEGORY_ENDPOINT}`
   );
   const data = await response.json();
 
