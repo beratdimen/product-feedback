@@ -20,8 +20,8 @@ export default function AddComment({ feedbackId, setActive, active }) {
   const [remainigChar, setRemaningChar] = useState(250);
 
   useEffect(() => {
-    setRemaningChar(MAX_CHAR - text.length);
-
+    const remaining = MAX_CHAR - text.length;
+    setRemaningChar(remaining);
     if (remainigChar <= 0) {
       toast.error("250 karaktaerden fazla");
     }
@@ -47,6 +47,8 @@ export default function AddComment({ feedbackId, setActive, active }) {
 
         // Yeni feedback eklendikten sonra veriyi tekrar çek
         fetchData(); // Ana bileşende feedback verilerini tekrar çek
+        setText("");
+        setRemaningChar(MAX_CHAR);
       } catch (error) {
         console.error("Kayıt hatası:", error);
       }
