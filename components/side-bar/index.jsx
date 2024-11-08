@@ -7,10 +7,11 @@ import Roadmap from "./roadmap";
 import "./style.css";
 import { MenuIcon } from "@/helpers/icons";
 import HammburgerDialog from "../hamburgerdia/hamdialog";
-import { getMe, logOut } from "@/utils/fetchBase";
+import { getMe, getroadmapCount, logOut } from "@/utils/fetchBase";
 
 export default function SideBar({ setCategory, CategoryData, feedbackData }) {
   const [user, setUser] = useState({});
+  const [roadCount, setRoadCount] = useState([]);
 
   console.log(typeof CategoryData);
 
@@ -22,6 +23,12 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
 
       setUser(response);
     };
+    const fetchRoadmap = async () => {
+      const { data } = await getroadmapCount();
+
+      setRoadCount(data || []);
+    };
+    fetchRoadmap();
     fetchUser();
   }, []);
 
@@ -32,21 +39,23 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
 
   useEffect(() => {
     console.log("user :>> ", user);
-  }, [user]);
+    console.log("roadCount :>> ", roadCount);
+  }, [user, roadCount]);
 
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
-        {user?.data ? (
+        <div className="userCont"> {user?.data ? (
           <>
             <div className="userInfo">
               {user?.data?.firstName}
-              </div> <br />
+            </div> <br />
             <button onClick={handleLogout}>Çıkış Yap</button>
           </>
         ) : (
           <Link href="/login">Giriş Yap</Link>
         )}
+        </div>
 
         <div className="sidebarHeaderContent">
           <h2>Frontend Mentor</h2>
@@ -55,10 +64,10 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
         <button className="menu">
           <MenuIcon />
         </button>
-        <HammburgerDialog />
+        <HammburgerDialog user={user} handleLogout={handleLogout} feedbackData={feedbackData} setCategory={setCategory} CategoryData={CategoryData} />
       </div>
       <Categories setCategory={setCategory} CategoryData={CategoryData} />
-      <Roadmap  feedbackData={feedbackData} />
+      <Roadmap feedbackData={feedbackData} roadCount={roadCount} />
     </div>
   );
 }

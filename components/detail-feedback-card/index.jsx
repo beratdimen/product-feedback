@@ -9,7 +9,9 @@ import Link from "next/link";
 import ThemeSwitch from "../header/dark-mode-button";
 
 import FeedbackDetailCard from "../feedback-detail-card";
-export default function DetailFeedback({ opendialog, params, data, categoryList }) {
+import { useState } from "react";
+export default function DetailFeedback({ opendialog, params, data, categoryList ,active,setActive}) {
+
   return (
     <div className="detailContainer">
       <div className="detailHeader">
@@ -19,11 +21,11 @@ export default function DetailFeedback({ opendialog, params, data, categoryList 
           </button>
         </Link>
         <ThemeSwitch />
-        <EditButton opendialog={opendialog} data={data} params={params} categoryList={categoryList}  />
+        <EditButton opendialog={opendialog} data={data} params={params} categoryList={categoryList} />
       </div>
       <FeedbackDetailCard data={data} />
-      <Comments feedbackId={params?.id} />
-      <AddComment feedbackId={params?.id} />
+      <Comments feedbackId={params?.id} active={active} setActive={setActive} />
+      <AddComment feedbackId={params?.id} setActive={setActive} active={active} />
     </div>
   );
 }

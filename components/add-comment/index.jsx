@@ -6,7 +6,7 @@ import FormVAlidation, { postComments } from "@/action/actions";
 import { getMe } from "@/utils/fetchBase";
 import { useFormState } from "react-dom";
 
-export default function AddComment({ feedbackId }) {
+export default function AddComment({ feedbackId, setActive, active }) {
   const [state, action] = useFormState(
     (prevState, formData) => FormVAlidation(prevState, formData),
     {
@@ -43,7 +43,7 @@ export default function AddComment({ feedbackId }) {
         const clientResponse = await postComments(formObj);
         console.log("Müşteri kaydı başarılı:", clientResponse);
 
-        close();
+        setActive(!active);
 
         // Yeni feedback eklendikten sonra veriyi tekrar çek
         fetchData(); // Ana bileşende feedback verilerini tekrar çek

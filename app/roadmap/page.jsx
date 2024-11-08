@@ -16,7 +16,7 @@ export default async function RoadMap() {
   return (
     <div className="roadmapContent">
       <RoadmapHeader />
-      <ListRoadMap />
+      <ListRoadMap  data={response.feedbacks}  />
       <div className="generalRoadmap">
         <Planned data={response.feedbacks} />
         <InProgress data={response.feedbacks} />

@@ -81,13 +81,14 @@
 
   }
 }
+
 .inprogress {
 
   .roadItemContent{
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border-top: 4px solid rgba(173, 31, 234, 1);
+    border-top: 4px solid var(--inProgreessColor);
     background-color: var(--cardBg);
     border-radius: 8px;
     padding: 32px;
@@ -98,7 +99,7 @@
       color: var(--contentText);
   
       span {
-        color:rgba(173, 31, 234, 1);
+        color:var(--inProgreessColor);
       }
     }
   
@@ -128,7 +129,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    border-top: 4px solid rgba(98, 188, 250, 1);
+    border-top: 4px solid var(--liveColor);
     background-color: var(--cardBg);
     border-radius: 8px;
     padding: 32px;
@@ -139,7 +140,7 @@
       color: var(--contentText);
   
       span {
-        color:rgba(98, 188, 250, 1);
+        color:var(--liveColor);
       }
     }
   
@@ -162,16 +163,20 @@
 
   }
 }
+
 .listRoadmap {
   display: none;
 }
 
 @media (max-width: 920px) {
+  .roadmapContent { 
+    margin: 0px auto ;
+    border-radius: 0;
+  }
   .roadCont {
     max-width: 689px;
     margin: auto;
   }
-
   .generalRoadmap {
     width: 100%;
     display: grid;
@@ -190,9 +195,6 @@
     display: none;
   }
 
-  .roadmapHeaderPage {
-    margin: 0;
-  }
 
   .listRoadmap {
     display: grid;

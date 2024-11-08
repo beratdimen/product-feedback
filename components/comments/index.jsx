@@ -7,31 +7,35 @@ import ReplyComments from "../reply-comments";
 import { useEffect, useState } from "react";
 import { getComments } from "@/utils/fetchBase";
 import Image from "next/image";
+import DeleteComment from "../deletecomment";
+import { deleteCommnets } from "@/action/actions";
 
-export default function Comments({ feedbackId }) {
+export default function Comments({ feedbackId, active, setActive }) {
   const [comments, setComments] = useState([]);
   const [filtercomments, setFilterComments] = useState([]);
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
+
 
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
       console.log(response);
       if (!response.error) {
-        setComments(response?.data);
+        setComments(response?.data);  
       }
     }
 
     fetchComments();
-  }, [feedbackId]);
+  }, [feedbackId, active]);
 
   useEffect(() => {
     setFilterComments(comments.filter((x) => x.parentId === null));
-  }, [comments]);
+  }, [comments,active]);
 
-  console.log(comments, "comments");
-  console.log(feedbackId, "feedbackId");
+  useEffect(() => {
+   console.log(active, "active ");
+  }, [active]);
 
   function formatTime(createdTime) {
     const commentDate = new Date(createdTime); // kanka burada createdTime a göre  yeni tarih oluşturuyor tarih yapıyor yani Date fonksiyonu ile
@@ -50,19 +54,21 @@ export default function Comments({ feedbackId }) {
       // değilse eğer normal 10.12.2024 gibi yazsın
     }
   }
-  // `filtercomments` öğelerinin `id` değerlerinin `comments` içinde `parentId` olarak eşleşip eşleşmediğini kontrol eder
-  console.log(
-    filtercomments.filter((fc) => comments.some((c) => c.parentId === fc.id))
-  );
 
-  // `filtercomments` içindeki tüm id değerlerini yazdırır
-  console.log(filtercomments.map((x) => x.id));
 
-  // `comments` içindeki tüm parentId değerlerini yazdırır
-  console.log(comments.map((x) => x.parentId));
 
-  console.log(filtercomments, "fltercomments asdasd");
-
+  async function handleDeleteComments(id) {
+    const confirmDelete = window.confirm("Silmek istediğinize emin misiniz?");
+    if (!confirmDelete) return;
+  
+    const deleteResponse = await deleteCommnets(id);
+    if (deleteResponse) {
+      console.log("Feedback has been deleted successfully.");
+      setActive(!active);  
+    } else {
+      console.error("Feedback could not be deleted.");
+    }
+  }
 
   return (
     <div className="commentsContainer">
@@ -82,14 +88,19 @@ export default function Comments({ feedbackId }) {
 
                   <p>{x.content}</p>
                 </div>
-              </div><ReplyButton
-                setReplyShow={setReplyShow}
-                replyShow={replyShow}
-                setSelectedIndex={setSelectedIndex}
-                i={x.id}
-              />
+              </div>
+              <div className="commentBtns">
+                <DeleteComment handleDeleteComments={handleDeleteComments}
+                  i={x.id}  setActive={setActive} active={active} />
+                <ReplyButton
+                  setReplyShow={setReplyShow}
+                  replyShow={replyShow}
+                  setSelectedIndex={setSelectedIndex}
+                  i={x.id}
+                />
+              </div>
             </div>
-            {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} />}
+            {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} setActive={setActive} active={active} />}
 
             {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
               .map((reply) => ( // `map` ile her alt yorumu render ediyoruz

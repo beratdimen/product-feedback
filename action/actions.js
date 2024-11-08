@@ -186,6 +186,36 @@ export async function deleteFeedbacks(id) {
   redirect("/");
 }
 
+ 
+export async function deleteCommnets(id) {
+  try {
+    const response = await fetch(
+      `https://feedbackapi.senihay.com/comment/deletecomment?commentId=${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+          Cookie: cookies().toString(),
+        },
+      }
+    );
+ 
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Feedback deleted successfully:", data);
+    } else if (response.status === 404) {
+      console.log("Error: Feedback not found");
+    } else {
+      console.log("An error occurred during deletion:", response.status);
+    }
+  } catch (error) {
+    console.error("Network or server error:", error);
+  } 
+}
+
+
+
 export async function updateFeedbacks(formData) {
   const title = formData.title;
   const categoryId = parseInt(formData.categoryId);
