@@ -29,17 +29,20 @@ export async function loginUser(prevState, formData) {
   const email = formData.get("email");
   const password = formData.get("password");
 
-  const response = await fetch("https://feedbackapi.senihay.com/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-    credentials: "include",
-  });
+  const response = await fetch(
+    `${process.env.API_ROOT_ENDPOINT}${process.env.API_AUTH_ENDPOINT}${process.env.API_LOGIN_ENDPOINT}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      credentials: "include",
+    }
+  );
   const data = await response.text();
   if (!response.ok) {
     console.log(data);
@@ -186,7 +189,6 @@ export async function deleteFeedbacks(id) {
   redirect("/");
 }
 
-
 export async function deleteCommnets(id) {
   try {
     const response = await fetch(
@@ -213,8 +215,6 @@ export async function deleteCommnets(id) {
     console.error("Network or server error:", error);
   }
 }
-
-
 
 export async function updateFeedbacks(formData) {
   const title = formData.title;
@@ -252,7 +252,6 @@ export async function updateFeedbacks(formData) {
   }
 }
 
- 
 export const upvoteFeedback = async (id) => {
   id = parseInt(id);
   const response = await fetch(
