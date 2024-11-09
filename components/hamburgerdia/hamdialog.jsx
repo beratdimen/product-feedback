@@ -7,7 +7,13 @@ import "./hamdialog.css";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-export default function HammburgerDialog({ setCategory, CategoryData, feedbackData, handleLogout, user }) {
+export default function HammburgerDialog({
+  setCategory,
+  CategoryData,
+  feedbackData,
+  handleLogout,
+  user,
+}) {
   const hamburgerRef = useRef();
 
   function handleClick() {
@@ -39,20 +45,16 @@ export default function HammburgerDialog({ setCategory, CategoryData, feedbackDa
             </button>
           </div>
           <div className="hammenu">
-
             <div className="userContHamburger">
               {user?.data ? (
                 <>
-                  <div className="userInfo">
-                    {user?.data?.firstName}
-                  </div> <br />
-                  <button onClick={handleLogout}>Çıkış Yap</button>
+                  <div className="userInfo">{user?.data?.firstName}</div> <br />
+                  <button onClick={handleLogout}>Log Out</button>
                 </>
               ) : (
-                <Link href="/login">Giriş Yap</Link>
+                <Link href="/login">Login</Link>
               )}
             </div>
-
 
             <Categories setCategory={setCategory} CategoryData={CategoryData} />
             <Roadmap feedbackData={feedbackData} />
