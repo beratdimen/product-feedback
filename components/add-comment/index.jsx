@@ -70,7 +70,7 @@ export default function AddComment({ feedbackId, setActive, active }) {
         {state?.error && <p>Kankaaa yanlış kkanna</p>}
         <input type="hidden" name="feedbackid" value={feedbackId} />
         <div className="commentFooter">
-          <span>{remainigChar} karakter hakkın kaldı</span>
+          <span>{remainigChar} characters left</span>
           <button disabled={remainigChar < 0}>Post Comment</button>
         </div>
       </form>

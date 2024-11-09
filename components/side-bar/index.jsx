@@ -15,8 +15,6 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
 
   console.log(typeof CategoryData);
 
-
-
   useEffect(() => {
     const fetchUser = async () => {
       const response = await getMe();
@@ -45,16 +43,16 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
   return (
     <div className="sideBarContainer">
       <div className="sidebarHeader">
-        <div className="userCont"> {user?.data ? (
-          <>
-            <div className="userInfo">
-              {user?.data?.firstName}
-            </div> <br />
-            <button onClick={handleLogout}>Çıkış Yap</button>
-          </>
-        ) : (
-          <Link href="/login">Giriş Yap</Link>
-        )}
+        <div className="userCont">
+          {" "}
+          {user?.data ? (
+            <>
+              <div className="userInfo">{user?.data?.firstName}</div> <br />
+              <button onClick={handleLogout}>Log Out</button>
+            </>
+          ) : (
+            <Link href="/login">Login</Link>
+          )}
         </div>
 
         <div className="sidebarHeaderContent">
@@ -64,7 +62,13 @@ export default function SideBar({ setCategory, CategoryData, feedbackData }) {
         <button className="menu">
           <MenuIcon />
         </button>
-        <HammburgerDialog user={user} handleLogout={handleLogout} feedbackData={feedbackData} setCategory={setCategory} CategoryData={CategoryData} />
+        <HammburgerDialog
+          user={user}
+          handleLogout={handleLogout}
+          feedbackData={feedbackData}
+          setCategory={setCategory}
+          CategoryData={CategoryData}
+        />
       </div>
       <Categories setCategory={setCategory} CategoryData={CategoryData} />
       <Roadmap feedbackData={feedbackData} roadCount={roadCount} />

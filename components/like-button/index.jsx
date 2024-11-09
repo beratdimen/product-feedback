@@ -4,9 +4,9 @@ import { UpIcon } from "@/helpers/icons";
 import "./style.css";
 import { upvoteFeedback } from "@/action/actions";
 import { getMe } from "@/utils/fetchBase";
-import { toast } from "sonner"; 
+import { toast } from "sonner";
 
-export default function LikeBtn({ upvoteCount, id,active ,setActive }) {
+export default function LikeBtn({ upvoteCount, id, active, setActive }) {
   console.log(id);
 
   async function handleSubmit(e) {
@@ -25,7 +25,6 @@ export default function LikeBtn({ upvoteCount, id,active ,setActive }) {
       toast.error("Lütfen Giriş Yapınız");
     }
     setActive(!active);
-
   }
 
   return (

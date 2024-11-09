@@ -16,13 +16,12 @@ export default function Comments({ feedbackId, active, setActive }) {
   const [replyShow, setReplyShow] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-
   useEffect(() => {
     async function fetchComments() {
       const response = await getComments(feedbackId);
       console.log(response);
       if (!response.error) {
-        setComments(response?.data);  
+        setComments(response?.data);
       }
     }
 
@@ -31,10 +30,10 @@ export default function Comments({ feedbackId, active, setActive }) {
 
   useEffect(() => {
     setFilterComments(comments.filter((x) => x.parentId === null));
-  }, [comments,active]);
+  }, [comments, active]);
 
   useEffect(() => {
-   console.log(active, "active ");
+    console.log(active, "active ");
   }, [active]);
 
   function formatTime(createdTime) {
@@ -55,16 +54,14 @@ export default function Comments({ feedbackId, active, setActive }) {
     }
   }
 
-
-
   async function handleDeleteComments(id) {
     const confirmDelete = window.confirm("Silmek istediğinize emin misiniz?");
     if (!confirmDelete) return;
-  
+
     const deleteResponse = await deleteCommnets(id);
     if (deleteResponse) {
       console.log("Feedback has been deleted successfully.");
-      setActive(!active);  
+      setActive(!active);
     } else {
       console.error("Feedback could not be deleted.");
     }
@@ -76,12 +73,14 @@ export default function Comments({ feedbackId, active, setActive }) {
         <h3>{comments.length} Comments</h3>
         {filtercomments.map((x, i) => (
           <div key={i}>
-            <div className="commentsCard" >
+            <div className="commentsCard">
               <div className="content">
                 <img src={x.avatar} height={40} width={40} alt="asdasd" />
                 <div className="userInformation">
                   <div className="avatarInfo">
-                    <h4>{x.firstName} {x.lastName}</h4>
+                    <h4>
+                      {x.firstName} {x.lastName}
+                    </h4>
                     <h5>@{x.nickname}</h5>
                     <p>{formatTime(x.createdTime)}</p>
                   </div>
@@ -90,8 +89,12 @@ export default function Comments({ feedbackId, active, setActive }) {
                 </div>
               </div>
               <div className="commentBtns">
-                <DeleteComment handleDeleteComments={handleDeleteComments}
-                  i={x.id}  setActive={setActive} active={active} />
+                <DeleteComment
+                  handleDeleteComments={handleDeleteComments}
+                  i={x.id}
+                  setActive={setActive}
+                  active={active}
+                />
                 <ReplyButton
                   setReplyShow={setReplyShow}
                   replyShow={replyShow}
@@ -100,24 +103,45 @@ export default function Comments({ feedbackId, active, setActive }) {
                 />
               </div>
             </div>
-            {selectedIndex === x.id && replyShow && <ReplyComments id={selectedIndex} feedbackId={feedbackId} setActive={setActive} active={active} />}
+            {selectedIndex === x.id && replyShow && (
+              <ReplyComments
+                id={selectedIndex}
+                feedbackId={feedbackId}
+                setActive={setActive}
+                active={active}
+              />
+            )}
 
-            {comments.filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
-              .map((reply) => ( // `map` ile her alt yorumu render ediyoruz
-                <div className="replyCommentCard" key={reply.id} >
-                  <div className="content">
-                    <img src={reply.avatar} height={40} width={40} alt="asdasd" />
-                    <div className="userInformation">
-                      <div className="avatarInfo">
-                        <h4>{reply.firstName} {reply.lastName}</h4>
-                        <h5>@{reply.nickname}</h5>
-                        <p>{formatTime(reply.createdTime)}</p>
+            {comments
+              .filter((c) => c.parentId === x.id) // `filter` ile yalnızca ilgili `parentId`ye sahip yorumları alıyoruz
+              .map(
+                (
+                  reply // `map` ile her alt yorumu render ediyoruz
+                ) => (
+                  <div className="replyCommentCard" key={reply.id}>
+                    <div className="content">
+                      <img
+                        src={reply.avatar}
+                        height={40}
+                        width={40}
+                        alt="asdasd"
+                      />
+                      <div className="userInformation">
+                        <div className="avatarInfo">
+                          <h4>
+                            {reply.firstName} {reply.lastName}
+                          </h4>
+                          <h5>@{reply.nickname}</h5>
+                          <p>{formatTime(reply.createdTime)}</p>
+                        </div>
+                        <p>
+                          <span>@{x.nickname}</span> {reply.content}
+                        </p>
                       </div>
-                      <p><span>@{x.nickname}</span> {reply.content}</p>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
           </div>
         ))}
       </div>

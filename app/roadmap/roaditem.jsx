@@ -4,7 +4,15 @@ import LikeBtn from "@/components/like-button";
 import "./roaditem.css";
 import { CommentsIcon } from "@/helpers/icons";
 
-export default function RoadItem({ commentCount, detail, name, status, title, upvoteCount }) {
+export default function RoadItem({
+  commentCount,
+  detail,
+  name,
+  status,
+  title,
+  upvoteCount,
+  setActive,
+}) {
   if (document.body.classList === "bodycontent") {
     document.body.classList.remove("bodycontent");
   }
@@ -12,17 +20,22 @@ export default function RoadItem({ commentCount, detail, name, status, title, up
     <div className="roaditem">
       <div className="roadItemContent">
         <p>
-          <span>●</span>{status === 1 ? "Planned" : status === 2 ? "InProgress" : status === 3 ? "Live" : ""}
+          <span>●</span>
+          {status === 1
+            ? "Planned"
+            : status === 2
+            ? "InProgress"
+            : status === 3
+            ? "Live"
+            : ""}
         </p>
         <div className="roadItemText">
           <h2>{title}</h2>
-          <p>
-            {detail}
-          </p>
+          <p>{detail}</p>
         </div>
         <p className="tags">{name}</p>
         <div className="likesComments">
-          <LikeBtn /> {upvoteCount}
+          <LikeBtn setActive={setActive} /> {upvoteCount}
           <p>
             <CommentsIcon /> {commentCount}
           </p>
